@@ -1,0 +1,182 @@
+
+    /* Fundo geral branco para página (sem degradê no body) */
+    body {
+      margin: 0;
+      font-family: 'Noto Serif', serif;
+      background: linear-gradient(to bottom,
+        #C1C3F6 0%,
+        #A7A9ED 20%,
+        #9599E6 40%,
+        #333547 70%,
+        #23252F 100%);
+      color: white;
+      min-height: 100vh;
+    }
+
+    /* Header fixo transparente */
+    header.transparent {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(35, 37, 47, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      padding: 10px 30px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    nav .logo img {
+      height: 50px;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-family: 'Buenard', serif;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      color: #A7A9ED;
+    }
+
+    /* Banner principal vazio */
+    .banner {
+      height: 300px;
+      margin-top: 80px; /* espaço para header fixo */
+    }
+
+    /* Conteúdo centralizado */
+    .content {
+      max-width: 1200px;
+      margin: 40px auto 80px auto;
+      padding: 0 20px;
+    }
+
+    /* Linha do tempo vertical */
+    .horizontal-timeline {
+      padding: 60px 20px;
+      /* fundo transparente, degrade já no body */
+    }
+
+    .horizontal-timeline h2 {
+      font-family: 'Buenard', serif;
+      font-weight: 700;
+      color: white;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .timeline-horizontal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-left: 70px; /* espaço para linha + bolinha */
+}
+
+/* Linha vertical */
+.timeline-horizontal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 30px; /* posição da linha vertical */
+  width: 4px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  z-index: 0;
+}
+
+/* Cada passo - botão */
+.timeline-step {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 15px 20px 15px 40px; /* mantém padding-left, mas agora a bolinha fica fora */
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s;
+  z-index: 2;
+}
+
+/* Bolinha fora do container, à esquerda */
+.timeline-step::before {
+  content: '';
+  position: absolute;
+  left: -30px; /* NEGATIVO: fica fora do container */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border: 4px solid #23252F;
+  border-radius: 50%;
+  box-sizing: content-box;
+  z-index: 3;
+}
+
+.timeline-step:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: translateX(7px);
+}
+
+.timeline-step:hover::before {
+  background-color: #A7A9ED;
+  border-color: #9599E6;
+}
+
+    .timeline-step h6 {
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+
+    .timeline-step p {
+      margin: 0;
+      font-weight: 400;
+      font-size: 0.95rem;
+    }
+
+    .timeline-step:focus {
+      outline: none;
+      box-shadow: 0 0 8px #A7A9ED;
+    }
+
+    /* Responsivo vertical */
+    @media (max-width: 768px) {
+      .timeline-horizontal {
+        max-width: 90vw;
+      }
+    }
+
+    /* Modal custom para fundo escuro */
+    .modal-content {
+      background-color: #23252F;
+      color: white;
+      font-family: 'Noto Serif', serif;
+    }
+
+    /* Botão fechar branco */
+    .btn-close-white {
+      filter: invert(1);
+    }
