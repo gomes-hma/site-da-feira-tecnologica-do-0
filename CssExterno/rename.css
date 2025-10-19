@@ -31,6 +31,13 @@
    border: solid 4px #A7A9ED;
 }
 
+.bdd3{
+   background-color: #C1C3F6;
+   border-radius: 8px;
+   color: #23252F;
+   opacity: 0.8;
+}
+
 #particles-js {
   position: fixed;
   top: 0;

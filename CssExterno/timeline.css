@@ -13,50 +13,13 @@
     }
 
     /* Header fixo transparente */
-    header.transparent {
-      position: fixed;
-      width: 100%;
-      top: 0;
-      left: 0;
-      background: rgba(35, 37, 47, 0.85);
-      backdrop-filter: blur(8px);
-      z-index: 9999;
-      padding: 10px 30px;
-    }
+    
 
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
 
-    nav .logo img {
-      height: 50px;
-      object-fit: contain;
-    }
 
     
 
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 25px;
-      margin: 0;
-      padding: 0;
-    }
-
-    .nav-links li a {
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-
-    .nav-links li a:hover {
-      color: #A7A9ED;
-    }
-
+    
 
     /* Conteúdo centralizado */
     .content {
