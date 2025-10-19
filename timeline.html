@@ -22,57 +22,58 @@
     <link rel="stylesheet" href="bootstrap-5.3.8-dist\css\bootstrap.css">
 </head>
 <body>
+  <div id="particles-js"></div>
 
   <!-- Header fixo -->
   <header class="transparent" id="header">
     <nav>
-      <a href="#" class="logo"><img src="imgs/logoCAS.png" alt="Logo CAS" /></a>
-      <ul class="nav-links">
-        <li><a href="#home">Início</a></li>
-        <li><a href="#about">Sobre</a></li>
-        <li><a href="#services">Serviços</a></li>
-        <li><a href="#contact">Contato</a></li>
-      </ul>
-    </nav>
+            <a href="index.html" class="logo"><img src="imgs/logoCAS.png" class="logo" alt=""></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="">aprofundamento</a></li>
+                <li><a href="rename.html">Conscientização</a></li>
+                <li><a href="timeline.html">Linha do Tempo</a></li>
+            </ul>
+        </nav>
   </header>
 
   <!-- Banner principal -->
-  <section class="banner" id="home"></section>
+  <section class="banner" id="home"><img class="banner" src="imgs/BannerCAS.png" alt=""></section>
 
   <!-- Conteúdo -->
   <div class="content">
     <section class="horizontal-timeline">
-      <h2>Linha do Tempo - Ciclo da Autodestruição Silenciosa</h2>
+      <h2 class="titulo">Linha do Tempo - Ciclo da Autodestruição Silenciosa</h2>
       <div class="timeline-horizontal" role="list">
         <!-- Botões transparentes com modais -->
         <button type="button" class="timeline-step" data-bs-toggle="modal" data-bs-target="#modalNegacao" aria-label="Negação">
-          <h6>Negação</h6>
-          <p>Fingir que está tudo bem.</p>
+          <h6 class="titulo to">Negação</h6>
+          <p class="texto">Fingir que está tudo bem.</p>
         </button>
 
         <button type="button" class="timeline-step" data-bs-toggle="modal" data-bs-target="#modalIsolamento" aria-label="Isolamento">
-          <h6>Isolamento</h6>
-          <p>Afasta-se do mundo.</p>
+          <h6 class="titulo to">Isolamento</h6>
+          <p class="texto">Afasta-se do mundo.</p>
         </button>
 
         <button type="button" class="timeline-step" data-bs-toggle="modal" data-bs-target="#modalAutossabotagem" aria-label="Autossabotagem">
-          <h6>Autossabotagem</h6>
-          <p>Bloqueia avanços.</p>
+          <h6 class="titulo to">Autossabotagem</h6>
+          <p class="texto">Bloqueia avanços.</p>
         </button>
 
         <button type="button" class="timeline-step" data-bs-toggle="modal" data-bs-target="#modalDesgaste" aria-label="Desgaste">
-          <h6>Desgaste</h6>
-          <p>Emocional profundo.</p>
+          <h6 class="titulo tow">Desgaste</h6>
+          <p class="texto">Emocional profundo.</p>
         </button>
 
         <button type="button" class="timeline-step" data-bs-toggle="modal" data-bs-target="#modalColapso" aria-label="Colapso">
-          <h6>Colapso</h6>
-          <p>Ruptura interna.</p>
+          <h6 class="titulo tow">Colapso</h6>
+          <p class="texto">Ruptura interna.</p>
         </button>
 
         <button type="button" class="timeline-step" data-bs-toggle="modal" data-bs-target="#modalRenascimento" aria-label="Renascimento?">
-          <h6>Renascimento?</h6>
-          <p>Ou repetição.</p>
+          <h6 class="titulo tow">Renascimento?</h6>
+          <p class="texto">Ou repetição.</p>
         </button>
       </div>
     </section>
@@ -153,6 +154,32 @@
 
   <!-- Bootstrap 5 JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+  particlesJS("particles-js", {
+    "particles": {
+      "number": { "value": 70 },
+      "color": { "value": "#9599E6" },
+      "shape": { "type": "circle" },
+      "opacity": { "value": 5 },
+      "size": { "value": 3 },
+      "move": { "enable": true, "speed": 1.2 },
+      "line_linked": {
+        "enable": true,
+        "distance": 150,
+        "color": "#9599E6",
+        "opacity": 0.6,
+        "width": 1
+      }
+    },
+    "interactivity": {
+      "detect_on": "canvas",
+      "events": {
+        "onhover": { "enable": true, "mode": "repulse" }
+      }
+    }
+  });
+</script>
 </body>
 </html>
 

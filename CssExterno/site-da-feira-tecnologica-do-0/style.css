@@ -51,6 +51,11 @@ color: #fffdf6;
     color: #262630;
 }
 
+.texto-justificado {
+  text-align: justify;
+  text-align-last: justify;
+}
+
 
 /* Header fixo e transparente */
 header {
@@ -87,6 +92,15 @@ nav {
 .logo {
     width: 20%;
 }
+
+.logo img {
+      object-fit: contain;
+      transition: transform 0.3s ease; 
+    }
+
+    .logo img:hover {
+      transform: scale(1.2); 
+    }
 
 .nav-links {
     display: flex;

@@ -1,0 +1,43 @@
+
+ cor{
+    color:   
+    #C1C3F6 0%,   
+    #A7A9ED 20%,   
+    #9599E6 40%,   
+    #333547 70%,  
+    #23252F 100%;
+
+    }
+
+.dvs {
+   border: none;
+  height: 6px; /* espessura da linha */
+  width: 80%; /* largura relativa */
+  margin: 40px auto; /* centraliza e dá respiro */
+  border-radius: 3px;
+  background: linear-gradient(to right, #A7A9ED, #9599E6, #A7A9ED);
+  box-shadow: 0 0 10px #A7A9ED, 0 0 20px #9599E6 inset;
+}
+
+.escada{
+   border: solid 4px #A7A9ED;
+   border-radius:8px;
+}
+
+.bdd2{
+   background-color: #333547;
+   border-radius: 10px;
+   padding: 5%;
+   border: solid 4px #A7A9ED;
+}
+
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* fica atrás de todo o conteúdo */
+  overflow: hidden;
+}
+
