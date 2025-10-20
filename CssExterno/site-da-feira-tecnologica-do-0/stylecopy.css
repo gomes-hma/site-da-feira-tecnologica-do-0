@@ -154,7 +154,17 @@ header{
     font-size: 1em;
 }
 
-
+/* Fontes dos textos que colocarmos */
+.fonte{
+    font-size: 0.8em;
+    font-family: "Noto Serif", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+    color: #262630;
+}
 
 .txt-header{
     font-size: 1.1em;

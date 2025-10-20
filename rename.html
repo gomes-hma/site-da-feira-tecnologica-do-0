@@ -25,22 +25,32 @@
 <div id="particles-js"></div>
 
 
-    <!-- Header fixo -->
-    <header class="transparent" id="header">
-        <nav>
-            <a href="#" class="logo"><img src="imgs/logoCAS.png" class="logo" alt=""></a>
-            <ul class="nav-links">
-                <li><a class="txt-header" href="index.html">Início</a></li>
-                <li><a class="txt-header" href="aprofundamento.html">Aprofundando</a></li>
-                <li><a class="txt-header" href="rename.html">Conscientização</a></li>
-                <li><a class="txt-header" href="timeline.html">Linha do Tempo</a></li>
-                <li><a class="txt-header" href="Jogo.html">Jogo</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- Banner principal -->
-    <section class="banner" id="home"><img class="banner" src="imgs/BannerCAS.png" alt=""></section>
+<header>
+  <nav class="navbar navbar-expand-lg fixed-top" style="position: sticky; top: 0;">
+    <div class="container">
+      <a class="navbar-brand" href="#">CAS</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="aprofundamento.html">Aprofundamento</a></li>
+          <li class="nav-item"><a class="nav-link" href="Jogo.html">Jogo</a></li>
+          <li class="nav-item"><a class="nav-link" href="rename.html">Conscientização</a></li>
+          <li class="nav-item"><a class="nav-link" href="timeline.html">Linha do Tempo</a></li>
+          <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+    <section class="banner img-fluid img-responsive" id="home"><img class="banner img-fluid img-responsive" src="imgs/BannerCAS.png" alt=""></section>
 
     <hr class="dvs">
     
@@ -114,10 +124,10 @@
 <script>
   particlesJS("particles-js", {
     "particles": {
-      "number": { "value": 200 },
+      "number": { "value": 300 },
       "color": { "value": "#A7A9ED" },
       "shape": {
-        "type": "triangle",  /* 🔺 Triângulos */
+        "type": "triangle",  
         "stroke": {
           "width": 1,
           "color": "#9599E6"
@@ -143,7 +153,7 @@
         }
       },
       "line_linked": {
-        "enable": false /* desativa linhas entre eles */
+        "enable": fals
       }
     },
     "interactivity": {
@@ -159,6 +169,7 @@
     "retina_detect": true
   });
 </script>
+<script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.js"></script>
 
 </body>
 </html>

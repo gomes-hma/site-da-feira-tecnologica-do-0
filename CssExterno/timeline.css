@@ -135,20 +135,11 @@
     }
 
     /* Modal custom para fundo escuro */
-    .modal-content {
-      background-color: #23252F;
-      color: white;
-    }
+    
 
     /* Botão fechar branco */
     .btn-close-white {
       filter: invert(1);
     }
 
-    .to{
-  -webkit-text-stroke: 1.2px black; /* para navegadores WebKit */
-}
-
-.tow{
-  -webkit-text-stroke: 0.8px white; /* para navegadores WebKit */
-}
+    
