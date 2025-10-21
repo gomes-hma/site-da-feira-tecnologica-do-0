@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAS</title>
+    <link rel="stylesheet" href="CssExterno/site-da-feira-tecnologica-do-0/style.css">
+    <link rel="shortcut icon" href="imgs/favicon.png" type="image/x-icon">
+
+    <!-- Fonte Titulo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Emblema+One&display=swap" rel="stylesheet">
+    <!-- Fonte Subtítulo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Buenard:wght@400..700&display=swap" rel="stylesheet">
+    <!-- Fonte Texto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist\css\bootstrap.css">
+</head>
+
+<body class="gradiente-suave">
+    <!-- Header fixo -->
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top" style="position: sticky; top: 0;">
+            <div class="container">
+                <a class="navbar-brand" href="#">CAS</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+                        <li class="nav-item"><a class="nav-link" href="aprofundamento.html">Aprofundamento</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Jogo.html">Jogo</a></li>
+                        <li class="nav-item"><a class="nav-link" href="rename.html">Conscientização</a></li>
+                        <li class="nav-item"><a class="nav-link" href="timeline.html">Linha do Tempo</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Banner principal -->
+    <section class="banner img-fluid img-responsive" id="home"><img class="banner img-fluid img-responsive"
+            src="imgs/BannerCAS.png" alt=""></section>
+
+    <section>
+        <div class="IV">
+            <h1 class="subtitulo IV-txt">IV Feira Tecnológica e Sustentável da ETEC MCM</h1>
+        </div>
+    </section>
+    <main><!-- Conteúdo da página -->
+
+    </main>
+    <footer>
+        <div>
+            <h4>CAS</h4>
+            <p>Um projeto desenvolvido para a Feira Tecnológica, promovendo reflexão e empatia.</p>
+        </div>
+        <div>
+            <h4>Navegação</h4>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#tema">Tema</a></li>
+                <li><a href="#jogo">Jogo</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Projeto</h4>
+            <ul>
+                <li>Desenvolvido por alunos do curso técnico</li>
+                <li>Inspirado na temática da autodestruição silenciosa</li>
+            </ul>
+        </div>
+        <div>
+            <h4>Integrantes</h4>
+            <ul>
+                <li>Arthur Franco</li>
+                <li>Arthur Gomes</li>
+                <li>Arthur Pereira</li>
+                <li>Bruno Ferreira</li>
+                <li>João Pedro</li>
+            </ul>
+        </div>
+    </footer>
+
+    <div class="copyright">
+        © 2025 - Projeto C.A.S. | Todos os direitos reservados.
+    </div>
+
+
+
+
+    <script src="script.js"></script>
+    <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.js"></script> <!-- Botao de sanduiche funcionar -->
+    <script>
+        // Detectar scroll e mudar o header
+        const header = document.getElementById('header');
+        const banner = document.querySelector('.banner');
+
+        window.addEventListener('scroll', function () {
+            const bannerHeight = banner.offsetHeight;
+            const scrollPosition = window.scrollY;
+
+            // Quando passar do banner, adiciona a classe 'scrolled'
+            if (scrollPosition > bannerHeight - 100) {
+                header.classList.remove('transparent');
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+                header.classList.add('transparent');
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+    /* contato.css — estilos específicos da página de Contato (CAS)
+   Mantém a identidade usando as variáveis já existentes do seu tema.
+*/
+
+:root{
+  /* Utiliza as variáveis já definidas no tema; fallback para segurança */
+  --cas-primary: var(--lilac-1, #9599E6);
+  --cas-primary-2: var(--lilac-2, #A7A9ED);
+  --cas-dark: var(--text-darker, #23252F);
+}
+
+/* Seção hero do contato */
+.hero-contact {
+  background: linear-gradient(180deg, rgba(149,153,230,0.15), rgba(199,201,246,0.15));
+  border-bottom: 1px solid rgba(0,0,0,.05);
+  padding: 6rem 0 3rem;
+}
+
+.hero-contact h1{
+  font-family: "Emblema One", system-ui;
+  color: var(--title, #9c9be7);
+  letter-spacing: 1px;
+}
+
+/* Card de contato */
+.contact-card .card-header{
+  background: linear-gradient(135deg, var(--cas-primary), var(--cas-primary-2));
+  color:#fff;
+}
+
+.contact-card .btn-primary{
+  background: var(--cas-primary);
+  border-color: var(--cas-primary);
+}
+
+.contact-card .btn-primary:hover{
+  background: var(--cas-primary-2);
+  border-color: var(--cas-primary-2);
+}
+
+/* Lista de info (remove bordas) */
+.contact-info .list-group-item{
+  border:none;
+  padding-left: 0;
+}
+
+/* Marcação de campo obrigatório */
+.required::after{
+  content:" *";
+  color:#e65555;
+  font-weight:700;
+}
+
+/* Bloco rótulo/valor empilhado */
+.contact-dl dt{
+  font-weight: 700;
+  color: var(--cas-dark);
+}
+
+.contact-dl dd{
+  margin-bottom: .5rem;
+}

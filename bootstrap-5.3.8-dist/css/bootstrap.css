@@ -5532,7 +5532,7 @@ textarea.form-control-lg {
   width: 100%;
   color: var(--bs-modal-color);
   pointer-events: auto;
-  background-color:  #9599E6;
+  background-color:  #C1C3F6;
   background-clip: padding-box;
   border: var(--bs-modal-border-width) solid var(--bs-modal-border-color);
   border-radius: var(--bs-modal-border-radius);

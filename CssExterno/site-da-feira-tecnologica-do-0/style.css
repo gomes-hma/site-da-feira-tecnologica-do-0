@@ -36,7 +36,7 @@ header{
       --lilac-1: #9599E6;
       --lilac-2: #A7A9ED;
       --lilac-3: #C1C3F6;
-      --title: #9c9be7;
+      --title: #fffdf6;
       --text-dark: #333547;
       --text-darker: #23252F;
       --color-danger: #e65555;
@@ -44,26 +44,26 @@ header{
 
     /* HEADER ESTILIZADO */
     .navbar {
-      background-color: #fff;
+      background-color: #23252F;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     }
 
     .navbar-brand {
-      font-family: "Emblema One", system-ui;
+
       color: var(--title) !important;
       font-size: 1.7rem;
       letter-spacing: 2px;
     }
 
     .nav-link {
-      color: var(--text-dark) !important;
+      color: var(--title) !important;
       font-weight: 500;
       margin-right: 10px;
       transition: color 0.2s ease;
     }
 
     .nav-link:hover {
-      color: var(--lilac-1) !important;
+      color: #9599E6!important;
     }
 
     .navbar-toggler {
@@ -352,6 +352,310 @@ body {
     text-align: center;
     padding: 0.3%;
     margin: 1em;
+}
+
+:root {
+    /* Cores */
+    --cor-primaria: #3498db;
+    --cor-secundaria: #2c3e50;
+    --cor-fundo: #ecf0f1;
+    --cor-texto: #2c3e50;
+    --cor-borda: #bdc3c7;
+    --cor-sombra: rgba(0, 0, 0, 0.1);
+    
+    /* Espaçamento */
+    --espacamento-pequeno: 10px;
+    --espacamento-medio: 20px;
+    --espacamento-grande: 30px;
+    
+    /* Transições */
+    --transicao: 0.3s ease-in-out;
+}
+
+/* ===========================
+   CONTAINER PRINCIPAL
+   =========================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--espacamento-grande);
+}
+
+/* ===========================
+   GRID DE CARDS
+   =========================== */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--espacamento-medio);
+    margin-bottom: var(--espacamento-grande);
+}
+
+/* ===========================
+   ESTILO DO CARD
+   =========================== */
+.card {
+    background-color: #f5f1e5;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px #9599E6;
+    overflow: hidden;
+    transition: transform var(--transicao), box-shadow var(--transicao);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px #7679b6;
+}
+
+/* Header do Card */
+.card-header {
+    background-color: #ffc107;
+    color: white;
+    padding: var(--espacamento-medio);
+    border-bottom: 2px solid var(--cor-borda);
+}
+
+.card-header h2 {
+    color: #f5f1e5;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+/* Body do Card */
+
+.card-body p {
+    margin: 0;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+/* Footer do Card */
+.card-footer {
+    padding: var(--espacamento-medio);
+    border-top: 1px solid var(--cor-borda);
+    background-color: #f8f9fa;
+}
+
+/* ===========================
+   BOTÕES
+   =========================== */
+.btn-modal {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: var(--cor-primaria);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transicao), transform var(--transicao);
+}
+
+.btn-modal:hover {
+    background-color: #2980b9;
+    transform: scale(1.02);
+}
+
+.btn-modal:active {
+    transform: scale(0.98);
+}
+
+/* ===========================
+   MODAL
+   =========================== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn var(--transicao);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Conteúdo da Modal */
+.modal-content {
+    background-color: white;
+    padding: 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    animation: slideIn var(--transicao);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Header da Modal */
+.modal-header {
+    background: linear-gradient(200deg, #9599E6, #23252F);
+    color: white;
+    padding: var(--espacamento-medio);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--cor-borda);
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+/* Botão de Fechar (X) */
+.btn-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--transicao);
+}
+
+.btn-close:hover {
+    transform: scale(1.2);
+}
+
+/* Body da Modal */
+.modal-body {
+    padding: var(--espacamento-medio);
+    color: #555;
+    line-height: 1.8;
+}
+
+.modal-body p {
+    margin-bottom: var(--espacamento-pequeno);
+}
+
+/* Footer da Modal */
+.modal-footer {
+    padding: var(--espacamento-medio);
+    border-top: 1px solid var(--cor-borda);
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-close-modal {
+    padding: 10px 25px;
+    background-color: var(--cor-primaria);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transicao), transform var(--transicao);
+}
+
+.btn-close-modal:hover {
+    background-color: #2980b9;
+    transform: scale(1.02);
+}
+
+.btn-close-modal:active {
+    transform: scale(0.98);
+}
+
+/* ===========================
+   RESPONSIVIDADE
+   =========================== */
+
+/* Tablets (até 768px) */
+@media (max-width: 768px) {
+    .container {
+        padding: var(--espacamento-medio);
+    }
+
+    .container h1 {
+        font-size: 2rem;
+        margin-bottom: var(--espacamento-medio);
+    }
+
+    .cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--espacamento-pequeno);
+    }
+
+    .modal-content {
+        width: 95%;
+    }
+}
+
+/* Celulares (até 480px) */
+@media (max-width: 480px) {
+    .container {
+        padding: var(--espacamento-pequeno);
+    }
+
+    .container h1 {
+        font-size: 1.5rem;
+        margin-bottom: var(--espacamento-pequeno);
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: var(--espacamento-pequeno);
+    }
+
+    .card-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .card-body p {
+        font-size: 0.9rem;
+    }
+
+    .modal-content {
+        width: 98%;
+        max-height: 90vh;
+    }
+
+    .modal-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .btn-close {
+        font-size: 1.5rem;
+    }
 }
 
 
