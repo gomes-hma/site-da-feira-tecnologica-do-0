@@ -1,63 +1,10 @@
-cor{
-    color:   
-    #C1C3F6 0%,   
-    #A7A9ED 20%,   
-    #9599E6 40%,   
-    #333547 70%,  
-    #23252F 100%;
-
-    }
-
-/* 1. Reset e Fundo */
-/* styles.css (Estilo Baseado na Paleta Azul/Lavanda Suave) */
-
-/* Paleta: 
-   #C1C3F6 (Lavanda Claro)
-   #9599E6 (Lavanda Médio - Destaque Principal)
-   #333547 (Azul Chumbo - Fundo dos Cards/Headers)
-   #23252F (Quase Preto - Fundo Principal)
-*/
-
-/* 1. Reset e Fundo */
-body {
-    /* COR DE FUNDO PRINCIPAL DO SITE (Quase Preto) */
-    background-color: #23252F; 
-    color: #ffffff; /* Texto geral branco */
-    font-family: Arial, sans-serif; 
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* 2. Cabeçalho (Header) */
-header {
-    background-color: #333547; /* Azul Chumbo */
-    color: white;
-    padding: 40px 20px;
-    text-align: center;
-    width: 100%;
-    margin-bottom: 20px;
-    /* Linha de destaque para separar o header */
-    border-bottom: 2px solid #C1C3F6; 
-}
-
-h1 {
-    font-size: 2.5em;
-    color: #C1C3F6; /* Título principal em Lavanda Claro */
-    text-transform: uppercase;
-}
-header p {
-    color: #A7A9ED; /* Lavanda mais suave para o texto auxiliar */
-}
 
 /* 3. Layout Principal */
 main {
     width: 90%;
     max-width: 800px; 
     padding: 20px;
+    margin: 0 auto;
 }
 
 /* Os "cards" onde estão os formulários */
@@ -189,22 +136,9 @@ input[type="text"]:focus, textarea:focus {
 }
 
 /* 7. Rodapé (Footer) */
-footer {
-    width: 100%;
-    background-color: #333547;
-    color: #A7A9ED;
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 40px;
-    font-size: 0.9em;
-    border-top: 2px solid #9599E6; /* Linha de destaque Lavanda Médio */
-}
 
 /* Responsividade */
 @media (max-width: 650px) {
-    main {
-        padding: 10px;
-    }
     .card {
         padding: 20px;
     }

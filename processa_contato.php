@@ -1,5 +1,5 @@
 <?php
-// processa_contato.php
+
 date_default_timezone_set('America/Sao_Paulo');
 header('Content-Type: application/json; charset=utf-8');
 header('Access-Control-Allow-Origin: *'); // permite chamada de http://127.0.0.1:3000 etc.
@@ -32,7 +32,7 @@ try {
     throw new Exception('E-mail inválido.');
   }
 
-  $para   = 'arthurcapos@gmail.com'; // <- DESTINO FIXO
+  $para   = 'arthurcapos@gmail.com'; 
   $titulo = '[CAS] ' . $assunto . ' — ' . $nome;
 
   $corpo = "Nome: $nome\r\nE-mail: $email\r\nAssunto: $assunto\r\n\r\nMensagem:\r\n$mensagem\r\n\r\n--\r\nEnviado em ".date('d/m/Y H:i')." (IP ".($_SERVER['REMOTE_ADDR']??'').")";
@@ -47,10 +47,9 @@ try {
   $headers .= "Reply-To: {$nome} <{$email}>\r\n";
   $headers .= "X-Mailer: PHP/".phpversion()."\r\n";
 
-  // Envia para você
   $ok1 = @mail($para, '=?UTF-8?B?'.base64_encode($titulo).'?=', $corpo, $headers);
 
-  // (Opcional) confirmação para quem preencheu — não bloqueia se falhar
+  
   $ackHeaders  = "MIME-Version: 1.0\r\n";
   $ackHeaders .= "Content-Type: text/plain; charset=UTF-8\r\n";
   $ackHeaders .= "From: CAS <{$from}>\r\n";

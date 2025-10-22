@@ -46,7 +46,7 @@ header{
     .navbar {
       background-color: #23252F;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-hheight: 3em;
+      height: 3em;
     }
 
     .navbar-brand {
@@ -383,7 +383,7 @@ body {
     text-shadow: 2px 2px 4px#1a1b22;
 }
 
-#tema .header-tema{
+.header-tema{
     background-color: whitesmoke;
     border-radius: 100px;
     box-shadow: 2px 2px 4px #1a1b22;
@@ -396,8 +396,6 @@ body {
     background-color: #23252F;
     border-radius: 5px;
     padding: 1%
-
-margi    
 }
 
 :root {
@@ -441,7 +439,7 @@ margi
    ESTILO DO CARD
    =========================== */
 .cardsubtemas {
-    background-color: #f5f1e5;
+    background-color: #f8f9fa;
     border-radius: 5px;
     box-shadow: 0 2px 8px #9599E6;
     overflow: hidden;

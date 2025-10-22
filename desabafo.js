@@ -1,8 +1,7 @@
-// script.js (Versão Definitiva - Conexão Otimizada)
+// desabafo.js (Adaptado para Supabase)
 
-// O "db" é definido no bloco <script> do index.html e é acessado globalmente aqui.
+// O objeto 'supabase' agora é global e definido no bloco <script> do HTML.
 
-// A busca dos elementos HTML é feita DENTRO do DOMContentLoaded
 let containerMensagens;
 let formMensagem;
 let formDesabafo;
@@ -23,47 +22,59 @@ function exibirMensagem(texto) {
     divMensagem.appendChild(spanAnonimo);
 
     if (containerMensagens) {
+        // Usa prepend para garantir que as novas mensagens apareçam no topo
         containerMensagens.prepend(divMensagem); 
     }
 }
 
-// --- FUNÇÃO 2: LER MENSAGENS DO FIREBASE E ATUALIZAR O MURAL (Em Tempo Real) ---
-function carregarMensagens() {
-    // Verificação da variável db (definida no index.html)
-    if (typeof db === 'undefined' || !db) {
-        console.error("ERRO CRÍTICO: Objeto 'db' do Firebase não encontrado. A conexão do Firebase falhou no index.html.");
+// --- FUNÇÃO 2: LER MENSAGENS E ATUALIZAR O MURAL ---
+
+// Esta função faz a leitura e preenche o mural
+async function atualizarMural() {
+    // Requisita os 50 registros mais recentes da tabela 'mensagens'
+    const { data, error } = await supabase
+        .from('mensagens')
+        .select('texto') 
+        .order('criado_em', { ascending: false }) 
+        .limit(50);
+
+    if (error) {
+        console.error("Erro ao carregar mensagens do Supabase: ", error);
         if (containerMensagens) {
-            containerMensagens.innerHTML = '<p style="color: #F6C1C3; text-align: center;">ERRO: O sistema de mensagens não está conectado ao Firebase. Por favor, verifique suas credenciais no index.html e a criação do Firestore no console.</p>';
+            containerMensagens.innerHTML = '<p style="color: #FF7F7F; text-align: center;">Erro ao carregar o mural. Verifique a chave API e as Políticas RLS do Supabase.</p>';
         }
         return;
     }
     
-    // Escuta em tempo real as mudanças na coleção "mensagens"
-    db.collection("mensagens").orderBy("criadoEm", "desc").limit(50)
-        .onSnapshot((snapshot) => {
-            if (containerMensagens) {
-                containerMensagens.innerHTML = ''; // Limpa o container
-            }
-            
-            snapshot.forEach(doc => {
-                exibirMensagem(doc.data().texto);
-            });
+    if (containerMensagens) {
+        containerMensagens.innerHTML = ''; // Limpa o container
+    }
 
-            if (snapshot.empty && containerMensagens) {
-                exibirMensagem("Seja a primeira pessoa a deixar uma mensagem de acolhimento!");
-            }
-        }, (error) => {
-            console.error("Erro ao carregar mensagens do Firestore: ", error);
-            if (containerMensagens) {
-                containerMensagens.innerHTML = '<p style="color: #F6C1C3; text-align: center;">Erro ao carregar o mural. Verifique as Regras de Segurança do Firestore.</p>';
-            }
+    if (data.length === 0) {
+        exibirMensagem("Seja a primeira pessoa a deixar uma mensagem de acolhimento!");
+    } else {
+        data.forEach(item => {
+            exibirMensagem(item.texto);
         });
+    }
+}
+
+// Esta função configura a escuta em tempo real
+function configurarRealtime() {
+    // Escuta em tempo real (Realtime) as mudanças na tabela 'mensagens'
+    supabase
+        .channel('public:mensagens') 
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'mensagens' }, payload => {
+            // Qualquer mudança (inserção, atualização, exclusão) aciona o recarregamento
+            atualizarMural();
+        })
+        .subscribe();
 }
 
 
-// --- FUNÇÃO DE INICIALIZAÇÃO (GARANTE QUE TODOS OS ELEMENTOS EXISTAM) ---
+// --- FUNÇÃO DE INICIALIZAÇÃO ---
 document.addEventListener('DOMContentLoaded', function() {
-    // Buscamos os elementos AGORA, quando temos certeza de que eles existem no DOM.
+    // Buscamos os elementos
     containerMensagens = document.getElementById('container-mensagens');
     formMensagem = document.getElementById('form-mensagem');
     formDesabafo = document.getElementById('form-desabafo');
@@ -72,32 +83,40 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- FUNÇÃO 3: LIDAR COM O ENVIO DE NOVA MENSAGEM ---
     // ----------------------------------------------------
     if (formMensagem) {
-        formMensagem.addEventListener('submit', function(event) {
-            event.preventDefault(); // Impede o recarregamento da página
+        formMensagem.addEventListener('submit', async function(event) {
+            event.preventDefault(); 
 
             const textarea = document.getElementById('mensagem-positiva');
             const novaMensagem = textarea.value.trim();
 
             if (novaMensagem && novaMensagem.length <= 300) {
                 
-                if (typeof db === 'undefined' || !db) {
-                    alert('Erro de conexão: O banco de dados do Firebase não está ativo. Por favor, tente recarregar a página.');
-                    return;
-                }
+                // Feedback visual para o usuário
+                const btn = formMensagem.querySelector('button[type="submit"]');
+                const btnText = btn.textContent;
+                btn.textContent = 'Enviando...';
+                btn.disabled = true;
 
-                db.collection("mensagens").add({
-                    texto: novaMensagem,
-                    criadoEm: firebase.firestore.FieldValue.serverTimestamp()
-                })
-                .then(() => {
+                // Salva a mensagem no Supabase
+                const { error } = await supabase
+                    .from('mensagens')
+                    .insert([
+                        // O Supabase preencherá 'criado_em' e 'id' automaticamente
+                        { texto: novaMensagem }
+                    ]);
+                
+                if (error) {
+                    console.error("Erro ao escrever no Supabase: ", error);
+                    alert(`Ocorreu um erro: ${error.message}. Verifique suas Políticas RLS (Permissão "insert").`);
+                } else {
                     textarea.value = ''; // Limpa o campo
                     alert('Sua mensagem de acolhimento foi publicada no mural! Obrigada!');
-                    // A exibição no mural é automática graças ao onSnapshot (carregarMensagens)
-                })
-                .catch((error) => {
-                    console.error("Erro ao escrever no banco de dados: ", error);
-                    alert(`Ocorreu um erro: ${error.message}. Verifique as Regras de Segurança do Firebase.`);
-                });
+                    // O Realtime configurado acima cuida da atualização do mural
+                }
+                
+                // Restaura o botão
+                btn.textContent = btnText;
+                btn.disabled = false;
 
             } else if (novaMensagem.length > 300) {
                 alert('A mensagem de apoio deve ter no máximo 300 caracteres.');
@@ -106,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     } else {
-        console.error("ERRO CRÍTICO: O formulário de mensagem positiva (ID 'form-mensagem') não foi encontrado no HTML.");
+        console.error("ERRO CRÍTICO: O formulário de mensagem positiva não foi encontrado no HTML.");
     }
     
     // ----------------------------------------------------
@@ -127,6 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // INICIA O MURAL
-    carregarMensagens();
+    // INICIA O MURAL (Primeiro carrega os dados e depois configura o realtime)
+    atualizarMural();
+    configurarRealtime();
 });
