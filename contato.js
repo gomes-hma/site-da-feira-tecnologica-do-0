@@ -144,86 +144,59 @@
   }
 
   // Envio do formulário
-  if (form) {
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
-      event.stopPropagation();
-
-      // Validação visual
-      if (!form.checkValidity()) {
-        form.classList.add('was-validated');
-        showAlert('Revise os campos destacados e tente novamente.', 'warning');
-        return;
-      }
-
-      // Anti-spam simples
-      if (website && website.value.trim() !== '') {
-        showAlert('Falha no envio.', 'danger');
-        return;
-      }
-      if (Date.now() - startedAt < 1500) {
-        showAlert('Aguarde um instante antes de enviar.', 'warning');
-        return;
-      }
-
-      // Mostra spinner
-      if (spinner) { spinner.classList.remove('d-none'); }
-      btnEnviar.disabled = true;
-
-      // Envio para o backend PHP (JSON)
-      const data = getFormData();
-      const payload = {
-        nome: data.nome,
-        email: data.email,
-        assunto: data.assunto,
-        mensagem: data.mensagem,
-        website: document.getElementById('website')?.value || '' // honeypot
-      };
-
-      const ENDPOINT = 'processa_contato.php';
-
-      fetch(ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      })
-        .then(async (r) => {
-          const text = await r.text(); // pode vir HTML/erro
-          let res;
-          try { res = JSON.parse(text); }
-          catch { throw new Error(`Resposta inválida do servidor (HTTP ${r.status}). Conteúdo: ${text.slice(0, 120)}...`); }
-          if (!r.ok || !res.ok) throw new Error(res?.error || `HTTP ${r.status}`);
-          return res;
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  
+    if (!form.checkValidity()) {
+      form.classList.add('was-validated');
+      showAlert('Preencha todos os campos obrigatórios.', 'warning');
+      return;
+    }
+  
+    if (spinner) spinner.classList.remove('d-none');
+    btnEnviar.disabled = true;
+  
+    const data = getFormData();
+  
+    try {
+      // ⚙️ Envio direto para Formspree
+      // Substitua "https://formspree.io/f/xxxxxxx" pelo SEU endpoint
+      const res = await fetch("https://formspree.io/f/xqayvqjn", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nome: data.nome,
+          email: data.email,
+          assunto: data.assunto,
+          mensagem: data.mensagem
         })
-        .then(() => {
-          showAlert('Mensagem enviada com sucesso! Verifique o e-mail (inclusive o Spam).', 'success');
-          form.reset();
-          form.classList.remove('was-validated');
-          if (charCount) charCount.textContent = `0/2000`;
-        })
-        .catch((err) => {
-          console.error(err);
-
-          // Fallback: abre o cliente de e-mail do usuário já preenchido
-          try {
-            const subject = `[CAS] ${data.assunto} — ${data.nome}`;
-            const body =
-              `Nome: ${data.nome}%0D%0A` +
-              `E-mail: ${data.email}%0D%0A` +
-              `Assunto: ${data.assunto}%0D%0A%0D%0A` +
-              `Mensagem:%0D%0A${encodeURIComponent(data.mensagem)}`;
-            window.location.href = `mailto:${CONTACTS.email}?subject=${encodeURIComponent(subject)}&body=${body}`;
-          } catch (_) {}
-
-          showAlert(`Não foi possível enviar pelo servidor. Detalhe: ${err.message}`, 'danger');
-        })
-        .finally(() => {
-          if (spinner) { spinner.classList.add('d-none'); }
-          btnEnviar.disabled = false;
-        });
-
-    }, false);
-  }
+      });
+  
+      if (!res.ok) throw new Error('Erro no envio. Código: ' + res.status);
+  
+      showAlert('Mensagem enviada com sucesso! Você receberá uma cópia em breve.', 'success');
+      form.reset();
+      charCount.textContent = '0/2000';
+      form.classList.remove('was-validated');
+    } catch (err) {
+      console.error(err);
+      showAlert('Erro ao enviar. Abrindo seu cliente de e-mail...', 'danger');
+  
+      // fallback: abre o cliente de e-mail
+      const subject = `[CAS] ${data.assunto} — ${data.nome}`;
+      const body =
+        `Nome: ${data.nome}%0D%0A` +
+        `E-mail: ${data.email}%0D%0A` +
+        `Assunto: ${data.assunto}%0D%0A%0D%0A` +
+        `Mensagem:%0D%0A${encodeURIComponent(data.mensagem)}`;
+      window.location.href = `mailto:${CONTACTS.email}?subject=${encodeURIComponent(subject)}&body=${body}`;
+    } finally {
+      if (spinner) spinner.classList.add('d-none');
+      btnEnviar.disabled = false;
+    }
+  });
+  
 
   // ========= Helpers =========
   function getFormData() {

@@ -67,12 +67,12 @@ src="imgs/BannerCAS.png" alt=""></section>
 <label for="texto-desabafo">Meu Desabafo:</label>
 <textarea id="texto-desabafo" rows="8" required placeholder="Coloque para fora o que está sentindo..."></textarea>
 </div>
-<button type="submit" class="botao-principal">Enviar Desabafo (Deixe Ir)</button>
+<button type="submit" class="botao-principal">Enviar Desabafo (esta tudo bem)</button>
 </form>
 </section>
 
 <section id="secao-acolhimento" class="card">
-<h2>Publicar Mensagem (Espalhe Luz)</h2>
+<h2 class="titulo">Publicar Mensagem (Espalhe Luz)</h2>
 <p class="instrucao">Deixe uma mensagem de apoio ou positividade para quem está precisando.</p>
 <form id="form-mensagem">
 <div class="form-group">
@@ -84,11 +84,9 @@ src="imgs/BannerCAS.png" alt=""></section>
 </section>
 
 <section id="mural-mensagens">
-<h2>Mural de Acolhimento</h2>
+<h2 class="titulo">Mural de Acolhimento</h2>
 <p>Confira mensagens de apoio deixadas por outros usuários. Inspire-se!</p>
 <div class="mural-container" id="container-mensagens">
-<div class="mensagem-exemplo">
-<p>Depois da tempestade, sempre vem o sol. Acredite na sua força!</p>
 <span class="anonimo">- Anônimo</span>
 </div>
 </div>
@@ -97,49 +95,48 @@ src="imgs/BannerCAS.png" alt=""></section>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-    // 2. SUAS CHAVES DO SUPABASE - VOCÊ PRECISA MUDAR ESTES VALORES
-    const SUPABASE_URL = 'https://kdzhudwiexujhzhfynnb.supabase.co'; 
-    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtkemh1ZHdpZXh1amh6aGZ5bm5iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjExMzIyOTcsImV4cCI6MjA3NjcwODI5N30.VWAYbWgcysm4aNxP1X_FEAmMundQTsLGfRlF7jGHqOE'; 
+  const SUPABASE_URL = 'https://kdzhudwiexujhzhfynnb.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtkemh1ZHdpZXh1amh6aGZ5bm5iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjExMzIyOTcsImV4cCI6MjA3NjcwODI5N30.VWAYbWgcysm4aNxP1X_FEAmMundQTsLGfRlF7jGHqOE'; // sua chave
 
-    // 3. Inicializa o cliente Supabase
-    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  const { createClient } = supabase;
+  window.supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 </script>
 <script src="desabafo.js"></script>
 <footer>
-<div>
-<h4>CAS</h4>
-<p>Um projeto desenvolvido para a Feira Tecnológica, promovendo reflexão e empatia.</p>
-</div>
-<div>
-<h4>Navegação</h4>
-<ul>
-<li><a href="index.html">Início</a></li>
-<li><a href="aprofundamento.html">Aprofundamento</a></li>
-<li><a href="jogo.html">Jogo</a></li>
-<li><a href="rename.html">Conscientização</a></li>
-<li><a href="timeline.html">Linha do Tempo</a></li>
-<li><a href="contato.html">Contato</a></li>
-<li><a href="formulário.html">Desabafe</a></li>
-</ul>
-</div>
-<div>
-<h4>Projeto</h4>
-<ul>
-<li>Desenvolvido por alunos do curso técnico</li>
-<li>Inspirado na temática da autodestruição silenciosa</li>
-</ul>
-</div>
-<div>
-<h4>Integrantes</h4>
-<ul>
-<li>Arthur Franco</li>
-<li>Arthur Gomes</li>
-<li>Arthur Pereira</li>
-<li>Bruno Ferreira</li>
-<li>João Pedro</li>
-</ul>
-</div>
-</footer>
+  <div>
+  <h4>CAS</h4>
+  <p>Um projeto desenvolvido para a Feira Tecnológica, promovendo reflexão e empatia.</p>
+  </div>
+  <div>
+  <h4>Navegação</h4>
+  <ul>
+  <li><a href="index.html">Início</a></li>
+  <li><a href="aprofundamento.html">Aprofundamento</a></li>
+  <li><a href="jogo.html">Jogo</a></li>
+  <li><a href="rename.html">Conscientização</a></li>
+  <li><a href="timeline.html">Linha do Tempo</a></li>
+  <li><a href="contato.html">Contato</a></li>
+  <li><a href="formulário.html">Desabafe</a></li>
+  </ul>
+  </div>
+  <div>
+  <h4>Projeto</h4>
+  <ul>
+  <li>Desenvolvido por alunos do curso técnico</li>
+  <li>Inspirado na temática da autodestruição silenciosa</li>
+  </ul>
+  </div>
+  <div>
+  <h4>Integrantes</h4>
+  <ul>
+  <li>Arthur Franco</li>
+  <li>Arthur Gomes</li>
+  <li>Arthur Pereira</li>
+  <li>Bruno Ferreira</li>
+  <li>João Pedro</li>
+  </ul>
+  </div>
+  </footer>
 <div class="copyright">
 © 2025 - Projeto C.A.S. | Todos os direitos reservados.
 </div>

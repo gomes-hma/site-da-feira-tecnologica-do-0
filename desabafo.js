@@ -1,5 +1,4 @@
 // desabafo.js (Adaptado para Supabase)
-
 // O objeto 'supabase' agora é global e definido no bloco <script> do HTML.
 
 let containerMensagens;
@@ -9,7 +8,7 @@ let formDesabafo;
 // --- FUNÇÃO 1: CRIAR E EXIBIR UMA MENSAGEM NO MURAL ---
 function exibirMensagem(texto) {
     const divMensagem = document.createElement('div');
-    divMensagem.classList.add('mensagem-exemplo'); 
+    divMensagem.classList.add('mensagem-exemplo');
 
     const pTexto = document.createElement('p');
     pTexto.textContent = texto;
@@ -23,7 +22,7 @@ function exibirMensagem(texto) {
 
     if (containerMensagens) {
         // Usa prepend para garantir que as novas mensagens apareçam no topo
-        containerMensagens.prepend(divMensagem); 
+        containerMensagens.prepend(divMensagem);
     }
 }
 
@@ -34,8 +33,8 @@ async function atualizarMural() {
     // Requisita os 50 registros mais recentes da tabela 'mensagens'
     const { data, error } = await supabase
         .from('mensagens')
-        .select('texto') 
-        .order('criado_em', { ascending: false }) 
+        .select('texto')
+        .order('criado_em', { ascending: false })
         .limit(50);
 
     if (error) {
@@ -45,7 +44,7 @@ async function atualizarMural() {
         }
         return;
     }
-    
+
     if (containerMensagens) {
         containerMensagens.innerHTML = ''; // Limpa o container
     }
@@ -63,7 +62,7 @@ async function atualizarMural() {
 function configurarRealtime() {
     // Escuta em tempo real (Realtime) as mudanças na tabela 'mensagens'
     supabase
-        .channel('public:mensagens') 
+        .channel('public:mensagens')
         .on('postgres_changes', { event: '*', schema: 'public', table: 'mensagens' }, payload => {
             // Qualquer mudança (inserção, atualização, exclusão) aciona o recarregamento
             atualizarMural();
@@ -73,7 +72,7 @@ function configurarRealtime() {
 
 
 // --- FUNÇÃO DE INICIALIZAÇÃO ---
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Buscamos os elementos
     containerMensagens = document.getElementById('container-mensagens');
     formMensagem = document.getElementById('form-mensagem');
@@ -83,14 +82,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- FUNÇÃO 3: LIDAR COM O ENVIO DE NOVA MENSAGEM ---
     // ----------------------------------------------------
     if (formMensagem) {
-        formMensagem.addEventListener('submit', async function(event) {
-            event.preventDefault(); 
+        formMensagem.addEventListener('submit', async function (event) {
+            event.preventDefault();
 
             const textarea = document.getElementById('mensagem-positiva');
             const novaMensagem = textarea.value.trim();
 
             if (novaMensagem && novaMensagem.length <= 300) {
-                
+
                 // Feedback visual para o usuário
                 const btn = formMensagem.querySelector('button[type="submit"]');
                 const btnText = btn.textContent;
@@ -104,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         // O Supabase preencherá 'criado_em' e 'id' automaticamente
                         { texto: novaMensagem }
                     ]);
-                
+
                 if (error) {
                     console.error("Erro ao escrever no Supabase: ", error);
                     alert(`Ocorreu um erro: ${error.message}. Verifique suas Políticas RLS (Permissão "insert").`);
@@ -113,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     alert('Sua mensagem de acolhimento foi publicada no mural! Obrigada!');
                     // O Realtime configurado acima cuida da atualização do mural
                 }
-                
+
                 // Restaura o botão
                 btn.textContent = btnText;
                 btn.disabled = false;
@@ -127,12 +126,12 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         console.error("ERRO CRÍTICO: O formulário de mensagem positiva não foi encontrado no HTML.");
     }
-    
+
     // ----------------------------------------------------
     // --- LIDAR COM O ENVIO DO DESABAFO ------------------
     // ----------------------------------------------------
     if (formDesabafo) {
-        formDesabafo.addEventListener('submit', function(event) {
+        formDesabafo.addEventListener('submit', function (event) {
             event.preventDefault();
             const textoDesabafo = document.getElementById('texto-desabafo').value.trim();
 

@@ -1,5 +1,3 @@
-
-
 .testeapenas💖 {
     color: #9599E6;
 
@@ -46,9 +44,10 @@ header{
     .navbar {
       background-color: #23252F;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-      height: 3em;
+      height: 6em;
+      
     }
-
+ 
     .navbar-brand {
 
       color: var(--title) !important;
@@ -137,11 +136,12 @@ header{
 .subtitulo {
     font-family: "Buenard", serif;
     font-optical-sizing: auto;
-    font-weight: 500;
+    font-weight: 800;
     font-style: normal;
     color: #33354a;
     font-size: 1.3em;
     margin-bottom: 1.5%;
+    
 }
 
 .texto {
@@ -296,7 +296,7 @@ header.scrolled .nav-links a {
     /* Substitua pela cor desejada para os links após scroll 
 }
 
-/* Banner principal */
+/* Banner principal 
 .banner {
     width: 100%;
     height: 100vh;
@@ -390,12 +390,57 @@ body {
     text-align: center;
     padding: 0.3%;
     margin: 1em;
+    margin: 2em;
 }
 
 .ft-legal{
     background-color: #23252F;
     border-radius: 5px;
     padding: 1%
+}
+
+.conteudo{
+    display: flex;
+    flex-direction: row;
+}
+
+.texto-conteudo{
+    width: 100%;
+
+}
+
+.botao-aprofundando{
+    background-color: #7679b6;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.botao-aprofundando p{
+    color: #f5f1e5;
+    text-align: center;
+   
+}
+
+.botao-aprofundando a{
+    text-decoration: none;
+    width: 100%;
+}
+
+.botao-aprofundando a:hover{
+    color: #A7A9ED;
+}
+
+.capa{
+    background-color: #ffffff;
+    padding: 1%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: solid 2px #ecebeb;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+    width: 40%;
 }
 
 :root {
@@ -708,9 +753,6 @@ body {
     }
 }
 
-.botao-aprofundando{
-    
-}
 
 footer {
     background-color: #23252F;
