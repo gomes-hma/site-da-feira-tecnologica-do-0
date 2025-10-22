@@ -16,7 +16,17 @@
     <link rel="stylesheet" href="bootstrap-5.3.8-dist\css\bootstrap.css">
 
     <style>
-        
+        #particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2; /* fica atrás de todo o conteúdo */
+  overflow: hidden;
+}
+
+
 
         /* Base e Tipografia do Jogo */
         #game-container * {
@@ -207,6 +217,7 @@
 </head>
 
 <body>
+    <div id="particles-js"></div>
     <header>
         <nav class="navbar navbar-expand-lg fixed-top" style="position: sticky; top: 0;">
           <div class="container">
@@ -337,7 +348,54 @@
             }
         });
     </script>
-
+<script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 200 },
+        "color": { "value": "#A7A9ED" },
+        "shape": {
+          "type": "triangle",  
+          "stroke": {
+            "width": 1,
+            "color": "#9599E6"
+          }
+        },
+        "opacity": {
+          "value": 0.8,
+          "random": true
+        },
+        "size": {
+          "value": 6,
+          "random": true
+        },
+        "move": {
+          "enable": true,
+          "speed": 1.2,
+          "direction": "none",
+          "random": true,
+          "straight": false,
+          "out_mode": "out",
+          "attract": {
+            "enable": false
+          }
+        },
+        "line_linked": {
+          "enable": true
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": { "enable": true, "mode": "repulse" },
+          "onclick": { "enable": false }
+        },
+        "modes": {
+          "repulse": { "distance": 100, "duration": 0.4 }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
     <script>
     const EM_MAX = 100;
     const DE_MAX = 100; // Limite para o estado de "Sobrecarga"
