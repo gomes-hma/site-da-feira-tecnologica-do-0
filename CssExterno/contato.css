@@ -46,11 +46,28 @@
 }
 
 /* Marcação de campo obrigatório */
+/* Asterisco de obrigatório (padrão: mostra) */
 .required::after{
   content:" *";
   color:#e65555;
   font-weight:700;
 }
+
+/* Esconde o * quando o campo estiver válido/preenchido (suporta :has) */
+.form-floating:has(input:valid)   > label.required::after,
+.form-floating:has(textarea:valid)> label.required::after,
+.form-floating:has(select:valid)  > label.required::after,
+.form-check:has(input:checked)    > label.required::after{
+  content:"";
+}
+
+/* Fallback JS: se o container ganhar .is-filled, some o * (ver snippet no contato.js) */
+.form-floating.is-filled  > label.required::after,
+.form-check.is-filled     > label.required::after{
+  content:"";
+}
+
+
 
 /* Bloco rótulo/valor empilhado */
 .contact-dl dt{
@@ -102,4 +119,45 @@
     width: 8rem;
     height: 8rem;
   }
+}
+
+/* ---- Detalhes dos integrantes ---- */
+.team-item { text-align: center; }
+
+.team-name{
+  font-family: "Buenard", serif;
+  font-weight: 700;
+  font-size: 1.25rem;          /* > que e-mail/telefone */
+  line-height: 1.2;
+  color: var(--text-dark, #333547);
+  margin-top: .6rem;
+}
+
+/* Estilo aplicado aos <p> logo abaixo do nome (e-mail e telefone) */
+.team-item p{
+  margin: .15rem 0;
+  font-family: "Noto Serif", serif;
+  font-size: .98rem;
+  color: #5b5e6a;
+  opacity: .95;
+}
+
+/* Se tiver links (mailto/tel) dentro do <p>, ficam discretos */
+.team-item p a{
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(0,0,0,.15);
+}
+.team-item p a:hover{
+  border-bottom-color: rgba(0,0,0,.35);
+}
+
+/* Canais rápidos: links discretos */
+.contact-info a{
+  color: var(--text-dark, #333547);
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(0,0,0,.18);
+}
+.contact-info a:hover{
+  border-bottom-color: rgba(0,0,0,.35);
 }

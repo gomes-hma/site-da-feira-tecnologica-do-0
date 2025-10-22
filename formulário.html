@@ -21,9 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="CssExterno/desabafo.css">
-    <link rel="stylesheet" href="bootstrap-5.3.8-dist\css\bootstrap.css">    <!-- link do banco de dados -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist\css\bootstrap.css">    
 </head>
 
 <body class="gradiente-suave">
@@ -110,17 +108,16 @@
         </section>
 
     </main>
-    <script src="desabafo.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script>
          const firebaseConfig = {
-    apiKey: "AIzaSyDbJSwDG39dTwaBtwXNTiuIAY_aAazrWuw",
-    authDomain: "espacomensagens.firebaseapp.com",
-    databaseURL: "https://espacomensagens-default-rtdb.firebaseio.com",
-    projectId: "espacomensagens",
-    storageBucket: "espacomensagens.firebasestorage.app",
-    messagingSenderId: "639224561859",
-    appId: "1:639224561859:web:1aa6914ef42374ee4ae276",
-    measurementId: "G-QBBC98WHJE"
+            apiKey: "AIzaSyDbJSwDG39dTwaBtwXNTiuIAY_aAazrWuw",
+            authDomain: "espacomensagens.firebaseapp.com",
+            projectId: "espacomensagens",
+            storageBucket: "espacomensagens.firebasestorage.app",
+            messagingSenderId: "639224561859",
+            appId: "1:639224561859:web:5d214d7c3fe70e254ae276"
   };
    // Initialize Firebase
     const app = initializeApp(firebaseConfig);
@@ -128,7 +125,7 @@
    // VARIÁVEL GLOBAL PARA O BANCO DE DADOS
         const db = firebase.firestore(); 
     </script>
-    </script>
+    <script src="desabafo.js"></script> 
     <footer>
         <div>
             <h4>CAS</h4>

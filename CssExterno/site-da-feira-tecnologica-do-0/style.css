@@ -46,13 +46,14 @@ header{
     .navbar {
       background-color: #23252F;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+hheight: 3em;
     }
 
     .navbar-brand {
 
       color: var(--title) !important;
       font-size: 1.7rem;
-      letter-spacing: 2px;
+      
     }
 
     .nav-link {
@@ -391,6 +392,14 @@ body {
     margin: 1em;
 }
 
+.ft-legal{
+    background-color: #23252F;
+    border-radius: 5px;
+    padding: 1%
+
+margi    
+}
+
 :root {
     /* Cores */
     --cor-primaria: #3498db;
@@ -472,6 +481,7 @@ body {
     color: #262630;
     padding: var(--espacamento-medio);
     padding-bottom: var(--espacamento-pequeno);
+    height: 20e;
 }
 
 /* Footer do Card */
