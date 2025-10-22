@@ -1,0 +1,214 @@
+cor{
+    color:   
+    #C1C3F6 0%,   
+    #A7A9ED 20%,   
+    #9599E6 40%,   
+    #333547 70%,  
+    #23252F 100%;
+
+    }
+
+/* 1. Reset e Fundo */
+/* styles.css (Estilo Baseado na Paleta Azul/Lavanda Suave) */
+
+/* Paleta: 
+   #C1C3F6 (Lavanda Claro)
+   #9599E6 (Lavanda Médio - Destaque Principal)
+   #333547 (Azul Chumbo - Fundo dos Cards/Headers)
+   #23252F (Quase Preto - Fundo Principal)
+*/
+
+/* 1. Reset e Fundo */
+body {
+    /* COR DE FUNDO PRINCIPAL DO SITE (Quase Preto) */
+    background-color: #23252F; 
+    color: #ffffff; /* Texto geral branco */
+    font-family: Arial, sans-serif; 
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 2. Cabeçalho (Header) */
+header {
+    background-color: #333547; /* Azul Chumbo */
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+    /* Linha de destaque para separar o header */
+    border-bottom: 2px solid #C1C3F6; 
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #C1C3F6; /* Título principal em Lavanda Claro */
+    text-transform: uppercase;
+}
+header p {
+    color: #A7A9ED; /* Lavanda mais suave para o texto auxiliar */
+}
+
+/* 3. Layout Principal */
+main {
+    width: 90%;
+    max-width: 800px; 
+    padding: 20px;
+}
+
+/* Os "cards" onde estão os formulários */
+.card {
+    background-color: #333547; /* Fundo dos cards em Azul Chumbo */
+    padding: 30px;
+    border-radius: 8px;
+    /* Sombra de luz suave em Lavanda */
+    box-shadow: 0 0 15px rgba(149, 153, 230, 0.3); 
+    margin-bottom: 30px;
+    border: 1px solid #4a4d62;
+}
+
+h2 {
+    color: #9599E6; /* Subtítulos em Lavanda Médio */
+    border-bottom: 2px solid #4a4d62;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+.instrucao {
+    font-style: italic;
+    color: #A7A9ED; /* Lavanda para instrução */
+    margin-bottom: 20px;
+}
+
+/* 4. Formulários e Inputs */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #A7A9ED; /* Labels em Lavanda para destaque */
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: #4a4d62; /* Fundo do input mais escuro */
+    color: #ffffff; 
+    border: 1px solid #666986;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+input[type="text"]:focus, textarea:focus {
+    border-color: #9599E6; /* Borda Lavanda Médio ao focar */
+    outline: none;
+    box-shadow: 0 0 8px rgba(149, 153, 230, 0.7);
+}
+
+/* 5. Estilos dos Botões */
+.botao-principal, .botao-secundario {
+    padding: 14px 25px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #23252F; /* Texto escuro nos botões claros */
+}
+
+/* Botão Principal (Desabafo) */
+.botao-principal {
+    background-color: #A7A9ED; /* Lavanda Clara */
+}
+
+.botao-principal:hover {
+    background-color: #C1C3F6; /* Fica mais claro ao passar o mouse */
+    box-shadow: 0 0 10px rgba(167, 169, 237, 0.7);
+}
+
+/* Botão Secundário (Acolhimento) */
+.botao-secundario {
+    background-color: #9599E6; /* Lavanda Médio */
+}
+
+.botao-secundario:hover {
+    background-color: #A7A9ED; /* Fica mais claro ao passar o mouse */
+    box-shadow: 0 0 10px rgba(149, 153, 230, 0.7);
+}
+
+/* 6. Mural de Mensagens (Acolhimento) */
+#mural-mensagens {
+    margin-top: 40px;
+}
+
+.mural-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.mensagem-exemplo {
+    background-color: #4a4d62; /* Fundo da nota mais escuro */
+    padding: 15px;
+    border-radius: 6px;
+    /* Destaque visual: Borda e sombra de luz */
+    border: 1px solid #A7A9ED; 
+    box-shadow: 0 0 8px rgba(167, 169, 237, 0.4); 
+    width: 250px;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.mensagem-exemplo p {
+    margin: 0 0 5px 0;
+    font-style: italic;
+    color: #C1C3F6; /* Cor da mensagem em Lavanda Claro */
+}
+
+.mensagem-exemplo .anonimo {
+    display: block;
+    text-align: right;
+    font-size: 0.8em;
+    color: #A7A9ED;
+}
+
+/* 7. Rodapé (Footer) */
+footer {
+    width: 100%;
+    background-color: #333547;
+    color: #A7A9ED;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    font-size: 0.9em;
+    border-top: 2px solid #9599E6; /* Linha de destaque Lavanda Médio */
+}
+
+/* Responsividade */
+@media (max-width: 650px) {
+    main {
+        padding: 10px;
+    }
+    .card {
+        padding: 20px;
+    }
+    .mensagem-exemplo {
+        width: 100%; 
+    }
+}

@@ -19,24 +19,9 @@
   box-shadow: 0 0 10px #A7A9ED, 0 0 20px #9599E6 inset;
 }
 
-.escada{
-   border: solid 4px #A7A9ED;
-   border-radius:8px;
-}
 
-.bdd2{
-   background-color: #333547;
-   border-radius: 10px;
-   padding: 5%;
-   border: solid 4px #A7A9ED;
-}
 
-.bdd3{
-   background-color: #C1C3F6;
-   border-radius: 8px;
-   color: #23252F;
-   opacity: 0.8;
-}
+
 
 #particles-js {
   position: fixed;

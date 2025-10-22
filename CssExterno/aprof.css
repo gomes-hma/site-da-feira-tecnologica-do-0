@@ -1,0 +1,39 @@
+.testeapenas💖 {
+    color: #9599E6;
+
+
+    color: #A7A9ED;
+
+
+    color: #C1C3F6;
+
+
+    color: #333547;
+
+
+    color: #23252F;
+
+
+    color: #fffdf6;
+}
+
+
+
+
+
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: radial-gradient(circle at center, #23252F 0%, #1A1B25 100%);
+  overflow: hidden;
+}
+
+.roxofds{
+    background-color: #9599E6;
+    color: #9599E6;
+    border: solid 1px #9599E6;
+}

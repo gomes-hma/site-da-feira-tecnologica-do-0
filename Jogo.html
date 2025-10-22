@@ -302,10 +302,12 @@
         <div>
             <h4>Navegação</h4>
             <ul>
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#tema">Tema</a></li>
-                <li><a href="#jogo">Jogo</a></li>
-                <li><a href="#contato">Contato</a></li>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="aprofundamento.html">Aprofundamento</a></li>
+                <li><a href="jogo.html">Jogo</a></li>
+                <li><a href="rename.html">Conscientização</a></li>
+                <li><a href="timeline.html">Linha do Tempo</a></li>
+                <li><a href="contato.html">Contato</a></li>
             </ul>
         </div>
         <div>
@@ -380,10 +382,14 @@
     const $resultTitle = document.getElementById('result-title');
     const $resultMessage = document.getElementById('result-message');
     const $gameContainer = document.getElementById('game-container');
+    
+    // Elementos das Barras que serão escondidos (Adicionados para facilitar a remoção)
+    const $emBarContainer = $emBar.closest('.resource-bar-container');
+    const $deBarContainer = $deBar.closest('.resource-bar-container');
 
 
     // --- LISTA DE EVENTOS DO CICLO (FASE 1) ---
-    // Descrições de efeito foram removidas para forçar a reflexão!
+    // Estrutura de eventos permanece a mesma
     const events = [
         {
             text: "E-mail do chefe: 'Prazo adiantado para a noite. Urgente.'",
@@ -439,6 +445,7 @@
         $emBar.style.width = `${energiaMental}%`;
         $deBar.style.width = `${dividaEmocional}%`;
 
+        // A lógica de SOBRECARGA é mantida
         if (dividaEmocional > 70) {
             $gameContainer.classList.add('overload');
             $body.classList.add('overload');
@@ -476,6 +483,18 @@
         }
     }
 
+    // Função auxiliar para embaralhar botões
+    function shuffleButtons(btn1, btn2) {
+        const parent = btn1.parentNode;
+        const temp = document.createElement('div');
+        if (Math.random() < 0.5) {
+            parent.insertBefore(btn2, btn1);
+        } else {
+            parent.insertBefore(btn1, btn2);
+        }
+    }
+
+
     function loadNewEvent() {
         if (eventsPool.length === 0) {
             eventsPool = [...events];
@@ -512,6 +531,9 @@
 
         $opt1Btn.onclick = () => handleChoice(event.opt1Effect);
         $opt2Btn.onclick = () => handleChoice(event.opt2Effect);
+        
+        // NOVIDADE: Aleatoriza a posição dos botões a cada evento
+        shuffleButtons($opt1Btn, $opt2Btn);
 
         $eventArea.classList.remove('hidden');
     }
@@ -524,6 +546,10 @@
         coragemScore = 0;
         gameRunning = true;
         eventsPool = [...events];
+
+        // NOVIDADE: Esconde os containers das barras
+        $emBarContainer.classList.add('hidden');
+        $deBarContainer.classList.add('hidden');
 
         // Reset de visual
         $startScreen.classList.add('hidden');
@@ -561,6 +587,10 @@
         gameRunning = false;
         clearInterval(gameInterval);
         clearInterval(eventInterval);
+
+        // NOVIDADE: Garante que as barras continuam escondidas após o colapso
+        $emBarContainer.classList.add('hidden');
+        $deBarContainer.classList.add('hidden');
 
         // Resultado imediato de COLAPSO
         showResultScreen("COLAPSO: VOCÊ QUEBROU.", 
@@ -601,6 +631,9 @@
         // Configura os ouvintes para a Fase 2, que levam diretamente ao resultado final
         $opt1Btn.onclick = () => showFinalResult(event.opt1Action);
         $opt2Btn.onclick = () => showFinalResult(event.opt2Action);
+
+        // NOVIDADE: Aleatoriza a posição dos botões na Fase 2 também
+        shuffleButtons($opt1Btn, $opt2Btn);
     }
 
     function showFinalResult(action) {

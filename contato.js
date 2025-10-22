@@ -97,24 +97,37 @@
       if(spinner){ spinner.classList.remove('d-none'); }
       btnEnviar.disabled = true;
 
-      // Modo demonstração: abrir mailto com os dados
-      const data = getFormData();
-      const subject = `[CAS] ${data.assunto} — ${data.nome}`;
-      const body = `Nome: ${data.nome}%0D%0AE-mail: ${data.email}%0D%0AAssunto: ${data.assunto}%0D%0A%0D%0AMensagem:%0D%0A${encodeURIComponent(data.mensagem)}`;
-      const mailtoHref = `mailto:${CONTACTS.email}?subject=${encodeURIComponent(subject)}&body=${body}`;
+// Envio para o backend PHP (JSON)
+const data = getFormData();
+const payload = {
+  nome: data.nome,
+  email: data.email,
+  assunto: data.assunto,
+  mensagem: data.mensagem,
+  website: document.getElementById('website')?.value || '' // honeypot
+};
 
-      // Tenta abrir o cliente de e-mail
-      window.location.href = mailtoHref;
-
-      // Feedback amigável
-      setTimeout(() => {
-        if(spinner){ spinner.classList.add('d-none'); }
-        btnEnviar.disabled = false;
-        form.reset();
-        form.classList.remove('was-validated');
-        if(charCount) charCount.textContent = `0/2000`;
-        showAlert('Abrimos seu cliente de e-mail com a mensagem preenchida. Revise e envie por lá. 😉', 'success');
-      }, 600);
+fetch('processa_contato.php', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(payload)
+})
+  .then(r => r.json())
+  .then(res => {
+    if (!res || !res.ok) throw new Error(res?.error || 'Falha no envio');
+    showAlert('Mensagem enviada com sucesso! Você receberá a cópia no seu e-mail em instantes (verifique também o spam).', 'success');
+    form.reset();
+    form.classList.remove('was-validated');
+    if (charCount) charCount.textContent = `0/2000`;
+  })
+  .catch(err => {
+    console.error(err);
+    showAlert('Não foi possível enviar agora. Tente novamente em alguns instantes.', 'danger');
+  })
+  .finally(() => {
+    if(spinner){ spinner.classList.add('d-none'); }
+    btnEnviar.disabled = false;
+  });
     }, false);
   }
 

@@ -20,6 +20,7 @@
   font-family: "Emblema One", system-ui;
   color: var(--title, #9c9be7);
   letter-spacing: 1px;
+  color: #9c9be7;
 }
 
 /* Card de contato */
@@ -59,4 +60,46 @@
 
 .contact-dl dd{
   margin-bottom: .5rem;
+}
+
+/* ==== Integrantes (círculo, PB -> color no hover) ==== */
+
+.team-section { 
+  /* opcional: fundo leve como na hero do contato */
+  /* background: linear-gradient(180deg, rgba(149,153,230,0.08), rgba(199,201,246,0.08)); */
+}
+
+.team-photo{
+  width: 15rem;            /* tamanho desktop */
+  height: 15rem;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 4px solid var(--lilac-2, #A7A9ED);
+  filter: grayscale(100%);
+  transition: transform .25s ease, filter .25s ease, box-shadow .25s ease;
+  will-change: transform;
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+}
+
+.team-item:hover .team-photo{
+  transform: scale(1.07);
+  filter: grayscale(0%);
+  box-shadow: 0 10px 24px rgba(0,0,0,.12);
+}
+
+/* (Opcional) nome embaixo da foto */
+.team-name{
+  font-family: "Buenard", serif;
+  color: var(--text-dark, #333547);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Responsivo: fotos menores em telas pequenas */
+@media (max-width: 576px){
+  .team-photo{
+    width: 8rem;
+    height: 8rem;
+  }
 }
