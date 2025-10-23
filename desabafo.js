@@ -1,6 +1,3 @@
-// desabafo.js (Adaptado para Supabase)
-// O objeto 'supabase' agora é global e definido no bloco <script> do HTML.
-
 let containerMensagens;
 let formMensagem;
 let formDesabafo;
