@@ -37,3 +37,25 @@
     color: #9599E6;
     border: solid 1px #9599E6;
 }
+
+.btn.botão {
+  display: inline-block;           
+  transition: transform 260ms cubic-bezier(.2,.8,.2,1), 
+              box-shadow 260ms cubic-bezier(.2,.8,.2,1);
+  will-change: transform, box-shadow;
+  -webkit-transform: translateZ(0); 
+  background-color: #C1C3F6;
+}
+
+
+.btn.botão:hover, .btn.botão:focus {
+  transform: translateY(-6px) scale(1.06);
+  box-shadow: 0 12px 24px rgba(15,18,30,0.18);
+  outline: none;
+  background-color: #9599E6;
+}
+
+
+.btn.botão:focus {
+  box-shadow: 0 12px 24px rgba(15,18,30,0.22);
+}
