@@ -2,66 +2,76 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAS</title>
-    <link rel="stylesheet" href="CssExterno/site-da-feira-tecnologica-do-0/style.css">
-    <link rel="shortcut icon" href="imgs/favicon.png" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAS</title>
+  <link rel="stylesheet" href="CssExterno/site-da-feira-tecnologica-do-0/style.css">
+  <link rel="shortcut icon" href="imgs/favicon.png" type="image/x-icon">
 
-    <!-- Fonte Titulo -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Emblema+One&display=swap" rel="stylesheet">
-    <!-- Fonte Subtítulo -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Buenard:wght@400..700&display=swap" rel="stylesheet">
-    <!-- Fonte Texto -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="CssExterno/contato.css">
+  <!-- Fonte Titulo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Emblema+One&display=swap" rel="stylesheet">
+  <!-- Fonte Subtítulo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Buenard:wght@400..700&display=swap" rel="stylesheet">
+  <!-- Fonte Texto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.css">
+  <link rel="stylesheet" href="CssExterno/contato.css">
 </head>
 
 <body class="gradiente-suave">
-    <!-- Header fixo -->
-    <header>
-        <nav class="navbar navbar-expand-lg fixed-top" style="position: sticky; top: 0;">
-            <div class="container">
-                <a class="navbar-brand" href="#">CAS</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+  <!-- Header com Logo e Navegação -->
+  <header>
+    <a href="index.html" id="logo"><img class="logo" src="imgs/logoCAS.png" alt=""></a>
 
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
-                        <li class="nav-item"><a class="nav-link" href="aprofundamento.html">Aprofundamento</a></li>
-                        <li class="nav-item"><a class="nav-link" href="Jogo.html">Jogo</a></li>
-                        <li class="nav-item"><a class="nav-link" href="rename.html">Conscientização</a></li>
-                        <li class="nav-item"><a class="nav-link" href="timeline.html">Linha do Tempo</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
-                        <li class="nav-item"><a class="nav-link" href="formulário.html">Desabafe</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <!-- Navegação Desktop -->
+    <nav>
+      <a href="index.html" class="nav-link active text-white" data-page="1">Home</a>
+      <a href="aprofundamento.html#aprof" class="nav-link text-white" data-page="2">Aprofunde</a>
+      <a href="rename.html#consc" class="nav-link text-white" data-page="3">Conscientização</a>
+      <a href="timeline.html#tm" class="nav-link text-white" data-page="4">Timeline</a>
+      <a href="formulário.html#desab" class="nav-link text-white" data-page="5">Desabafe</a>
+      <a href="Jogo.html#gojo" class="nav-link text-white" data-page="6">Jogo</a>
+      <a href="contato.html#ctt" class="nav-link text-white" data-page="7">Contato</a>
+    </nav>
 
-    <!-- Banner principal -->
-    <section class="banner img-fluid img-responsive" id="home"><img class="banner img-fluid img-responsive"
-            src="imgs/BannerCAS.png" alt=""></section>
+    <!-- Botão Menu Sanduíche (Hamburger) -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
 
-            <section>
-              <div class="IV">
-                  <h1 class="subtitulo IV-txt">IV Feira Tecnológica e Sustentável da ETEC MCM</h1>
-              </div>
-          </section>
+  <!-- Menu Mobile -->
+  <nav class="nav-mobile" id="navMobile">
+    <a href="index.html" class="nav-link active text-white" data-page="1">Home</a>
+    <a href="aprofundamento.html#aprof" class="nav-link text-white" data-page="2">Aprofunde</a>
+    <a href="rename.html#consc" class="nav-link text-white" data-page="3">Conscientização</a>
+    <a href="timeline.html#tm" class="nav-link text-white" data-page="4">Timeline</a>
+    <a href="formulário.html#desab" class="nav-link text-white" data-page="5">Desabafe</a>
+    <a href="Jogo.html#gojo" class="nav-link text-white" data-page="6">Jogo</a>
+    <a href="contato.html#ctt" class="nav-link text-white" data-page="7">Contato</a>
+  </nav>
 
-  <section class="hero-contact mt-5 pt-4">
+
+  <!-- Banner principal -->
+  <section class="banner img-fluid img-responsive" id="home"><img class="banner img-fluid img-responsive"
+      src="imgs/BannerCAS.png" alt=""></section>
+
+  <section>
+    <div class="IV">
+      <h1 class="subtitulo IV-txt">IV Feira Tecnológica e Sustentável da ETEC MCM</h1>
+    </div>
+  </section>
+
+  <section class="hero-contact mt-5 pt-4" id="ctt">
     <div class="container">
       <h1 class="display-6 mb-2">Fale Conosco</h1>
       <p class="lead text-muted mb-0">Sem endereço físico — apresentação exclusiva na ETEC.</p>
@@ -80,11 +90,12 @@
             <ul class="list-group list-group-flush contact-info">
               <li class="list-group-item ps-0">
                 <strong>E-mail:</strong>
-                <a id="emailLink" href="#" class="ms-1">cas@exemplo.com</a>
+                <a id="emailLink" href="mailto:projetocasetecmcm@gmail.com" class="ms-1">projetocasetecmcm@gmail.com</a>
               </li>
             </ul>
             <hr>
-            <p class="mb-2 text-muted small">Apresentação do projeto durante a IV Feira Tecnológica e Sustentável da ETEC MCM.</p>
+            <p class="mb-2 text-muted small">Apresentação do projeto durante a IV Feira Tecnológica e Sustentável da
+              ETEC MCM.</p>
             <div class="d-flex gap-2">
               <a id="btnMailto" href="#" class="btn btn-outline-primary btn-sm">Enviar e-mail agora</a>
             </div>
@@ -109,14 +120,16 @@
               <div class="row g-3">
                 <div class="col-md-6">
                   <div class="form-floating">
-                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Seu nome completo" required>
+                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Seu nome completo"
+                      required>
                     <label for="nome" class="required">Nome</label>
                     <div class="invalid-feedback">Informe seu nome.</div>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-floating">
-                    <input type="email" class="form-control" id="email" name="email" placeholder="nome@exemplo.com" required>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="nome@exemplo.com"
+                      required>
                     <label for="email" class="required">E-mail</label>
                     <div class="invalid-feedback">Informe um e-mail válido.</div>
                   </div>
@@ -139,7 +152,8 @@
 
                 <div class="col-12">
                   <div class="form-floating">
-                    <textarea class="form-control" placeholder="Digite sua mensagem" id="mensagem" name="mensagem" style="height: 160px" required maxlength="2000"></textarea>
+                    <textarea class="form-control" placeholder="Digite sua mensagem" id="mensagem" name="mensagem"
+                      style="height: 160px" required maxlength="2000"></textarea>
                     <label for="mensagem" class="required">Mensagem</label>
                     <div class="invalid-feedback">Escreva sua mensagem.</div>
                   </div>
@@ -173,106 +187,73 @@
     </div>
   </main>
 
-<!-- Integrantes (3 em cima, 2 embaixo) -->
-<section class="hero-contact mt-5 pt-4">
+  <!-- Integrantes (3 em cima, 2 embaixo) -->
+  <section class="hero-contact mt-5 pt-4">
     <div class="container">
       <h1 class="display-6 mb-2">Integrantes</h1>
-      <p class="lead text-muted mb-0">Sem endereço físico — apresentação exclusiva na ETEC.</p>
+      <p class="lead text-muted mb-0">Sem endereço físico — apresentação exclusiva na ETEC MCM.</p>
     </div>
     <br>
     <br>
-  <section class="team-section py-4">
-  <div class="container">
+    <section class="team-section py-4">
+      <div class="container">
 
-    <!-- Linha 1: 3 fotos -->
-    <div class="row g-4 justify-content-center">
-      <div class="col-6 col-md-4 d-flex justify-content-center">
-        <figure class="team-item text-center m-0">
-          <img src="imgs/Imagem do WhatsApp de 2025-10-21 à(s) 19.58.55_08370506.jpg" class="team-photo" alt="Integrante" loading="lazy">
-          <figcaption class="team-name mt-2">Arthur Hamilton</figcaption>
-        </figure>
-      </div>
+        <!-- Linha 1: 3 fotos -->
+        <div class="row g-4 justify-content-center">
+          <div class="col-6 col-md-4 d-flex justify-content-center">
+            <figure class="team-item text-center m-0">
+              <img src="imgs/Imagem do WhatsApp de 2025-10-21 à(s) 19.58.55_08370506.jpg" class="team-photo"
+                alt="Integrante" loading="lazy">
+              <figcaption class="team-name mt-2">Arthur Hamilton</figcaption>
+              <p><a href="mailto:Arthur.hamilton08@gmail.com">Arthur.hamilton08@gmail.com</a></p>
+            </figure>
+          </div>
+          <div class="col-6 col-md-4 d-flex justify-content-center">
+            <figure class="team-item text-center m-0">
+              <img src="imgs/Frango.jpg" class="team-photo" alt="Integrante" loading="lazy">
+              <figcaption class="team-name mt-2">Arthur Franco</figcaption>
+              <p><a href="mailto:francoarthur058@gmail.com">francoarthur058@gmail.com</a></p>
+            </figure>
+          </div>
 
-      <div class="col-6 col-md-4 d-flex justify-content-center">
-        <figure class="team-item text-center m-0">
-          <img src="imgs/integrantes/02.jpg" class="team-photo" alt="Integrante" loading="lazy">
-          <figcaption class="team-name mt-2">Arthur Franco</figcaption>
-          <p><a href="mailto:francoarthur058@gmail.com">francoarthur058@gmail.com</a></p>
-        </figure>
-      </div>
-
-      <div class="col-6 col-md-4 d-flex justify-content-center">
-        <figure class="team-item text-center m-0">
-          <img src="imgs/Arthur pereira.jpg" class="team-photo" alt="Integrante" loading="lazy">
-          <figcaption class="team-name mt-2">Arthur Pereira</figcaption>
-          <p><a href="mailto:arthurcapos@gmail.com">arthurcapos@gmail.com</a></p>
-        </figure>
-      </div>
-    </div>
-
-    <!-- Linha 2: 2 fotos -->
-    <div class="row g-4 justify-content-center mt-1">
-      <div class="col-6 col-md-4 d-flex justify-content-center">
-        <figure class="team-item text-center m-0">
-          <img src="imgs/bruno f.jpg" class="team-photo" alt="Integrante" loading="lazy">
-          <figcaption class="team-name mt-2">Bruno Ferreira</figcaption>
-          <p><a href="mailto:brunnof.santosti@gmail.com">brunnof.santosti@gmail.com</a></p>
-        </figure>
-      </div>
-
-      <div class="col-6 col-md-4 d-flex justify-content-center">
-        <figure class="team-item text-center m-0">
-          <img src="imgs/jpm.jpg" class="team-photo" alt="Integrante" loading="lazy">
-          <figcaption class="team-name mt-2">João Pedro</figcaption>
-          <p><a href="mailto:jpmsantos83@gmail.com">jpmsantos83@gmail.com</a></p>
-        </figure>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<br>
-<br>
-
-    <footer>
-        <div>
-            <h4>CAS</h4>
-            <p>Um projeto desenvolvido para a Feira Tecnológica, promovendo reflexão e empatia.</p>
+          <div class="col-6 col-md-4 d-flex justify-content-center">
+            <figure class="team-item text-center m-0">
+              <img src="imgs/Arthur pereira.jpg" class="team-photo" alt="Integrante" loading="lazy">
+              <figcaption class="team-name mt-2">Arthur Pereira</figcaption>
+              <p><a href="mailto:arthurcapos@gmail.com">arthurcapos@gmail.com</a></p>
+            </figure>
+          </div>
         </div>
-        <div>
-            <h4>Navegação</h4>
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="aprofundamento.html">Aprofundamento</a></li>
-                <li><a href="jogo.html">Jogo</a></li>
-                <li><a href="rename.html">Conscientização</a></li>
-                <li><a href="timeline.html">Linha do Tempo</a></li>
-                <li><a href="contato.html">Contato</a></li>
-                <li><a href="formulário.html">Desabafe</a></li>
-            </ul>
+
+        <!-- Linha 2: 2 fotos -->
+        <div class="row g-4 justify-content-center mt-1">
+          <div class="col-6 col-md-4 d-flex justify-content-center">
+            <figure class="team-item text-center m-0">
+              <img src="imgs/bruno f.jpg" class="team-photo" alt="Integrante" loading="lazy">
+              <figcaption class="team-name mt-2">Bruno Ferreira</figcaption>
+              <p><a href="mailto:brunnof.santosti@gmail.com">brunnof.santosti@gmail.com</a></p>
+            </figure>
+          </div>
+
+          <div class="col-6 col-md-4 d-flex justify-content-center">
+            <figure class="team-item text-center m-0">
+              <img src="imgs/jpm.jpg" class="team-photo" alt="Integrante" loading="lazy">
+              <figcaption class="team-name mt-2">João Pedro</figcaption>
+              <p><a href="mailto:jpmsantos83@gmail.com">jpmsantos83@gmail.com</a></p>
+            </figure>
+          </div>
         </div>
-        <div>
-            <h4>Projeto</h4>
-            <ul>
-                <li>Desenvolvido por alunos do curso técnico</li>
-                <li>Inspirado na temática da autodestruição silenciosa</li>
-            </ul>
-        </div>
-        <div>
-            <h4>Integrantes</h4>
-            <ul>
-                <li>Arthur Franco</li>
-                <li>Arthur Gomes</li>
-                <li>Arthur Pereira</li>
-                <li>Bruno Ferreira</li>
-                <li>João Pedro</li>
-            </ul>
-        </div>
-    </footer>
+
+      </div>
+    </section>
+
+    <br>
+    <br>
+
+
 
     <div class="copyright">
-        © 2025 - Projeto C.A.S. | Todos os direitos reservados.
+      © 2025 - Projeto C.A.S. | Todos os direitos reservados.
     </div>
 
 
@@ -282,25 +263,62 @@
     <script src="contato.js"></script>
     <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.js"></script> <!-- Botao de sanduiche funcionar -->
     <script>
-        // Detectar scroll e mudar o header
-        const header = document.querySelector('header');
-        const banner = document.querySelector('.banner');
+      // Detectar scroll e mudar o header
+      const header = document.querySelector('header');
+      const banner = document.querySelector('.banner');
 
-if (header && banner) {
-  window.addEventListener('scroll', function () {
-    const bannerHeight = banner.offsetHeight;
-    const scrollPosition = window.scrollY;
+      if (header && banner) {
+        window.addEventListener('scroll', function () {
+          const bannerHeight = banner.offsetHeight;
+          const scrollPosition = window.scrollY;
 
-    if (scrollPosition > bannerHeight - 100) {
-      header.classList.remove('transparent');
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-      header.classList.add('transparent');
-    }
-  });
-}
+          if (scrollPosition > bannerHeight - 100) {
+            header.classList.remove('transparent');
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+            header.classList.add('transparent');
+          }
+        });
+      }
     </script>
+
+    <footer>
+      <div>
+        <h4>CAS</h4>
+        <p>Um projeto desenvolvido para a Feira Tecnológica, promovendo reflexão e empatia.</p>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="aprofundamento.html">Aprofundamento</a></li>
+          <li><a href="jogo.html">Jogo</a></li>
+          <li><a href="rename.html">Conscientização</a></li>
+          <li><a href="timeline.html">Linha do Tempo</a></li>
+          <li><a href="contato.html">Contato</a></li>
+          <li><a href="formulário.html">Desabafe</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Projeto</h4>
+        <ul>
+          <li>Desenvolvido por alunos do curso técnico</li>
+          <li>Inspirado na temática da autodestruição silenciosa</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Integrantes</h4>
+        <ul>
+          <li>Arthur Franco</li>
+          <li>Arthur Gomes</li>
+          <li>Arthur Pereira</li>
+          <li>Bruno Ferreira</li>
+          <li>João Pedro</li>
+        </ul>
+      </div>
+    </footer>
+
 </body>
 
 </html>

@@ -38,6 +38,10 @@
     border: solid 1px #9599E6;
 }
 
+.roxoescuro{
+  background-color:#1A1B25 ;
+}
+
 .btn.botão {
   display: inline-block;           
   transition: transform 260ms cubic-bezier(.2,.8,.2,1), 

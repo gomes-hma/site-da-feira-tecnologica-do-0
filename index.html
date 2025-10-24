@@ -25,35 +25,58 @@
 </head>
 
 <body class="gradiente-suave">
-    <!-- Header fixo -->
+    <!-- Header com Logo e Navegação -->
     <header>
-        <nav class="navbar navbar-expand-lg fixed-top" style="position: sticky; top: 0;">
-            <div class="container">
-                <a class="navbar-brand" href="#">CAS</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <a href="index.html" id="logo"><img class="logo" src="imgs/logoCAS.png" alt=""></a>
 
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
-                        <li class="nav-item"><a class="nav-link" href="aprofundamento.html">Aprofundamento</a></li>
-                        <li class="nav-item"><a class="nav-link" href="Jogo.html">Jogo</a></li>
-                        <li class="nav-item"><a class="nav-link" href="rename.html">Conscientização</a></li>
-                        <li class="nav-item"><a class="nav-link" href="timeline.html">Linha do Tempo</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
-                        <li class="nav-item"><a class="nav-link" href="formulário.html">Desabafe</a>
-                        <li>
-                    </ul>
-                </div>
-            </div>
+        <!-- Navegação Desktop -->
+        <nav>
+            <a href="index.html" class="nav-link active text-white" data-page="1">Home</a>
+            <a href="aprofundamento.html" class="nav-link text-white" data-page="2">Aprofunde</a>
+            <a href="rename.html" class="nav-link text-white" data-page="3">Conscientização</a>
+            <a href="timeline.html" class="nav-link text-white" data-page="4">Timeline</a>
+            <a href="formulário.html" class="nav-link text-white" data-page="5">Desabafe</a>
+            <a href="Jogo.html" class="nav-link text-white" data-page="6">Jogo</a>
+            <a href="contato.html" class="nav-link text-white" data-page="7">Contato</a>
         </nav>
+
+        <!-- Botão Menu Sanduíche (Hamburger) -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </header>
+
+    <!-- Menu Mobile -->
+    <nav class="nav-mobile" id="navMobile">
+        <a href="index.html" class="nav-link active text-white" data-page="1">Home</a>
+        <a href="aprofundamento.html#aprof" class="nav-link text-white" data-page="2">Aprofunde</a>
+        <a href="rename.html#consc" class="nav-link text-white" data-page="3">Conscientização</a>
+        <a href="timeline.html#tm" class="nav-link text-white" data-page="4">Timeline</a>
+        <a href="formulário.html#desab" class="nav-link text-white" data-page="5">Desabafe</a>
+        <a href="Jogo.html#gojo" class="nav-link text-white" data-page="6">Jogo</a>
+        <a href="contato.html#ctt" class="nav-link text-white" data-page="7">Contato</a>
+    </nav>
 
     <!-- Banner principal -->
     <section class="banner img-fluid img-responsive" id="home"><img class="banner img-fluid img-responsive"
             src="imgs/BannerCAS.png" alt=""></section>
+
+    <!-- Transição com ondas -->
+    <div class="wave-container">
+        <svg viewBox="0 0 1000 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Onda 1 (mais clara) - Usando um path que se repete horizontalmente -->
+            <path class="wave-path wave1-path" fill="#a7a9ed5c"
+                d="M0,50 C150,100 350,0 500,50 C650,100 850,0 1000,50 L1000,100 L0,100 Z M1000,50 C1150,100 1350,0 1500,50 C1650,100 1850,0 2000,50 L2000,100 L1000,100 Z">
+            </path>
+
+            <!-- Onda 2 (mais escura) - Usando um path que se repete horizontalmente, com altura e cor diferentes -->
+            <path class="wave-path wave2-path" fill="#333547"
+                d="M0,60 C150,110 350,10 500,60 C650,110 850,10 1000,60 L1000,100 L0,100 Z M1000,60 C1150,110 1350,10 1500,60 C1650,110 1850,10 2000,60 L2000,100 L1000,100 Z">
+            </path>
+        </svg>
+    </div>
 
     <section>
         <div class="IV">
@@ -63,20 +86,37 @@
     <main><!-- Conteúdo da página -->
 
         <div class="content">
+            <!-- Botão Voltar ao Topo -->
+            <button id="scrollToTopBtn" title="Voltar ao Topo">&#9650;</button> <!-- Símbolo de seta para cima -->
             <section id="sobre">
                 <div class="container">
                     <div class="header-tema">
                         <h1 class="subtitulo">Conheça mais</h1>
-                        <h1 class="titulo">Sobre o Projeto</h1>
+                        <h1 class="titulo">Sobre o Projeto CAS</h1>
                     </div>
-                    <div>
+                    <div class="conteudo">
+                        <div class="texto-conteudo">
 
+                        </div>
+                        <div class="cards-sobre">
+                            <div class="card-sobre">
+
+                            </div>
+                            <div class="card-sobre">
+
+                            </div>
+                            <div class="card-sobre">
+
+                            </div>
+
+                        </div>
                     </div>
                 </div>
 
             </section>
 
-            
+            <hr>
+
             <section id="relacao">
                 <div class="container">
                     <div class="header-tema">
@@ -85,7 +125,7 @@
                     </div>
                     <div class="conteudo">
                         <div class="capa">
-                            <img src="imgs/FilhosDoQuarto.jpg" class="img-fluid" alt="...">
+                            <img src="imgs/filhos do quarto.jpg" class="img-fluid" alt="...">
                         </div>
                         <div class="texto-conteudo">
                             <p class="texto">O tema “Ciclo da Autodestruição Silenciosa” se conecta profundamente ao
@@ -103,9 +143,44 @@
 
             </section>
 
-            <section  id="">
+            <hr>
+
+            <section id="orientadoras">
+                <div class="profile-cards-section">
+                    <div class="header-tema">
+                        <h1 class="subtitulo">Nossas</h1>
+                        <h1 class="titulo">Orientadoras</h1>
+                    </div>
+
+                    <div class="profile-cards-container">
+                        <!-- Cartão 1 -->
+                        <div class="profile-card">
+                            <div class="profile-card-image"
+                                style="background-image: url('https://via.placeholder.com/400x350?text=Profissional+1')">
+                            </div>
+                            <div class="profile-card-info">
+                                <p class="subtitulo">Professora de Língua Portuguesa</p>
+                                <h3 class="titulo">AMANDA CHAGAS</h3>
+                            </div>
+                        </div>
+
+                        <!-- Cartão 2 -->
+                        <div class="profile-card">
+                            <div class="profile-card-image"
+                                style="background-image: url('https://via.placeholder.com/400x350?text=Profissional+2')">
+                            </div>
+                            <div class="profile-card-info">
+                                <p class="subtitulo">Professora de Interfaces Web</p>
+                                <h3 class="titulo">CINTIA PINHO</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
 
             </section>
+
+            <hr>
 
             <section id="tema">
                 <div class="container">
@@ -122,7 +197,8 @@
                                 que a pessoa reprime sentimentos, pensamentos e necessidades emocionais para evitar
                                 conflitos ou julgamentos. De acordo com a psicologia, esse comportamento aparenta ser
                                 uma forma de controle e maturidade, mas na realidade é um caminho gradual de
-                                <strong>desgaste emocional e mental</strong>.</p>
+                                <strong>desgaste emocional e mental</strong>.
+                            </p>
 
                             <p class="texto">O ciclo começa de maneira sutil. Inicialmente, a pessoa acredita que ficar
                                 em silêncio diante de situações incômodas é uma forma de manter a paz ou preservar
@@ -160,6 +236,8 @@
 
                 </div>
             </section>
+
+            <hr>
 
             <section id="subtemas">
                 <div class="container">
@@ -218,8 +296,11 @@
                                     <strong>causar ferimentos em si mesmo sem intenção de suicídio</strong>, geralmente
                                     para <strong>aliviar dor emocional ou expressar sofrimento</strong>. Está ligada a
                                     transtornos como <strong>depressão</strong> e <strong>ansiedade</strong> e requer
-                                    <strong>apoio psicológico</strong> e <strong>psiquiátrico</strong>.</p>
-                                <p class="fonte"><strong>Fonte : </strong><a href="https://cadernos.ensp.fiocruz.br/ojs/index.php/csp/article/view/8246/18437?">FUNDAÇÃO OSWALDO CRUZ</a></p>
+                                    <strong>apoio psicológico</strong> e <strong>psiquiátrico</strong>.
+                                </p>
+                                <p class="fonte"><strong>Fonte : </strong><a
+                                        href="https://cadernos.ensp.fiocruz.br/ojs/index.php/csp/article/view/8246/18437?">FUNDAÇÃO
+                                        OSWALDO CRUZ</a></p>
 
                             </div>
 
@@ -236,8 +317,10 @@
                                         expectativas</strong> — ultrapassam sua capacidade de lidar, causando
                                     <strong>estresse, ansiedade e cansaço mental</strong>. Esse tipo de pressão pode
                                     afetar o <strong>desempenho, o humor e o bem-estar emocional</strong>, especialmente
-                                    quando se prolonga por muito tempo.</p>
-                                <p class="fonte"><strong>Fonte : </strong><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2568977/?">PubMed Central</a></p>
+                                    quando se prolonga por muito tempo.
+                                </p>
+                                <p class="fonte"><strong>Fonte : </strong><a
+                                        href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2568977/?">PubMed Central</a></p>
                             </div>
 
                         </div>
@@ -252,7 +335,8 @@
                                         convívio social</strong>, seja por escolha ou por circunstâncias externas,
                                     reduzindo o contato com outras pessoas. Esse afastamento pode causar
                                     <strong>sentimentos de solidão, ansiedade e tristeza</strong>, além de afetar a
-                                    <strong>saúde mental e emocional</strong> quando se prolonga por muito tempo.</p>
+                                    <strong>saúde mental e emocional</strong> quando se prolonga por muito tempo.
+                                </p>
                                 <p class="fonte"><strong>Fonte : </strong><a
                                         href="https://pubmed.ncbi.nlm.nih.gov/14563073/">PubMed Central</a></p>
                             </div>
@@ -270,7 +354,8 @@
                                         outros</strong>. Esses sentimentos podem impedir que a pessoa busque
                                     <strong>apoio emocional ou profissional</strong>, agravando o sofrimento psicológico
                                     e dificultando a recuperação. Superar essa barreira é essencial para o
-                                    <strong>bem-estar e para o fortalecimento da saúde mental</strong>.</p>
+                                    <strong>bem-estar e para o fortalecimento da saúde mental</strong>.
+                                </p>
                                 <p class="fonte"><strong>Fonte : </strong><a
                                         href="https://pubmed.ncbi.nlm.nih.gov/24569086/">PubMed Central</a></p>
                             </div>
@@ -336,12 +421,14 @@
                     </div>
                     <div class="botao-aprofundando">
                         <a href="aprofundamento.html">
-                            <p class="subtitulo">Aprofunde! Saiba mais aqui.</p>
+                            <p class="titulo">Aprofunde! Saiba mais aqui.</p>
                         </a>
                     </div>
                 </div>
 
-
+                <div class="header-tema">
+                    <h1 class="titulo">Nosso grupo:</h1>
+                </div>
             </section>
 
 
@@ -388,165 +475,81 @@
         © 2025 - Projeto C.A.S. | Todos os direitos reservados.
     </div>
 
-    <!-- Modal -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modal-title">Detalhes do Card</h2>
-                <button class="btn-close" onclick="closeModal()">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p id="modal-text">Conteúdo detalhado do card será exibido aqui.</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn-close-modal" onclick="closeModal()">Fechar</button>
-            </div>
-        </div>
-    </div>
-
-    <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.js"></script> <!-- Botao de sanduiche funcionar -->
     <script>
-        // Detectar scroll e mudar o header
-        const header = document.getElementById('header');
-        const banner = document.querySelector('.banner');
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        const scrollThreshold = 100; // Distância em pixels para o botão aparecer
 
-        window.addEventListener('scroll', function () {
-            const bannerHeight = banner.offsetHeight;
-            const scrollPosition = window.scrollY;
-
-            // Quando passar do banner, adiciona a classe 'scrolled'
-            if (scrollPosition > bannerHeight - 100) {
-                header.classList.remove('transparent');
-                header.classList.add('scrolled');
+        // 1. Lógica para mostrar/esconder o botão
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > scrollThreshold) {
+                scrollToTopBtn.style.opacity = '1';
+                scrollToTopBtn.style.visibility = 'visible';
             } else {
-                header.classList.remove('scrolled');
-                header.classList.add('transparent');
+                scrollToTopBtn.style.opacity = '0';
+                scrollToTopBtn.style.visibility = 'hidden';
             }
         });
 
-        const cardsData = {
-            1: {
-                title: "Aprofundando - Burnout",
-                description: "Este é o conteúdo do primeiro card.",
-                modalTitle: "Detalhes do Card 1",
-                modalContent: "Este é o conteúdo detalhado da modal do card 1. Você pode adicionar qualquer informação aqui, como descrições, imagens, ou outros elementos."
-            },
-            2: {
-                title: "Aprofundando - Depressão",
-                description: "Este é o conteúdo do segundo card.",
-                modalTitle: "Detalhes do Card 2",
-                modalContent: "Este é o conteúdo detalhado da modal do card 2. Personalize conforme necessário."
-            },
-            3: {
-                title: "Aprofundando - Automutilação",
-                description: "Este é o conteúdo do terceiro card.",
-                modalTitle: "Detalhes do Card 3",
-                modalContent: "Este é o conteúdo detalhado da modal do card 3. Adicione as informações que desejar."
-            },
-            4: {
-                title: "Aprofundando - Pressão Psicológica",
-                description: "Este é o conteúdo do quarto card.",
-                modalTitle: "Detalhes do Card 4",
-                modalContent: "Este é o conteúdo detalhado da modal do card 4. Modifique conforme necessário."
-            },
-            5: {
-                title: "Aprofundando - Isolamento",
-                description: "Este é o conteúdo do quinto card.",
-                modalTitle: "Detalhes do Card 5",
-                modalContent: "Este é o conteúdo detalhado da modal do card 5. Personalize como preferir."
-            },
-            6: {
-                title: "Aprofundando - Medo e Vergonha em Pedir ajuda",
-                description: "Este é o conteúdo do sexto card.",
-                modalTitle: "Detalhes do Card 6",
-                modalContent: "Este é o conteúdo detalhado da modal do card 6. Altere o texto conforme necessário."
-            },
-            7: {
-                title: "Aprofundando - TEPT",
-                description: "Este é o conteúdo do sétimo card.",
-                modalTitle: "Detalhes do Card 7",
-                modalContent: "Este é o conteúdo detalhado da modal do card 7. Adicione as informações que desejar."
-            },
-            8: {
-                title: "Aprofundando - Fobia Social",
-                description: "Este é o conteúdo do oitavo card.",
-                modalTitle: "Detalhes do Card 8",
-                modalContent: "Este é o conteúdo detalhado da modal do card 8. Modifique conforme necessário."
-            },
-            9: {
-                title: "Aprofundando - Ansiedade",
-                description: "Este é o conteúdo do nono card.",
-                modalTitle: "Detalhes do Card 9",
-                modalContent: "Este é o conteúdo detalhado da modal do card 9. Personalize como preferir."
-            }
-        };
-
-        // ===========================
-        // FUNÇÕES DE MODAL
-        // ===========================
-
-        /**
-         * Abre a modal com o conteúdo do card especificado
-         * @param {number} cardNumber - Número do card (1-9)
-         */
-        function openModal(cardNumber) {
-            const modal = document.getElementById('modal');
-            const modalTitle = document.getElementById('modal-title');
-            const modalText = document.getElementById('modal-text');
-
-            // Obtém os dados do card
-            const cardData = cardsData[cardNumber];
-
-            if (cardData) {
-                // Atualiza o conteúdo da modal
-                modalTitle.textContent = cardData.modalTitle;
-                modalText.textContent = cardData.modalContent;
-
-                // Exibe a modal com a classe 'active'
-                modal.classList.add('active');
-
-                // Impede scroll na página quando modal está aberta
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        /**
-         * Fecha a modal
-         */
-        function closeModal() {
-            const modal = document.getElementById('modal');
-
-            // Remove a classe 'active' para esconder a modal
-            modal.classList.remove('active');
-
-            // Restaura o scroll na página
-            document.body.style.overflow = 'auto';
-        }
-
-        // ===========================
-        // EVENT LISTENERS
-        // ===========================
-
-        // Fecha a modal ao clicar fora do conteúdo
-        document.addEventListener('DOMContentLoaded', function () {
-            const modal = document.getElementById('modal');
-
-            // Evento de clique fora da modal
-            modal.addEventListener('click', function (event) {
-                // Verifica se o clique foi fora do modal-content
-                if (event.target === modal) {
-                    closeModal();
-                }
-            });
-
-            // Fecha a modal ao pressionar a tecla ESC
-            document.addEventListener('keydown', function (event) {
-                if (event.key === 'Escape') {
-                    closeModal();
-                }
+        // 2. Lógica para rolar a página para o topo
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // Rolagem suave
             });
         });
 
+
+        // Lógica do Menu Sanduíche (Hamburger)
+        const hamburger = document.getElementById('hamburger');
+        const navMobile = document.getElementById('navMobile');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const logo = document.getElementById('logo');
+
+        // Abrir/fechar menu sanduíche
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMobile.classList.toggle('active');
+        });
+
+        // Fechar menu ao clicar em um link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // Fechar menu mobile se estiver aberto
+                hamburger.classList.remove('active');
+                navMobile.classList.remove('active');
+
+                // O navegador fará a navegação naturalmente
+            });
+        });
+
+        // Clicar no logo leva à página 1
+        logo.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'page1.html';
+        });
+
+        // Lógica para destacar a página ativa (Opção 2)
+        const path = window.location.pathname;
+        const pageName = path.substring(path.lastIndexOf('/') + 1);
+
+        // Se a página for a raiz (index.html), consideramos como page1.html
+        const currentPage = (pageName === '' || pageName === 'wave-transition.html' || pageName === 'index.html') ? 'page1.html' : pageName;
+
+        // Remover a classe 'active' de todos os links
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+        });
+
+        // Adicionar a classe 'active' ao link da página atual
+        const activeLinkDesktop = document.querySelector(`nav a[href="${currentPage}"]`);
+        const activeLinkMobile = document.querySelector(`.nav-mobile a[href="${currentPage}"]`);
+
+        if (activeLinkDesktop) {
+            activeLinkDesktop.classList.add('active');
+        }
+        if (activeLinkMobile) {
+            activeLinkMobile.classList.add('active');
+        }
     </script>
 </body>
 

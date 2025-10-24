@@ -4,7 +4,7 @@
 
   // ========= Canais rápidos: configuração =========
   const CONTACTS = {
-    email: 'arthurcapos@gmail.com',     // e-mail que aparecerá e abrirá no mailto
+    email: 'projetocasetecmcm@gmail.com',     // e-mail que aparecerá e abrirá no mailto
     whatsappNumber: '5511974140070',    // DDI+DDD+número, só dígitos
     whatsappMsg: 'Olá! Gostaria de falar sobre o projeto CAS.'
   };
