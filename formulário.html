@@ -1,154 +1,256 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CAS</title>
-<link rel="stylesheet" href="CssExterno/site-da-feira-tecnologica-do-0/style.css">
-<link rel="shortcut icon" href="imgs/favicon.png" type="image/x-icon">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Emblema+One&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Buenard:wght@400..700&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
-rel="stylesheet">
-<link rel="stylesheet" href="CssExterno/desabafo.css">
-<link rel="stylesheet" href="bootstrap-5.3.8-dist\css\bootstrap.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAS</title>
+    <link rel="stylesheet" href="CssExterno/site-da-feira-tecnologica-do-0/style.css">
+    <link rel="shortcut icon" href="imgs/favicon.png" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Emblema+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Buenard:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="CssExterno/desabafo.css">
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist\css\bootstrap.css">
 </head>
 
 <body class="gradiente-suave">
-<header>
-<nav class="navbar navbar-expand-lg fixed-top" style="position: sticky; top: 0;">
-<div class="container">
-<a class="navbar-brand" href="#">CAS</a>
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
-<span class="navbar-toggler-icon"></span>
-</button>
+    <!-- Header com Logo e Navegação -->
+    <header>
+        <a href="index.html" id="logo"><img class="logo" src="imgs/logoCAS.png" alt=""></a>
 
-<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-<ul class="navbar-nav">
-<li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
-            <li class="nav-item"><a class="nav-link" href="aprofundamento.html#aprof">Aprofundamento</a></li>
-            <li class="nav-item"><a class="nav-link" href="Jogo.html#gojo">Jogo</a></li>
-            <li class="nav-item"><a class="nav-link" href="rename.html#consc">Conscientização</a></li>
-            <li class="nav-item"><a class="nav-link" href="timeline.html#tm">Linha do Tempo</a></li>
-            <li class="nav-item"><a class="nav-link" href="contato.html#ctt">Contato</a></li>
-            <li class="nav-item"><a class="nav-link" href="formulário.html#desab">Desabafe</a></li>
-</ul>
-</div>
-</div>
-</nav>
-</header>
+        <!-- Navegação Desktop -->
+        <nav>
+            <a href="index.html" class="nav-link text-white" data-page="1">Home</a>
+            <a href="aprofundamento.html#aprof" class="nav-link text-white" data-page="2">Aprofunde</a>
+            <a href="rename.html#consc" class="nav-link text-white" data-page="3">Conscientização</a>
+            <a href="timeline.html#tm" class="nav-link text-white" data-page="4">Timeline</a>
+            <a href="formulário.html#desab" class="nav-link active text-white" data-page="5">Desabafe</a>
+            <a href="Jogo.html#gojo" class="nav-link text-white" data-page="6">Jogo</a>
+            <a href="contato.html#ctt" class="nav-link text-white" data-page="7">Contato</a>
+        </nav>
 
-<section class="banner img-fluid img-responsive" id="home"><img class="banner img-fluid img-responsive"
-src="imgs/BannerCAS.png" alt=""></section>
+        <!-- Botão Menu Sanduíche (Hamburger) -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
 
-<div class="wave-container">
+    <!-- Menu Mobile -->
+    <nav class="nav-mobile" id="navMobile">
+        <a href="index.html" class="nav-link text-white" data-page="1">Home</a>
+        <a href="aprofundamento.html#aprof" class="nav-link text-white" data-page="2">Aprofunde</a>
+        <a href="rename.html#consc" class="nav-link text-white" data-page="3">Conscientização</a>
+        <a href="timeline.html#tm" class="nav-link text-white" data-page="4">Timeline</a>
+        <a href="formulário.html#desab" class="nav-link active text-white" data-page="5">Desabafe</a>
+        <a href="Jogo.html#gojo" class="nav-link text-white" data-page="6">Jogo</a>
+        <a href="contato.html#ctt" class="nav-link text-white" data-page="7">Contato</a>
+    </nav>
+
+    <section class="banner img-fluid img-responsive" id="home"><img class="banner img-fluid img-responsive"
+            src="imgs/BannerCAS.png" alt=""></section>
+
+    <div class="wave-container">
         <svg viewBox="0 0 1000 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
             <!-- Onda 1 (mais clara) - Usando um path que se repete horizontalmente -->
-            <path class="wave-path wave1-path" fill="#a7a9ed5c" d="M0,50 C150,100 350,0 500,50 C650,100 850,0 1000,50 L1000,100 L0,100 Z M1000,50 C1150,100 1350,0 1500,50 C1650,100 1850,0 2000,50 L2000,100 L1000,100 Z"></path>
+            <path class="wave-path wave1-path" fill="#a7a9ed5c"
+                d="M0,50 C150,100 350,0 500,50 C650,100 850,0 1000,50 L1000,100 L0,100 Z M1000,50 C1150,100 1350,0 1500,50 C1650,100 1850,0 2000,50 L2000,100 L1000,100 Z">
+            </path>
 
             <!-- Onda 2 (mais escura) - Usando um path que se repete horizontalmente, com altura e cor diferentes -->
-            <path class="wave-path wave2-path" fill="#333547" d="M0,60 C150,110 350,10 500,60 C650,110 850,10 1000,60 L1000,100 L0,100 Z M1000,60 C1150,110 1350,10 1500,60 C1650,110 1850,10 2000,60 L2000,100 L1000,100 Z"></path>
+            <path class="wave-path wave2-path" fill="#333547"
+                d="M0,60 C150,110 350,10 500,60 C650,110 850,10 1000,60 L1000,100 L0,100 Z M1000,60 C1150,110 1350,10 1500,60 C1650,110 1850,10 2000,60 L2000,100 L1000,100 Z">
+            </path>
         </svg>
     </div>
 
-<section id="desab">
-<div class="IV">
-<h1 class="subtitulo IV-txt">IV Feira Tecnológica e Sustentável da ETEC MCM</h1>
-</div>
-</section>
-<main>
-<section id="secao-desabafo" class="card">
-<h2 class="titulo">Compartilhe o que Sente</h2>
-<p class="instrucao">Escreva o que está em seu coração. Seu desabafo é **100% anônimo** e será usado apenas para o seu próprio alívio. Não pediremos seu nome ou e-mail.</p>
-<form id="form-desabafo">
-<div class="form-group">
-<label for="titulo-desabafo">Título (Opcional):</label>
-<input type="text" id="titulo-desabafo" maxlength="50" placeholder="Ex: Um dia difícil">
-</div>
-<div class="form-group">
-<label for="texto-desabafo">Meu Desabafo:</label>
-<textarea id="texto-desabafo" rows="8" required placeholder="Coloque para fora o que está sentindo..."></textarea>
-</div>
-<button type="submit" class="botao-principal">Enviar Desabafo (esta tudo bem)</button>
-</form>
-</section>
+    <section id="desab">
+        <div class="IV">
+            <h1 class="subtitulo IV-txt">IV Feira Tecnológica e Sustentável da ETEC MCM</h1>
+        </div>
+    </section>
+    <main>
+        <section id="secao-desabafo" class="card">
+            <h2 class="titulo">Compartilhe o que Sente</h2>
+            <p class="instrucao">Escreva o que está em seu coração. Seu desabafo é **100% anônimo** e será usado apenas
+                para o seu próprio alívio. Não pediremos seu nome ou e-mail.</p>
+            <form id="form-desabafo">
+                <div class="form-group">
+                    <label for="titulo-desabafo">Título (Opcional):</label>
+                    <input type="text" id="titulo-desabafo" maxlength="50" placeholder="Ex: Um dia difícil">
+                </div>
+                <div class="form-group">
+                    <label for="texto-desabafo">Meu Desabafo:</label>
+                    <textarea id="texto-desabafo" rows="8" required
+                        placeholder="Coloque para fora o que está sentindo..."></textarea>
+                </div>
+                <button type="submit" class="botao-principal">Enviar Desabafo (esta tudo bem)</button>
+            </form>
+        </section>
 
-<section id="secao-acolhimento" class="card">
-<h2 class="titulo">Publicar Mensagem (Espalhe Luz)</h2>
-<p class="instrucao">Deixe uma mensagem de apoio ou positividade para quem está precisando.</p>
-<form id="form-mensagem">
-<div class="form-group">
-<label for="mensagem-positiva">Sua Mensagem de Apoio (Máx. 300 caracteres):</label>
-<textarea id="mensagem-positiva" rows="4" maxlength="300" required></textarea>
-</div>
-<button type="submit" class="botao-principal">Publicar Mensagem (Espalhe Luz)</button>
-</form>
-</section>
+        <section id="secao-acolhimento" class="card">
+            <h2 class="titulo">Publicar Mensagem (Espalhe Luz)</h2>
+            <p class="instrucao">Deixe uma mensagem de apoio ou positividade para quem está precisando.</p>
+            <form id="form-mensagem">
+                <div class="form-group">
+                    <label for="mensagem-positiva">Sua Mensagem de Apoio (Máx. 300 caracteres):</label>
+                    <textarea id="mensagem-positiva" rows="4" maxlength="300" required></textarea>
+                </div>
+                <button type="submit" class="botao-principal">Publicar Mensagem (Espalhe Luz)</button>
+            </form>
+        </section>
 
-<section id="mural-mensagens">
-<h2 class="titulo">Mural de Acolhimento</h2>
-<p>Confira mensagens de apoio deixadas por outros usuários. Inspire-se!</p>
-<div class="mural-container" id="container-mensagens">
-<span class="anonimo">- Anônimo</span>
-</div>
-</div>
-</section>
+        <section id="mural-mensagens">
+            <h2 class="titulo">Mural de Acolhimento</h2>
+            <p>Confira mensagens de apoio deixadas por outros usuários. Inspire-se!</p>
+            <div class="mural-container" id="container-mensagens">
+                <span class="anonimo">- Anônimo</span>
+            </div>
+            </div>
+        </section>
 
-</main>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-  const SUPABASE_URL = 'https://kdzhudwiexujhzhfynnb.supabase.co';
-  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtkemh1ZHdpZXh1amh6aGZ5bm5iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjExMzIyOTcsImV4cCI6MjA3NjcwODI5N30.VWAYbWgcysm4aNxP1X_FEAmMundQTsLGfRlF7jGHqOE'; // sua chave
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = 'https://kdzhudwiexujhzhfynnb.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtkemh1ZHdpZXh1amh6aGZ5bm5iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjExMzIyOTcsImV4cCI6MjA3NjcwODI5N30.VWAYbWgcysm4aNxP1X_FEAmMundQTsLGfRlF7jGHqOE'; // sua chave
 
-  const { createClient } = supabase;
-  window.supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-</script>
-<script src="desabafo.js"></script>
-<footer>
-  <div>
-  <h4>CAS</h4>
-  <p>Um projeto desenvolvido para a Feira Tecnológica, promovendo reflexão e empatia.</p>
-  </div>
-  <div>
-  <h4>Navegação</h4>
-  <ul>
-  <li><a href="index.html">Início</a></li>
-  <li><a href="aprofundamento.html">Aprofundamento</a></li>
-  <li><a href="jogo.html">Jogo</a></li>
-  <li><a href="rename.html">Conscientização</a></li>
-  <li><a href="timeline.html">Linha do Tempo</a></li>
-  <li><a href="contato.html">Contato</a></li>
-  <li><a href="formulário.html">Desabafe</a></li>
-  </ul>
-  </div>
-  <div>
-  <h4>Projeto</h4>
-  <ul>
-  <li>Desenvolvido por alunos do curso técnico</li>
-  <li>Inspirado na temática da autodestruição silenciosa</li>
-  </ul>
-  </div>
-  <div>
-  <h4>Integrantes</h4>
-  <ul>
-  <li>Arthur Franco</li>
-  <li>Arthur Gomes</li>
-  <li>Arthur Pereira</li>
-  <li>Bruno Ferreira</li>
-  <li>João Pedro</li>
-  </ul>
-  </div>
-  </footer>
-<div class="copyright">
-© 2025 - Projeto C.A.S. | Todos os direitos reservados.
-</div>
+        const { createClient } = supabase;
+        window.supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    </script>
+    <script src="desabafo.js"></script>
+    <footer>
+        <div>
+            <h4>CAS</h4>
+            <p>Um projeto desenvolvido para a Feira Tecnológica, promovendo reflexão e empatia.</p>
+        </div>
+        <div>
+            <h4>Navegação</h4>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="aprofundamento.html">Aprofundamento</a></li>
+                <li><a href="jogo.html">Jogo</a></li>
+                <li><a href="rename.html">Conscientização</a></li>
+                <li><a href="timeline.html">Linha do Tempo</a></li>
+                <li><a href="contato.html">Contato</a></li>
+                <li><a href="formulário.html">Desabafe</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Projeto</h4>
+            <ul>
+                <li>Desenvolvido por alunos do curso técnico</li>
+                <li>Inspirado na temática da autodestruição silenciosa</li>
+            </ul>
+        </div>
+        <div>
+            <h4>Integrantes</h4>
+            <ul>
+                <li>Arthur Franco</li>
+                <li>Arthur Gomes</li>
+                <li>Arthur Pereira</li>
+                <li>Bruno Ferreira</li>
+                <li>João Pedro</li>
+            </ul>
+        </div>
+    </footer>
+    <div class="copyright">
+        © 2025 - Projeto C.A.S. | Todos os direitos reservados.
+    </div>
+    <script>
+        (function () {
+            // Scroll to top button
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            const scrollThreshold = 100; // aparecerá após 100px de scroll
+
+            if (scrollToTopBtn) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > scrollThreshold) {
+                        scrollToTopBtn.style.opacity = '1';
+                        scrollToTopBtn.style.visibility = 'visible';
+                    } else {
+                        scrollToTopBtn.style.opacity = '0';
+                        scrollToTopBtn.style.visibility = 'hidden';
+                    }
+                });
+
+                scrollToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            // Hamburger menu
+            const hamburger = document.getElementById('hamburger');
+            const navMobile = document.getElementById('navMobile');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const logo = document.getElementById('logo');
+
+            if (hamburger && navMobile) {
+                hamburger.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    hamburger.classList.toggle('active');
+                    navMobile.classList.toggle('active');
+                });
+
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        // fechar menu mobile ao clicar em qualquer link
+                        hamburger.classList.remove('active');
+                        navMobile.classList.remove('active');
+                    });
+                });
+
+                // fechar ao clicar fora
+                document.addEventListener('click', (e) => {
+                    if (!hamburger.contains(e.target) && !navMobile.contains(e.target)) {
+                        hamburger.classList.remove('active');
+                        navMobile.classList.remove('active');
+                    }
+                });
+            }
+
+            if (logo) {
+                logo.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.location.href = 'index.html';
+                });
+            }
+
+            // Destacar link ativo
+            const path = window.location.pathname;
+            const pageName = path.substring(path.lastIndexOf('/') + 1).toLowerCase();
+            const isRootOrIndex = pageName === '' || pageName === 'index.html' || pageName === 'wave-transition.html';
+            const currentDataPage = isRootOrIndex ? '1' : null;
+
+            // limpar estado inicial
+            navLinks.forEach(link => link.classList.remove('active'));
+
+            if (currentDataPage) {
+                const activeLinkDesktop = document.querySelector('nav a[data-page="' + currentDataPage + '"]');
+                const activeLinkMobile = document.querySelector('.nav-mobile a[data-page="' + currentDataPage + '"]');
+                if (activeLinkDesktop) activeLinkDesktop.classList.add('active');
+                if (activeLinkMobile) activeLinkMobile.classList.add('active');
+            } else {
+                // fallback: destacar por href que contenha o nome do arquivo
+                navLinks.forEach(link => {
+                    const href = (link.getAttribute('href') || '').toLowerCase();
+                    if (pageName && href.includes(pageName)) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        })();
+    </script>
 </body>
+
 </html>

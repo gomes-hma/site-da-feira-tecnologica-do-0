@@ -32,12 +32,12 @@
         <!-- Navegação Desktop -->
         <nav>
             <a href="index.html" class="nav-link active text-white" data-page="1">Home</a>
-            <a href="aprofundamento.html" class="nav-link text-white" data-page="2">Aprofunde</a>
-            <a href="rename.html" class="nav-link text-white" data-page="3">Conscientização</a>
-            <a href="timeline.html" class="nav-link text-white" data-page="4">Timeline</a>
-            <a href="formulário.html" class="nav-link text-white" data-page="5">Desabafe</a>
-            <a href="Jogo.html" class="nav-link text-white" data-page="6">Jogo</a>
-            <a href="contato.html" class="nav-link text-white" data-page="7">Contato</a>
+            <a href="aprofundamento.html#aprof" class="nav-link text-white" data-page="2">Aprofunde</a>
+            <a href="rename.html#consc" class="nav-link text-white" data-page="3">Conscientização</a>
+            <a href="timeline.html#tm" class="nav-link text-white" data-page="4">Timeline</a>
+            <a href="formulário.html#desab" class="nav-link text-white" data-page="5">Desabafe</a>
+            <a href="Jogo.html#gojo" class="nav-link text-white" data-page="6">Jogo</a>
+            <a href="contato.html#ctt" class="nav-link text-white" data-page="7">Contato</a>
         </nav>
 
         <!-- Botão Menu Sanduíche (Hamburger) -->
@@ -88,6 +88,7 @@
         <div class="content">
             <!-- Botão Voltar ao Topo -->
             <button id="scrollToTopBtn" title="Voltar ao Topo">&#9650;</button> <!-- Símbolo de seta para cima -->
+
             <section id="sobre">
                 <div class="container">
                     <div class="header-tema">
@@ -476,80 +477,88 @@
     </div>
 
     <script>
-        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-        const scrollThreshold = 100; // Distância em pixels para o botão aparecer
+        (function () {
+            // Scroll to top button
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            const scrollThreshold = 100; // aparecerá após 100px de scroll
 
-        // 1. Lógica para mostrar/esconder o botão
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > scrollThreshold) {
-                scrollToTopBtn.style.opacity = '1';
-                scrollToTopBtn.style.visibility = 'visible';
-            } else {
-                scrollToTopBtn.style.opacity = '0';
-                scrollToTopBtn.style.visibility = 'hidden';
+            if (scrollToTopBtn) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > scrollThreshold) {
+                        scrollToTopBtn.style.opacity = '1';
+                        scrollToTopBtn.style.visibility = 'visible';
+                    } else {
+                        scrollToTopBtn.style.opacity = '0';
+                        scrollToTopBtn.style.visibility = 'hidden';
+                    }
+                });
+
+                scrollToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
             }
-        });
 
-        // 2. Lógica para rolar a página para o topo
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth' // Rolagem suave
-            });
-        });
+            // Hamburger menu
+            const hamburger = document.getElementById('hamburger');
+            const navMobile = document.getElementById('navMobile');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const logo = document.getElementById('logo');
 
+            if (hamburger && navMobile) {
+                hamburger.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    hamburger.classList.toggle('active');
+                    navMobile.classList.toggle('active');
+                });
 
-        // Lógica do Menu Sanduíche (Hamburger)
-        const hamburger = document.getElementById('hamburger');
-        const navMobile = document.getElementById('navMobile');
-        const navLinks = document.querySelectorAll('.nav-link');
-        const logo = document.getElementById('logo');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        // fechar menu mobile ao clicar em qualquer link
+                        hamburger.classList.remove('active');
+                        navMobile.classList.remove('active');
+                    });
+                });
 
-        // Abrir/fechar menu sanduíche
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMobile.classList.toggle('active');
-        });
+                // fechar ao clicar fora
+                document.addEventListener('click', (e) => {
+                    if (!hamburger.contains(e.target) && !navMobile.contains(e.target)) {
+                        hamburger.classList.remove('active');
+                        navMobile.classList.remove('active');
+                    }
+                });
+            }
 
-        // Fechar menu ao clicar em um link
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                // Fechar menu mobile se estiver aberto
-                hamburger.classList.remove('active');
-                navMobile.classList.remove('active');
+            if (logo) {
+                logo.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.location.href = 'index.html';
+                });
+            }
 
-                // O navegador fará a navegação naturalmente
-            });
-        });
+            // Destacar link ativo
+            const path = window.location.pathname;
+            const pageName = path.substring(path.lastIndexOf('/') + 1).toLowerCase();
+            const isRootOrIndex = pageName === '' || pageName === 'index.html' || pageName === 'wave-transition.html';
+            const currentDataPage = isRootOrIndex ? '1' : null;
 
-        // Clicar no logo leva à página 1
-        logo.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.location.href = 'page1.html';
-        });
+            // limpar estado inicial
+            navLinks.forEach(link => link.classList.remove('active'));
 
-        // Lógica para destacar a página ativa (Opção 2)
-        const path = window.location.pathname;
-        const pageName = path.substring(path.lastIndexOf('/') + 1);
-
-        // Se a página for a raiz (index.html), consideramos como page1.html
-        const currentPage = (pageName === '' || pageName === 'wave-transition.html' || pageName === 'index.html') ? 'page1.html' : pageName;
-
-        // Remover a classe 'active' de todos os links
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-        });
-
-        // Adicionar a classe 'active' ao link da página atual
-        const activeLinkDesktop = document.querySelector(`nav a[href="${currentPage}"]`);
-        const activeLinkMobile = document.querySelector(`.nav-mobile a[href="${currentPage}"]`);
-
-        if (activeLinkDesktop) {
-            activeLinkDesktop.classList.add('active');
-        }
-        if (activeLinkMobile) {
-            activeLinkMobile.classList.add('active');
-        }
+            if (currentDataPage) {
+                const activeLinkDesktop = document.querySelector('nav a[data-page="' + currentDataPage + '"]');
+                const activeLinkMobile = document.querySelector('.nav-mobile a[data-page="' + currentDataPage + '"]');
+                if (activeLinkDesktop) activeLinkDesktop.classList.add('active');
+                if (activeLinkMobile) activeLinkMobile.classList.add('active');
+            } else {
+                // fallback: destacar por href que contenha o nome do arquivo
+                navLinks.forEach(link => {
+                    const href = (link.getAttribute('href') || '').toLowerCase();
+                    if (pageName && href.includes(pageName)) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        })();
     </script>
 </body>
 

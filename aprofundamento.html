@@ -31,42 +31,54 @@
 
   <div id="particles-js"></div>
   <header>
-    <nav class="navbar navbar-expand-lg fixed-top" style="position: sticky; top: 0;">
-      <div class="container">
-        <a class="navbar-brand" href="#"><img class="img-fluid img-responsive" src="imgs/logoCAS.png" alt=""></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    <a href="index.html" id="logo"><img class="logo" src="imgs/logoCAS.png" alt=""></a>
 
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link text-white" href="index.html">Início</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="aprofundamento.html#aprof">Aprofundamento</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="Jogo.html#gojo">Jogo</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="rename.html#consc">Conscientização<a><li>
-            <li class="nav-item"><a class="nav-link text-white" href="timeline.html#tm">Linha do Tempo</a><li>
-            <li class="nav-item"><a class="nav-link text-white" href="contato.html#ctt">Contato</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="formulário.html#desab">Desabafe</a></li>
-          </ul>
-        </div>
-      </div>
+    <!-- Navegação Desktop -->
+    <nav>
+      <a href="index.html" class="nav-link text-white" data-page="1">Home</a>
+      <a href="aprofundamento.html#aprof" class="nav-link active text-white" data-page="2">Aprofunde</a>
+      <a href="rename.html#consc" class="nav-link text-white" data-page="3">Conscientização</a>
+      <a href="timeline.html#tm" class="nav-link text-white" data-page="4">Timeline</a>
+      <a href="formulário.html#desab" class="nav-link text-white" data-page="5">Desabafe</a>
+      <a href="Jogo.html#gojo" class="nav-link text-white" data-page="6">Jogo</a>
+      <a href="contato.html#ctt" class="nav-link text-white" data-page="7">Contato</a>
     </nav>
+
+    <!-- Botão Menu Sanduíche (Hamburger) -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </header>
 
+  <!-- Menu Mobile -->
+  <nav class="nav-mobile" id="navMobile">
+    <a href="index.html" class="nav-link text-white" data-page="1">Home</a>
+    <a href="aprofundamento.html#aprof" class="nav-link active text-white" data-page="2">Aprofunde</a>
+    <a href="rename.html#consc" class="nav-link text-white" data-page="3">Conscientização</a>
+    <a href="timeline.html#tm" class="nav-link text-white" data-page="4">Timeline</a>
+    <a href="formulário.html#desab" class="nav-link text-white" data-page="5">Desabafe</a>
+    <a href="Jogo.html#gojo" class="nav-link text-white" data-page="6">Jogo</a>
+    <a href="contato.html#ctt" class="nav-link text-white" data-page="7">Contato</a>
+  </nav>
   <!-- Banner principal -->
   <section class="banner img-fluid img-responsive" id="home"><img class="banner img-fluid img-responsive"
       src="imgs/BannerCAS.png" alt=""></section>
 
-      <div class="wave-container">
-        <svg viewBox="0 0 1000 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Onda 1 (mais clara) - Usando um path que se repete horizontalmente -->
-            <path class="wave-path wave1-path" fill="#a7a9ed5c" d="M0,50 C150,100 350,0 500,50 C650,100 850,0 1000,50 L1000,100 L0,100 Z M1000,50 C1150,100 1350,0 1500,50 C1650,100 1850,0 2000,50 L2000,100 L1000,100 Z"></path>
+  <div class="wave-container">
+    <svg viewBox="0 0 1000 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Onda 1 (mais clara) - Usando um path que se repete horizontalmente -->
+      <path class="wave-path wave1-path" fill="#a7a9ed5c"
+        d="M0,50 C150,100 350,0 500,50 C650,100 850,0 1000,50 L1000,100 L0,100 Z M1000,50 C1150,100 1350,0 1500,50 C1650,100 1850,0 2000,50 L2000,100 L1000,100 Z">
+      </path>
 
-            <!-- Onda 2 (mais escura) - Usando um path que se repete horizontalmente, com altura e cor diferentes -->
-            <path class="wave-path wave2-path" fill="#333547" d="M0,60 C150,110 350,10 500,60 C650,110 850,10 1000,60 L1000,100 L0,100 Z M1000,60 C1150,110 1350,10 1500,60 C1650,110 1850,10 2000,60 L2000,100 L1000,100 Z"></path>
-        </svg>
-    </div>
+      <!-- Onda 2 (mais escura) - Usando um path que se repete horizontalmente, com altura e cor diferentes -->
+      <path class="wave-path wave2-path" fill="#333547"
+        d="M0,60 C150,110 350,10 500,60 C650,110 850,10 1000,60 L1000,100 L0,100 Z M1000,60 C1150,110 1350,10 1500,60 C1650,110 1850,10 2000,60 L2000,100 L1000,100 Z">
+      </path>
+    </svg>
+  </div>
 
   <section id="aprof">
     <div class="IV">
@@ -84,7 +96,8 @@
               alt="">
           </div>
           <div class=" col-sm-12 col-12 col-md-6">
-            <p class="texto-justificado texto text-white">A autodestruição silenciosa é um fenômeno discreto, quase imperceptível,
+            <p class="texto-justificado texto text-white">A autodestruição silenciosa é um fenômeno discreto, quase
+              imperceptível,
               porém intensamente doloroso. Não surge repentinamente, surge de pequenas mágoas emocionais, coisas não
               expressas e sentimentos reprimidos. Gradualmente, a pessoa se distancia de sua própria essência, pensando
               que deve aguentar tudo em silêncio, como se buscar ajuda fosse um ato de fraqueza. Com o passar do tempo,
@@ -102,189 +115,204 @@
       <h1 class="text-center titulo">E Quais são os transtornos e efeitos colaterais?</h1>
 
       <div class="container text-center">
-  <div class="row row-cols-6">
-    <div class="col d-flex justify-content-center"><a class="btn botão mx-auto" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"> Pressão Psicológica </a></div>
-    <div class="col d-flex justify-content-center"><a class="btn botão mx-auto" data-bs-toggle="offcanvas" href="#offcanvasExample2" role="button" aria-controls="offcanvasExample"> Burnout </a></div>
-    <div class="col d-flex justify-content-center"><a class="btn botão mx-auto" data-bs-toggle="offcanvas" href="#offcanvasExample3" role="button" aria-controls="offcanvasExample">Fobia Social  </a></div>
-    <div class="col d-flex justify-content-center"><a class="btn botão mx-auto" data-bs-toggle="offcanvas" href="#offcanvasExample4" role="button" aria-controls="offcanvasExample">TEPT</a></div>
-    <div class="col d-flex justify-content-center"><a class="btn botão mx-auto" data-bs-toggle="offcanvas" href="#offcanvasExample5" role="button" aria-controls="offcanvasExample">Ansiedade</a></div>
-    <div class="col d-flex justify-content-center"><a class="btn botão mx-auto" data-bs-toggle="offcanvas" href="#offcanvasExample6" role="button" aria-controls="offcanvasExample">Depressão</a></div>
-  </div>
-</div>
-
-
-
-     <section>
-
-      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
-        aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header roxoescuro text-white">
-          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Pressão Psicológica</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body roxofds">
-          <div>
-            <img class="img-fluid img-responsive escada" src="imgs/pressao-alta-emocional-sintomas.jpg" alt="">
-          </div>
-          <div>
-            <p class="texto texto-justificado"> Pressão Psicologica é um tipo de pressão emocional ou mental que é posta sobre uma pessoa, pode ser causada por cobrança externar, como por exemplo: pais, familiares, professores e etc. A cobrança também pode vir de dentro com pensamentos como "eu não posso errar, não posso decepcionar todo mundo". Essa pressão também pode vir de um ambiente competitivo, como escola, trabalho e redes sociais.</p>
-          </div>
-          
+        <div class="row row-cols-6">
+          <div class="col d-flex justify-content-center"><a class="btn botão mx-auto" data-bs-toggle="offcanvas"
+              href="#offcanvasExample" role="button" aria-controls="offcanvasExample"> Pressão Psicológica </a></div>
+          <div class="col d-flex justify-content-center"><a class="btn botão mx-auto" data-bs-toggle="offcanvas"
+              href="#offcanvasExample2" role="button" aria-controls="offcanvasExample"> Burnout </a></div>
+          <div class="col d-flex justify-content-center"><a class="btn botão mx-auto" data-bs-toggle="offcanvas"
+              href="#offcanvasExample3" role="button" aria-controls="offcanvasExample">Fobia Social </a></div>
+          <div class="col d-flex justify-content-center"><a class="btn botão mx-auto" data-bs-toggle="offcanvas"
+              href="#offcanvasExample4" role="button" aria-controls="offcanvasExample">TEPT</a></div>
+          <div class="col d-flex justify-content-center"><a class="btn botão mx-auto" data-bs-toggle="offcanvas"
+              href="#offcanvasExample5" role="button" aria-controls="offcanvasExample">Ansiedade</a></div>
+          <div class="col d-flex justify-content-center"><a class="btn botão mx-auto" data-bs-toggle="offcanvas"
+              href="#offcanvasExample6" role="button" aria-controls="offcanvasExample">Depressão</a></div>
         </div>
       </div>
 
-      
-
-      
-      
-          
-         
 
 
+      <section>
 
-      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample2"
-        aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header roxoescuro text-white">
-          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Burnout</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body roxofds">
-          <div>
-             
-            <img class="img-fluid img-responsive escada" src="imgs/12_burnout.jpg" alt="">
-         
-            <p class="texto texto-justificado"> A síndorme de Burnout é causada pelo estresse contínuo e atividades
-              muito exigentes, seja no trabalho, escola ou até mesmo em casa, essa sindrome se caracteriza pelo
-              constante sentimento de cansaço, demotivação, alta irritabilidade e cansaço físico e emocional, indivíduos
-              com essa síndrome podem apresentar dificuldade em conectar-se com outras pessoas e até mesmo desmotivação
-              na vida pessoal.</p>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+          aria-labelledby="offcanvasExampleLabel">
+          <div class="offcanvas-header roxoescuro text-white">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Pressão Psicológica</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
-         
-        </div>
-      </div>
-          
-       
-     
+          <div class="offcanvas-body roxofds">
+            <div>
+              <img class="img-fluid img-responsive escada" src="imgs/pressao-alta-emocional-sintomas.jpg" alt="">
+            </div>
+            <div>
+              <p class="texto texto-justificado text-dark"> Pressão Psicologica é um tipo de pressão emocional ou mental
+                que é posta sobre uma pessoa, pode ser causada por cobrança externar, como por exemplo: pais,
+                familiares, professores e etc. A cobrança também pode vir de dentro com pensamentos como "eu não posso
+                errar, não posso decepcionar todo mundo". Essa pressão também pode vir de um ambiente competitivo, como
+                escola, trabalho e redes sociais.</p>
+            </div>
 
-    
-
-      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample3"
-        aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header roxoescuro text-white">
-          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Fobia Social</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body roxofds">
-          <div>
-             
-            
-            <img class="img-fluid img-responsive escada" src="imgs/multidao.jpg" alt="">
-       
-         
-            <p class="texto texto-justificado">Fobia Social é um tipo de transtorno de ansiedade onde o indivíduo sente
-              medo extremo e persistente de situações sociais e julgamento de outras pessoas. Quem sofre de fobia social
-              pode sentir como efeito colateral vergonha extrema, tremores e dificuldade em falar. Escolhemos Fobia
-              Social como um dos subtemas pois as pessoa tendem a se sentir envergonhadas e com medo do julgamento
-              alheio.</p>
           </div>
-          
         </div>
-      </div>
 
-    
 
-      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample4"
-        aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header roxoescuro text-white">
-          <h5 class="offcanvas-title" id="offcanvasExampleLabel">TEPT</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body roxofds">
-          <div>
-             
-            
-            <img class="img-fluid img-responsive escada altimg" src="imgs/IMG-20250923-WA0006.jpg" alt="">
-       
-         
-            <p class="texto texto-justificado">O TEPT (ou Transtorno de Estresse Pós-Traumático) acontece quando o
-              indivíduo presencía eventos traumáticos onde passa por estresse extremo, como acidentes, violência,
-              desastres, ou então como é visto no livro A perda de um ente querido. Quem sofre de TEPT pode experienciar
-              flashbacks, pesadelos, lembranças intrusivas, irritabilidade, hipervigilância e medo constante que a
-              situação ou trauma se repita. </p>
+
+
+
+
+
+
+
+
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample2"
+          aria-labelledby="offcanvasExampleLabel">
+          <div class="offcanvas-header roxoescuro text-white">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Burnout</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
-          
-        </div>
-      </div>
+          <div class="offcanvas-body roxofds">
+            <div>
 
-      
+              <img class="img-fluid img-responsive escada" src="imgs/12_burnout.jpg" alt="">
 
-     
-       
+              <p class="texto texto-justificado"> A síndorme de Burnout é causada pelo estresse contínuo e atividades
+                muito exigentes, seja no trabalho, escola ou até mesmo em casa, essa sindrome se caracteriza pelo
+                constante sentimento de cansaço, demotivação, alta irritabilidade e cansaço físico e emocional,
+                indivíduos
+                com essa síndrome podem apresentar dificuldade em conectar-se com outras pessoas e até mesmo
+                desmotivação
+                na vida pessoal.</p>
+            </div>
 
-      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample5"
-        aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header roxoescuro text-white">
-          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Ansiedade</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body roxofds">
-          <div>
-             
-            
-            <img class="img-fluid img-responsive escada" src="imgs/sera-que-e-ansiedade-janeiro-branco-v2.jpg" alt="">
-       
-         
-            <p class="texto texto-justificado">O Transtorno de Ansiedade é um disturbio psicológico caracterizado por
-              extremo medo, preocupação e nervossismo persistente. A ansiedade causa como efeitos colaterais insônia,
-              sensação constante de alerta ou perigo, irritabilidade, e em casos extremos falta de ar, tontura, e ate
-              mesmo desmaios. Ansiedade infelizmente vem se tornando algo muito comum entre os jovens na sociedade
-              moderna.</p>
           </div>
-          
         </div>
-      </div>
-
-        
-       
 
 
-      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample6"
-        aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header roxoescuro text-white">
-          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Depressão</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+
+
+
+
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample3"
+          aria-labelledby="offcanvasExampleLabel">
+          <div class="offcanvas-header roxoescuro text-white">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Fobia Social</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body roxofds">
+            <div>
+
+
+              <img class="img-fluid img-responsive escada" src="imgs/multidao.jpg" alt="">
+
+
+              <p class="texto texto-justificado">Fobia Social é um tipo de transtorno de ansiedade onde o indivíduo
+                sente
+                medo extremo e persistente de situações sociais e julgamento de outras pessoas. Quem sofre de fobia
+                social
+                pode sentir como efeito colateral vergonha extrema, tremores e dificuldade em falar. Escolhemos Fobia
+                Social como um dos subtemas pois as pessoa tendem a se sentir envergonhadas e com medo do julgamento
+                alheio.</p>
+            </div>
+
+          </div>
         </div>
-        <div class="offcanvas-body roxofds">
-          <div>
-             
-            
-            <img class="img-fluid img-responsive escada" src="imgs/calamity.jpg" alt="">
-       
-         
-            <p class="texto texto-justificado">A Depressão é um transtrono mental caracterizado por uma tristeza
+
+
+
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample4"
+          aria-labelledby="offcanvasExampleLabel">
+          <div class="offcanvas-header roxoescuro text-white">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">TEPT</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body roxofds">
+            <div>
+
+
+              <img class="img-fluid img-responsive escada altimg" src="imgs/IMG-20250923-WA0006.jpg" alt="">
+
+
+              <p class="texto texto-justificado">O TEPT (ou Transtorno de Estresse Pós-Traumático) acontece quando o
+                indivíduo presencía eventos traumáticos onde passa por estresse extremo, como acidentes, violência,
+                desastres, ou então como é visto no livro A perda de um ente querido. Quem sofre de TEPT pode
+                experienciar
+                flashbacks, pesadelos, lembranças intrusivas, irritabilidade, hipervigilância e medo constante que a
+                situação ou trauma se repita. </p>
+            </div>
+
+          </div>
+        </div>
+
+
+
+
+
+
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample5"
+          aria-labelledby="offcanvasExampleLabel">
+          <div class="offcanvas-header roxoescuro text-white">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Ansiedade</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body roxofds">
+            <div>
+
+
+              <img class="img-fluid img-responsive escada" src="imgs/sera-que-e-ansiedade-janeiro-branco-v2.jpg" alt="">
+
+
+              <p class="texto texto-justificado">O Transtorno de Ansiedade é um disturbio psicológico caracterizado por
+                extremo medo, preocupação e nervossismo persistente. A ansiedade causa como efeitos colaterais insônia,
+                sensação constante de alerta ou perigo, irritabilidade, e em casos extremos falta de ar, tontura, e ate
+                mesmo desmaios. Ansiedade infelizmente vem se tornando algo muito comum entre os jovens na sociedade
+                moderna.</p>
+            </div>
+
+          </div>
+        </div>
+
+
+
+
+
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample6"
+          aria-labelledby="offcanvasExampleLabel">
+          <div class="offcanvas-header roxoescuro text-white">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Depressão</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body roxofds">
+            <div>
+
+
+              <img class="img-fluid img-responsive escada" src="imgs/calamity.jpg" alt="">
+
+
+              <p class="texto texto-justificado">A Depressão é um transtrono mental caracterizado por uma tristeza
                 intensa e persistente, desanimo e desmotivação em atividades que antes eram apreciadas e também cansaço
                 extremo. Depressão envolve fatores biológicos, psicológicos e sociais. Estresse prolongado, Traumas e
                 isolamento social contribuem muito para o desenvolvimento de depressão, porém ela também pode ser algo
                 herdado da genéticam, assim facilitando ainda mais seu desenvolvimento.</p>
-          </div>
-          
-        </div>
-      </div>
-
-
-
-            <div class="bdd3">
-              <p class="text-center subtitulo">Todos esses transtornos são extremamente sérios e perigoso para a sáude
-                mental, o densenvolvimente de qualquer um desses pode ser um gatilho para o início do ciclo, assim
-                desenvolvendo os demais outros. Todos os transtornos merecem ser tratados com extremo respeito e
-                delicadeza, afinal apenas nós mesmo conseguimos entender a nossa dor e oque sentimos, por isso também
-                não devemos julgar ou inferiorizar a dor dos outros</p>
             </div>
-</section>
+
+          </div>
+        </div>
 
 
 
-          
+        <div class="bdd3">
+          <p class="text-center subtitulo">Todos esses transtornos são extremamente sérios e perigoso para a sáude
+            mental, o densenvolvimente de qualquer um desses pode ser um gatilho para o início do ciclo, assim
+            desenvolvendo os demais outros. Todos os transtornos merecem ser tratados com extremo respeito e
+            delicadeza, afinal apenas nós mesmo conseguimos entender a nossa dor e oque sentimos, por isso também
+            não devemos julgar ou inferiorizar a dor dos outros</p>
+        </div>
+      </section>
+
+
+
+
 
     </section>
     </div>
@@ -349,58 +377,141 @@
   <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.js"></script> <!-- Botao de sanduiche funcionar -->
 
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-<script>
-  particlesJS("particles-js", {
-    "particles": {
-      "number": { "value": 200 },
-      "color": { "value": "#A7A9ED" },
-      "shape": {
-        "type": "triangle",  
-        "stroke": {
-          "width": 1,
-          "color": "#9599E6"
-        }
-      },
-      "opacity": {
-        "value": 0.8,
-        "random": true
-      },
-      "size": {
-        "value": 6,
-        "random": true
-      },
-      "move": {
-        "enable": true,
-        "speed": 1.2,
-        "direction": "none",
-        "random": true,
-        "straight": false,
-        "out_mode": "out",
-        "attract": {
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 200 },
+        "color": { "value": "#A7A9ED" },
+        "shape": {
+          "type": "triangle",
+          "stroke": {
+            "width": 1,
+            "color": "#9599E6"
+          }
+        },
+        "opacity": {
+          "value": 0.8,
+          "random": true
+        },
+        "size": {
+          "value": 6,
+          "random": true
+        },
+        "move": {
+          "enable": true,
+          "speed": 1.2,
+          "direction": "none",
+          "random": true,
+          "straight": false,
+          "out_mode": "out",
+          "attract": {
+            "enable": false
+          }
+        },
+        "line_linked": {
           "enable": false
         }
       },
-      "line_linked": {
-        "enable": false
-      }
-    },
-    "interactivity": {
-      "detect_on": "canvas",
-      "events": {
-        "onhover": { "enable": true, "mode": "repulse" },
-        "onclick": { "enable": false }
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": { "enable": true, "mode": "repulse" },
+          "onclick": { "enable": false }
+        },
+        "modes": {
+          "repulse": { "distance": 100, "duration": 0.4 }
+        }
       },
-      "modes": {
-        "repulse": { "distance": 100, "duration": 0.4 }
+      "retina_detect": true
+    });
+  </script>
+
+
+
+  <script>
+    (function () {
+      // Scroll to top button
+      const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+      const scrollThreshold = 100; // aparecerá após 100px de scroll
+
+      if (scrollToTopBtn) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > scrollThreshold) {
+            scrollToTopBtn.style.opacity = '1';
+            scrollToTopBtn.style.visibility = 'visible';
+          } else {
+            scrollToTopBtn.style.opacity = '0';
+            scrollToTopBtn.style.visibility = 'hidden';
+          }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
       }
-    },
-    "retina_detect": true
-  });
-</script>
-  
 
+      // Hamburger menu
+      const hamburger = document.getElementById('hamburger');
+      const navMobile = document.getElementById('navMobile');
+      const navLinks = document.querySelectorAll('.nav-link');
+      const logo = document.getElementById('logo');
 
+      if (hamburger && navMobile) {
+        hamburger.addEventListener('click', (e) => {
+          e.stopPropagation();
+          hamburger.classList.toggle('active');
+          navMobile.classList.toggle('active');
+        });
 
+        navLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            // fechar menu mobile ao clicar em qualquer link
+            hamburger.classList.remove('active');
+            navMobile.classList.remove('active');
+          });
+        });
+
+        // fechar ao clicar fora
+        document.addEventListener('click', (e) => {
+          if (!hamburger.contains(e.target) && !navMobile.contains(e.target)) {
+            hamburger.classList.remove('active');
+            navMobile.classList.remove('active');
+          }
+        });
+      }
+
+      if (logo) {
+        logo.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.location.href = 'index.html';
+        });
+      }
+
+      // Destacar link ativo
+      const path = window.location.pathname;
+      const pageName = path.substring(path.lastIndexOf('/') + 1).toLowerCase();
+      const isRootOrIndex = pageName === '' || pageName === 'index.html' || pageName === 'wave-transition.html';
+      const currentDataPage = isRootOrIndex ? '1' : null;
+
+      // limpar estado inicial
+      navLinks.forEach(link => link.classList.remove('active'));
+
+      if (currentDataPage) {
+        const activeLinkDesktop = document.querySelector('nav a[data-page="' + currentDataPage + '"]');
+        const activeLinkMobile = document.querySelector('.nav-mobile a[data-page="' + currentDataPage + '"]');
+        if (activeLinkDesktop) activeLinkDesktop.classList.add('active');
+        if (activeLinkMobile) activeLinkMobile.classList.add('active');
+      } else {
+        // fallback: destacar por href que contenha o nome do arquivo
+        navLinks.forEach(link => {
+          const href = (link.getAttribute('href') || '').toLowerCase();
+          if (pageName && href.includes(pageName)) {
+            link.classList.add('active');
+          }
+        });
+      }
+    })();
+  </script>
 </body>
 
 </html>

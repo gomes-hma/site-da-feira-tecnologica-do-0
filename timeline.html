@@ -26,34 +26,39 @@
 
 <body>
   <div id="particles-js"></div>
-
-  <!-- Header fixo -->
+  <!-- Header com Logo e Navegação -->
   <header>
-    <nav class="navbar navbar-expand-lg fixed-top" style="position: sticky; top: 0;">
-      <div class="container">
-        <a class="navbar-brand" href="#">CAS</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-  
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
-            <li class="nav-item"><a class="nav-link" href="aprofundamento.html#aprof">Aprofundamento</a></li>
-            <li class="nav-item"><a class="nav-link" href="Jogo.html#gojo">Jogo</a></li>
-            <li class="nav-item"><a class="nav-link" href="rename.html#consc">Conscientização</a></li>
-            <li class="nav-item"><a class="nav-link" href="timeline.html#tm">Linha do Tempo</a></li>
-            <li class="nav-item"><a class="nav-link" href="contato.html#ctt">Contato</a></li>
-            <li class="nav-item"><a class="nav-link" href="formulário.html#desab">Desabafe</a></li>
-            
-          </ul>
-        </div>
+      <a href="index.html" id="logo"><img class="logo" src="imgs/logoCAS.png" alt=""></a>
 
-        
+      <!-- Navegação Desktop -->
+      <nav>
+          <a href="index.html" class="nav-link text-white" data-page="1">Home</a>
+          <a href="aprofundamento.html#aprof" class="nav-link text-white" data-page="2">Aprofunde</a>
+          <a href="rename.html#consc" class="nav-link text-white" data-page="3">Conscientização</a>
+          <a href="timeline.html#tm" class="nav-link active text-white" data-page="4">Timeline</a>
+          <a href="formulário.html#desab" class="nav-link text-white" data-page="5">Desabafe</a>
+          <a href="Jogo.html#gojo" class="nav-link text-white" data-page="6">Jogo</a>
+          <a href="contato.html#ctt" class="nav-link text-white" data-page="7">Contato</a>
+      </nav>
+
+      <!-- Botão Menu Sanduíche (Hamburger) -->
+      <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
       </div>
-    </nav>
   </header>
+
+  <!-- Menu Mobile -->
+  <nav class="nav-mobile" id="navMobile">
+      <a href="index.html" class="nav-link text-white" data-page="1">Home</a>
+      <a href="aprofundamento.html#aprof" class="nav-link text-white" data-page="2">Aprofunde</a>
+      <a href="rename.html#consc" class="nav-link text-white" data-page="3">Conscientização</a>
+      <a href="timeline.html#tm" class="nav-link active text-white" data-page="4">Timeline</a>
+      <a href="formulário.html#desab" class="nav-link text-white" data-page="5">Desabafe</a>
+      <a href="Jogo.html#gojo" class="nav-link text-white" data-page="6">Jogo</a>
+      <a href="contato.html#ctt" class="nav-link text-white" data-page="7">Contato</a>
+  </nav>
 
   <!-- Banner principal -->
   <section class="banner img-fluid img-responsive" id="home"><img class="banner img-fluid img-responsive" src="imgs/BannerCAS.png" alt=""></section>
