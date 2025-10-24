@@ -77,6 +77,7 @@ nav a:hover {
 nav a.active {
     color: #6e71a9;
     border-bottom: 3px solid #6e71a9;
+    font-weight: 1000;
 }
 
 /* Botão Menu Sanduíche (Hamburger) */
@@ -424,6 +425,22 @@ svg {
     background-color: #4e5179;
 }
 
+.cards-sobre{
+
+}
+
+.card-sobre{
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 200px;
+    width: auto;
+}
+
+.conteudo-sobre{
+    display: flex;
+    flex-direction: column;
+}
 
 /* Seção de Cartões de Perfil */
 .profile-cards-section {
