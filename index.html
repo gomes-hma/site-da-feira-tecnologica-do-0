@@ -437,6 +437,7 @@
             <section id="integrantes" class="hero-contact mt-5 pt-4">
                 <div class="container">
                     <h1 class="display-6 mb-2 titulo">Integrantes</h1>
+                    <p class="lead text-muted mb-0 subtitulo">Sem endereço físico — apresentação exclusiva na ETEC MCM.</p>
                 </div>
                 <br>
                 <br>
@@ -502,35 +503,35 @@
     <footer>
         <div>
             <h4>CAS</h4>
-            <p>Um projeto desenvolvido para a Feira Tecnológica, promovendo reflexão e empatia.</p>
+            <p class="nav-footer">Um projeto desenvolvido para a Feira Tecnológica, promovendo reflexão e empatia.</p>
         </div>
         <div>
             <h4>Navegação</h4>
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="aprofundamento.html">Aprofundamento</a></li>
-                <li><a href="jogo.html">Jogo</a></li>
-                <li><a href="rename.html">Conscientização</a></li>
-                <li><a href="timeline.html">Linha do Tempo</a></li>
-                <li><a href="contato.html">Contato</a></li>
-                <li><a href="formulário.html">Desabafe</a></li>
-            </ul>
+
+            <a href="index.html" class="nav-link nav-footer active text-white" data-page="1">Home</a>
+            <a href="aprofundamento.html#aprof" class="nav-link nav-footer text-white" data-page="2">Aprofunde</a>
+            <a href="rename.html#consc" class="nav-link nav-footer text-white" data-page="3">Conscientização</a>
+            <a href="timeline.html#tm" class="nav-link nav-footer text-white" data-page="4">Timeline</a>
+            <a href="formulário.html#desab" class="nav-link nav-footer text-white" data-page="5">Desabafe</a>
+            <a href="Jogo.html#gojo" class="nav-link nav-footer text-white" data-page="6">Jogo</a>
+            <a href="contato.html#ctt" class="nav-link nav-footer text-white" data-page="7">Contato</a>
+            
         </div>
         <div>
             <h4>Projeto</h4>
             <ul>
-                <li>Desenvolvido por alunos do curso técnico</li>
-                <li>Inspirado na temática da autodestruição silenciosa</li>
+                <li class="nav-footer">Desenvolvido por alunos do curso técnico</li>
+                <li class="nav-footer">Inspirado na temática da autodestruição silenciosa</li>
             </ul>
         </div>
         <div>
             <h4>Integrantes</h4>
             <ul>
-                <li>Arthur Franco</li>
-                <li>Arthur Gomes</li>
+                <li class="nav-footer">Arthur Franco</li>
+                <li class="nav-footer">Arthur Gomes</li>
                 <li>Arthur Pereira</li>
-                <li>Bruno Ferreira</li>
-                <li>João Pedro</li>
+                <li class="nav-footer">Bruno Ferreira</li>
+                <li class="nav-footer">João Pedro</li>
             </ul>
         </div>
     </footer>
@@ -623,6 +624,81 @@
             }
         })();
     </script>
+    <!-- ========= MODAL DOS INTEGRANTES ========= -->
+<div class="modal fade" id="integranteModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content position-relative">
+      <button type="button" class="btn-close position-absolute end-0 m-3"
+              data-bs-dismiss="modal" aria-label="Fechar"></button>
+      <div class="modal-body p-0">
+        <div class="row g-0">
+          <div class="col-md-5 p-3 text-center">
+            <img id="modalFoto" class="img-fluid rounded-3" alt="Foto do integrante">
+          </div>
+          <div class="col-md-7 p-4">
+            <h3 id="modalNome" class="h4 mb-2"></h3>
+            <p class="mb-1"><a id="modalEmail" href="#" target="_blank" rel="noopener"></a></p>
+            <p id="modalTel" class="mb-0 small text-muted"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  // deixar as fotos "clicáveis" sem alterar HTML
+  document.querySelectorAll('.team-item img').forEach(img => { img.style.cursor = 'pointer'; });
+
+  const modalEl   = document.getElementById('integranteModal');
+  if (!modalEl) { console.warn('Elemento #integranteModal não encontrado'); return; }
+
+  // instancia a modal do Bootstrap
+  const modal = (typeof bootstrap !== 'undefined' && bootstrap.Modal)
+    ? new bootstrap.Modal(modalEl, { backdrop: true, keyboard: true })
+    : null;
+
+  if (!modal) { console.error('Bootstrap Modal indisponível. Verifique o bootstrap.bundle.js.'); return; }
+
+  const modalFoto  = modalEl.querySelector('#modalFoto');
+  const modalNome  = modalEl.querySelector('#modalNome');
+  const modalEmail = modalEl.querySelector('#modalEmail');
+  const modalTel   = modalEl.querySelector('#modalTel');
+
+  // delegação: qualquer clique numa IMG dentro de .team-item abre a modal
+  document.addEventListener('click', (e) => {
+    const img = e.target.closest('.team-item img');
+    if (!img) return;
+
+    const item      = img.closest('.team-item');
+    const nome      = item.querySelector('.team-name')?.textContent.trim() || 'Integrante';
+    const emailLink = item.querySelector('a[href^="mailto:"]');
+    const telLink   = item.querySelector('a[href^="tel:"]');
+
+    // preenche campos
+    modalFoto.src = img.getAttribute('src');
+    modalFoto.alt = nome;
+    modalNome.textContent = nome;
+
+    if (emailLink) {
+      modalEmail.href = emailLink.getAttribute('href');
+      modalEmail.textContent = (emailLink.textContent.trim() || emailLink.href.replace('mailto:', ''));
+      modalEmail.parentElement.style.display = '';
+    } else {
+      modalEmail.removeAttribute('href');
+      modalEmail.textContent = '';
+      modalEmail.parentElement.style.display = 'none';
+    }
+
+    modalTel.textContent = telLink ? telLink.textContent.trim() : '';
+
+    // abre
+    modal.show();
+  });
+})();
+</script>
+
 </body>
 
 </html>

@@ -924,7 +924,7 @@ svg {
 #integrantes {
     background-color: rgba(0, 0, 0, 0.034);
     width: 100%;
-    margin: 0;
+    border-radius: 5px;
 }
 
 .team-photo{
