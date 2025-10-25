@@ -425,8 +425,15 @@ svg {
     background-color: #4e5179;
 }
 
-.cards-sobre{
+#sobre .texto-conteudo{
+    margin: 20px 0;
+}
 
+.cards-sobre{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center;
 }
 
 .card-sobre{
@@ -435,6 +442,8 @@ svg {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 200px;
     width: auto;
+    background-size: cover;
+    background-position: center;
 }
 
 .conteudo-sobre{
@@ -561,7 +570,7 @@ svg {
 
     .profile-cards-container {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 80px;
     }
 
     .profile-cards-section h2 {
@@ -595,9 +604,20 @@ svg {
 }
 
 @media((max-width:920px)){
+    #relacao .capa{
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        width: 100%;
+    }
+
     .conteudo{
         display: flex;
         flex-direction: column;
+    }
+
+    .cap{
+
     }
 }
 
@@ -610,10 +630,17 @@ svg {
 }
 
 .botao-aprofundando{
-    background-color: 3px 3px 3px solid #7679b6;
+    background-color: #7679b6;
+    padding: 12px 20px;
+    border: 3px 3px 3px solid rgb(228, 228, 228);
     display: flex;
     align-items: center;
     border-radius: 5px;
+}
+
+.botao-aprofundando .titulo{
+    font-size: 1.2em;
+    font-weight: 700;
 }
 
 .botao-aprofundando p{
@@ -631,6 +658,7 @@ svg {
     color: #A7A9ED;
 }
 
+
 .capa{
     background-color: #ffffff;
     padding: 1%;
@@ -641,6 +669,7 @@ svg {
     border: solid 2px #ecebeb;
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
     width: 70%;
+
 }
 
 :root {
@@ -712,9 +741,11 @@ svg {
     color: white;
     padding: var(--espacamento-medio);
     border-bottom: 2px solid var(--cor-borda);
-    height: 6em;
+    height: 9em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
 
 /* Body do Card */
 
@@ -889,6 +920,89 @@ svg {
 .btn-close-modal:active {
     transform: scale(0.98);
 }
+
+#integrantes {
+    background-color: rgba(0, 0, 0, 0.034);
+    width: 100%;
+    margin: 0;
+}
+
+.team-photo{
+  width: 15rem;            /* tamanho desktop */
+  height: 15rem;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 4px solid var(--lilac-2, #A7A9ED);
+  filter: grayscale(100%);
+  transition: transform .25s ease, filter .25s ease, box-shadow .25s ease;
+  will-change: transform;
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+}
+
+.team-item:hover .team-photo{
+  transform: scale(1.07);
+  filter: grayscale(0%);
+  box-shadow: 0 10px 24px rgba(0,0,0,.12);
+}
+
+/* (Opcional) nome embaixo da foto */
+.team-name{
+  font-family: "Buenard", serif;
+  color: var(--text-dark, #333547);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Responsivo: fotos menores em telas pequenas */
+@media (max-width: 576px){
+  .team-photo{
+    width: 8rem;
+    height: 8rem;
+  }
+}
+
+/* ---- Detalhes dos integrantes ---- */
+.team-item { text-align: center; }
+
+.team-name{
+  font-family: "Buenard", serif;
+  font-weight: 700;
+  font-size: 1.25rem;          /* > que e-mail/telefone */
+  line-height: 1.2;
+  color: var(--text-dark, #333547);
+  margin-top: .6rem;
+}
+
+/* Estilo aplicado aos <p> logo abaixo do nome (e-mail e telefone) */
+.team-item p{
+  margin: .15rem 0;
+  font-family: "Noto Serif", serif;
+  font-size: .98rem;
+  color: #5b5e6a;
+  opacity: .95;
+}
+
+/* Se tiver links (mailto/tel) dentro do <p>, ficam discretos */
+.team-item p a{
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(0,0,0,.15);
+}
+.team-item p a:hover{
+  border-bottom-color: rgba(0,0,0,.35);
+}
+
+/* Canais rápidos: links discretos */
+.contact-info a{
+  color: var(--text-dark, #333547);
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(0,0,0,.18);
+}
+.contact-info a:hover{
+  border-bottom-color: rgba(0,0,0,.35);
+}
+
 
 /* ===========================
    RESPONSIVIDADE
