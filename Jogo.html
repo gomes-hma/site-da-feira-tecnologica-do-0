@@ -1,24 +1,234 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O SINAL: CAS</title>
+    <title>CAS: Jogo</title>
     <link rel="shortcut icon" href="imgs/favicon.png" type="image/x-icon">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Emblema+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Buenard:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CssExterno/site-da-feira-tecnologica-do-0/style.css">
-    <link rel="stylesheet" href="bootstrap-5.3.8-dist\css\bootstrap.css">
-
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.css">
     
     <style>
-        /* Header */
+        :root {
+            --lilac: #9599E6;
+            --lilac-dark: #6e71a9;
+            --dark-purple: #23252F;
+            --light: #fffdf6;
+        }
+
+        /* Utilidades Bootstrap personalizadas */
+        .bg-lilac { background-color: var(--lilac) !important; }
+        .bg-dark-purple { background-color: var(--dark-purple) !important; }
+        .border-lilac { border-color: var(--lilac) !important; }
+        .text-lilac { color: var(--lilac) !important; }
+
+        /* Botões personalizados */
+        .btn-lilac {
+            background-color: var(--lilac);
+            border-color: var(--lilac);
+            color: var(--dark-purple);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-lilac:hover {
+            background-color: var(--lilac-dark);
+            border-color: var(--lilac-dark);
+            color: var(--light);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-lilac {
+            color: var(--lilac);
+            border-color: var(--lilac);
+            background-color: transparent;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-bottom: 10px;
+            text-align: left;
+            white-space: normal;
+            min-height: 60px;
+        }
+
+        .btn-outline-lilac:hover {
+            background-color: var(--lilac);
+            color: var(--dark-purple);
+            transform: translateY(-2px);
+        }
+
+        /* Componentes do jogo */
+        #game-container {
+            width: 90%;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 2rem;
+            background: rgba(35, 37, 47, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(149, 153, 230, 0.15);
+        }
+
+        .titulo {
+            font-family: "Emblema One", system-ui;
+            color: var(--lilac);
+            font-size: 2em;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        #countdown {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .event-card {
+            background: rgba(45, 47, 57, 0.95);
+            border: 1px solid rgba(149, 153, 230, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(149, 153, 230, 0.1);
+        }
+
+        #event-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .progress {
+            height: 8px;
+            background-color: rgba(149, 153, 230, 0.1);
+        }
+
+        .progress-bar {
+            transition: width 0.3s ease;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fadeIn {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Responsividade e Menu Mobile */
+        @media (max-width: 768px) {
+            #game-container {
+                width: 98%;
+                margin: 80px auto 20px;
+                padding: 1.5rem;
+            }
+
+            .titulo {
+                font-size: 1.5em;
+            }
+
+            #event-text {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+                white-space: normal;
+                height: auto;
+                min-height: 44px;
+            }
+
+            .nav-desktop {
+                display: none;
+            }
+
+            #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            /* fica atrás de todo o conteúdo */
+            overflow: hidden;
+        }
+            .nav-mobile {
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(35, 37, 47, 0.98);
+                flex-direction: column;
+                padding: 1rem 0;
+                z-index: 998;
+            }
+
+            .nav-mobile.active {
+                display: flex;
+            }
+
+            .nav-mobile a {
+                padding: 1rem 2rem;
+                width: 100%;
+                text-align: left;
+                border-bottom: 1px solid rgba(149, 153, 230, 0.1);
+            }
+
+            .hamburger {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 30px;
+                height: 20px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 0;
+                z-index: 999;
+            }
+
+            .hamburger span {
+                width: 100%;
+                height: 2px;
+                background-color: var(--light);
+                transition: all 0.3s ease;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+
+            .options-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        /* Header e Nav */
         header {
             position: fixed;
             top: 0;
@@ -34,7 +244,6 @@
             height: 70px;
         }
 
-        /* Logo */
         .logo {
             width: auto;
             cursor: pointer;
@@ -43,7 +252,6 @@
             height: 60px;
         }
 
-        /* Nav */
         nav {
             display: flex;
             gap: 30px;
@@ -68,386 +276,138 @@
             color: #9599E6;
         }
 
-        /* Indicador de Página Ativa */
         nav a.active {
             color: #6e71a9;
             border-bottom: 3px solid #6e71a9;
         }
 
-        /* Botão Menu Sanduíche (Hamburger) */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
-            padding: 5px;
-            z-index: 1001; /* Garante que fique acima do menu mobile */
-            background: none;
-            border: none;   
-            width: 35px;
-            height: 35px;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background-color: #fffdf6;
-            border-radius: 2px;
-            transition: all 0.3s ease;
-            display: block;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(8px, -8px);
-        }
-
-        /* Menu Mobile */
-        .nav-mobile {
-            display: none;
-            position: fixed;
-            top: 70px;
-            left: 0;
-            width: 100%;
-            background-color: #23252fbb;
-            flex-direction: column;
-            gap: 0;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            z-index: 1000; /* Garante que fique acima do conteúdo */
-        }
-
-        .nav-mobile.active {
-            max-height: 500px; /* Ajuste conforme necessário */
-        }
-
-        .nav-mobile a {
-            display: block;
-            padding: 15px 20px;
-            text-decoration: none;
+        /* Footer */
+        footer {
+            background-color: #23252F;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
             color: #fffdf6;
-            font-weight: 500;
-            border-bottom: 1px solid #eee;
-            transition: background-color 0.3s, color 0.3s;
-            cursor: pointer;
+            margin-top: 50px;
         }
 
-        .nav-mobile a:hover {
+        footer h4 {
             color: #9599E6;
-        }
-
-        .nav-mobile a.active {
-            color: #3d3f5d;
-
-            padding-left: 16px;
-        }
-
-
-        #particles-js {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            /* fica atrás de todo o conteúdo */
-            overflow: hidden;
-        }
-
-
-
-        /* Base e Tipografia do Jogo */
-        #game-container * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Buenard', serif;
-        }
-
-        .titulo {
+            margin-bottom: 20px;
             font-family: "Emblema One", system-ui;
-            color: var(--title);
-            font-size: 2em;
-            margin-bottom: 20px;
         }
 
-        /* Container Principal do Jogo */
-        #game-container {
-            width: 90%;
-            max-width: 500px;
-            padding: 30px;
-            background: rgba(45, 45, 60, 0.9);
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            text-align: center;
-            /* Centraliza o container dentro do areaJogo */
-            margin: 50px auto;
-            color: var(--bg);
-        }
-
-        /* Tela de Início e Botões do Jogo */
-        #start-screen,
-        #result-screen {
-            padding: 20px 0;
-        }
-
-        #game-container button {
-            background-color: var(--title);
-            color: var(--text-darker);
-            border: none;
-            padding: 12px 25px;
-            margin-top: 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1.1em;
-            font-weight: bold;
-            transition: background-color 0.2s ease, transform 0.1s ease;
-        }
-
-        #game-container button:hover {
-            background-color: var(#9599E6);
-            transform: translateY(-2px);
-        }
-
-        /* Indicador de Tempo */
-        #countdown {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: var(--lilac-3);
-            margin-bottom: 20px;
-        }
-
-        /* Estilo das Barras de Recurso */
-        .resource-bar-container {
-            text-align: left;
-            margin-bottom: 15px;
-        }
-
-        .resource-bar-container label {
-            font-size: 0.9em;
-            color: var(--lilac-3);
-        }
-
-        .bar-outer {
-            height: 25px;
-            background-color: var(--text-dark);
-            border-radius: 12px;
-            overflow: hidden;
-            margin-top: 5px;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
-        }
-
-        .bar-inner {
-            height: 100%;
-            transition: width 0.3s ease-out, background-color 0.5s ease;
-        }
-
-        /* Cores Iniciais das Barras */
-        #em-bar {
-            background-color: var(--lilac-1);
-            /* Energia Mental: Lilás */
-        }
-
-        #de-bar {
-            background-color: var(--color-danger);
-            /* Dívida Emocional: Vermelho-Alerta */
-        }
-
-        /* Área de Evento/Notificação */
-        .event-card {
-            background-color: var(--text-dark);
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        #event-text {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-
-        .options {
-            display: flex;
-            justify-content: space-around;
-            gap: 10px;
-        }
-
-        .options button {
-            flex-grow: 1;
+        footer ul {
+            list-style: none;
+            padding: 0;
             margin: 0;
-            font-size: 1em;
         }
 
-        .sacrifice-btn {
-            background-color: var(--text-dark);
-            /* Fica mais escuro */
-            border: 1px solid var(--lilac-2);
-            color: var(--lilac-2);
-        }
-
-        .sacrifice-btn:hover {
-            background-color: var(--text-darker);
-        }
-
-        .courage-btn {
-            background-color: var(--lilac-3);
-            /* Cor de alívio */
-            color: var(--text-darker);
-        }
-
-        .courage-btn:hover {
-            background-color: var(--lilac-1);
-        }
-
-        /* Efeito de Ruído (Quando Dívida é Alta) */
-        /* O efeito de shake no body foi removido do estilo do jogo,
-           pois pode afetar a página inteira, mas o efeito de cor do fundo do body.overload
-           pode ser re-aplicado a #game-container, se o estilo original do site permitir.
-           Vou manter a lógica 'overload' no JS, mas a classe CSS para o body será ignorada aqui.
-        */
-
-        /* Tela de Resultado */
-        .result-card {
-            min-height: 250px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        #result-message {
-            font-size: 1.1em;
-            color: var(--lilac-3);
-        }
-
-        .cta-area {
-            margin: 20px 0;
-        }
-
-        .cta-link {
-            color: var(--lilac-1);
-            text-decoration: none;
-            font-weight: bold;
-            display: block;
+        footer li, .nav-footer {
             margin-bottom: 10px;
+            color: #fffdf6;
+            font-family: "Buenard", serif;
         }
 
-        .cvv-disclaimer {
-            font-size: 0.8em;
-            color: var(--color-danger);
-        }
-
-        /* Utilitário */
-        .hidden {
-            display: none !important;
+        .copyright {
+            background-color: #1a1b22;
+            color: #fffdf6;
+            text-align: center;
+            padding: 15px;
+            font-family: "Buenard", serif;
         }
     </style>
 </head>
-
 <body>
     <div id="particles-js"></div>
-    <!-- Header com Logo e Navegação -->
+    
     <header>
         <a href="index.html" id="logo"><img class="logo" src="imgs/logoCAS.png" alt=""></a>
-
-        <!-- Navegação Desktop -->
-        <nav>
-            <a href="index.html" class="nav-link text-white" data-page="1">Home</a>
-            <a href="aprofundamento.html#aprof" class="nav-link text-white" data-page="2">Aprofunde</a>
-            <a href="rename.html#consc" class="nav-link text-white" data-page="3">Conscientização</a>
-            <a href="timeline.html#tm" class="nav-link text-white" data-page="4">Timeline</a>
-            <a href="formulário.html#desab" class="nav-link text-white" data-page="5">Desabafe</a>
-            <a href="Jogo.html#gojo" class="nav-link active text-white" data-page="6">Jogo</a>
-            <a href="contato.html#ctt" class="nav-link text-white" data-page="7">Contato</a>
+        <nav class="nav-desktop">
+            <a href="index.html" class="nav-link text-white">Home</a>
+            <a href="aprofundamento.html#aprof" class="nav-link text-white">Aprofunde</a>
+            <a href="rename.html#consc" class="nav-link text-white">Conscientização</a>
+            <a href="timeline.html#tm" class="nav-link text-white">Timeline</a>
+            <a href="formulário.html#desab" class="nav-link text-white">Desabafe</a>
+            <a href="Jogo.html#gojo" class="nav-link active text-white">Jogo</a>
+            <a href="contato.html#ctt" class="nav-link text-white">Contato</a>
         </nav>
-
-        <!-- Botão Menu Sanduíche (Hamburger) -->
-        <div class="hamburger" id="hamburger">
+        <button class="hamburger d-md-none" type="button" aria-label="Menu">
             <span></span>
             <span></span>
             <span></span>
-        </div>
+        </button>
     </header>
-
-    <!-- Menu Mobile -->
-    <nav class="nav-mobile" id="navMobile">
-        <a href="index.html" class="nav-link  text-white" data-page="1">Home</a>
-        <a href="aprofundamento.html#aprof" class="nav-link text-white" data-page="2">Aprofunde</a>
-        <a href="rename.html#consc" class="nav-link text-white" data-page="3">Conscientização</a>
-        <a href="timeline.html#tm" class="nav-link text-white" data-page="4">Timeline</a>
-        <a href="formulário.html#desab" class="nav-link text-white" data-page="5">Desabafe</a>
-        <a href="Jogo.html#gojo" class="nav-link active text-white" data-page="6">Jogo</a>
-        <a href="contato.html#ctt" class="nav-link text-white" data-page="7">Contato</a>
+    
+    <nav class="nav-mobile">
+        <a href="index.html" class="nav-link text-white">Home</a>
+        <a href="aprofundamento.html#aprof" class="nav-link text-white">Aprofunde</a>
+        <a href="rename.html#consc" class="nav-link text-white">Conscientização</a>
+        <a href="timeline.html#tm" class="nav-link text-white">Timeline</a>
+        <a href="formulário.html#desab" class="nav-link text-white">Desabafe</a>
+        <a href="Jogo.html#gojo" class="nav-link active text-white">Jogo</a>
+        <a href="contato.html#ctt" class="nav-link text-white">Contato</a>
     </nav>
 
     <main>
-        <section class="banner img-fluid img-responsive" id="home"><img class="banner img-fluid img-responsive"
-                src="imgs/BannerCAS.png" alt=""></section>
-       
-       
-       
-       
-       <section id="gojo">
-                <div class="areaJogo">
-            <div id="game-container">
-                <div id="start-screen">
-                    <h1 class="titulo">O SINAL: O Despertar</h1>
-                    <p>Você tem 45 segundos para navegar por um dia de sobrecarga. Suas escolhas refletem o
-                        Comece a notar os sinais. Você é o jogador e o paciente.</p>
-                    <button id="start-btn">INICIAR O SINAL</button>
-                </div>
-  
-                <div id="gameplay-screen" class="hidden">
-                    <div id="countdown">Tempo: 45s</div>
+        <section class="banner img-fluid img-responsive" id="home">
+            <img class="banner img-fluid img-responsive" src="imgs/BannerCAS.png" alt="">
+        </section>
+        
+        <section id="gojo">
+            <div class="areaJogo">
+                <div id="game-container" class="mb-5">
+                    <div id="start-screen" class="fadeIn">
+                        <h1 class="titulo mt-4">O SINAL: O Despertar</h1>
+                        <p class="text-light mb-4">Navegue por situações do dia a dia e faça escolhas conscientes. 
+                            Você tem 15 segundos para cada decisão. Suas escolhas moldam seu bem-estar.</p>
+                        <button id="start-btn" class="btn btn-lilac btn-lg w-100">INICIAR JORNADA</button>
+                    </div>
+      
+                    <div id="gameplay-screen" class="hidden fadeIn">
+                        <div class="progress mb-4">
+                            <div id="progress-bar" class="progress-bar bg-lilac" style="width: 0%"></div>
+                        </div>
+                        
+                        <div id="countdown" class="badge bg-lilac p-3 mb-4">Tempo: 15s</div>
 
-                    <div class="resource-bar-container">
-                        <label>Energia Mental (EM)</label>
-                        <div class="bar-outer">
-                            <div id="em-bar" class="bar-inner"></div>
+                        <div id="event-area" class="card bg-dark-purple border-lilac">
+                            <div class="card-body">
+                                <p id="event-text" class="card-text text-light mb-4"></p>
+                                <div class="options-grid">
+                                    <button class="btn btn-outline-lilac option-btn" data-value="0"></button>
+                                    <button class="btn btn-outline-lilac option-btn" data-value="1"></button>
+                                    <button class="btn btn-outline-lilac option-btn" data-value="2"></button>
+                                    <button class="btn btn-outline-lilac option-btn" data-value="3"></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="success-message" class="alert alert-success mt-4 hidden">
+                            <i class="bi bi-check-circle-fill me-2"></i>
+                            <strong>Ótimo progresso!</strong> Continue fazendo escolhas conscientes.
                         </div>
                     </div>
-                    <div class="resource-bar-container">
-                        <label>Dívida Emocional (DE)</label>
-                        <div class="bar-outer debt-outer">
-                            <div id="de-bar" class="bar-inner debt-inner"></div>
-                        </div>
-                    </div>
 
-                    <div id="event-area" class="event-card hidden">
-                        <p id="event-text">Aguardando evento...</p>
-                        <div class="options">
-                            <button id="opt1-btn" class="sacrifice-btn"></button>
-                            <button id="opt2-btn" class="courage-btn"></button>
+                    <div id="result-screen" class="hidden fadeIn">
+                        <h1 id="result-title" class="titulo mb-4"></h1>
+                        <div class="card bg-dark-purple border-lilac mb-4">
+                            <div class="card-body">
+                                <p id="result-message" class="text-light"></p>
+                            </div>
                         </div>
+                        <div class="cta-area">
+                            <a href="rename.html#consc" class="btn btn-lilac w-100 mb-3">Aprender mais sobre autocuidado</a>
+                            <p class="text-lilac small">Se precisar de ajuda real, ligue para o CVV: 188</p>
+                        </div>
+                        <button id="restart-btn" class="btn btn-lilac mt-3">TENTAR NOVAMENTE</button>
                     </div>
-                </div>
-
-                <div id="result-screen" class="hidden result-card">
-                    <h1 id="result-title" class="titulo"></h1>
-                    <p id="result-message"></p>
-                    <div class="cta-area">
-                        <a href="Jogo.html" class="cta-link">Saiba como quebrar o Ciclo na seção Conscientização do
-                            site.</a>
-                        <p class="cvv-disclaimer">Lembrete: Isso é uma simulação. Se precisar de ajuda, ligue CVV 188.
-                        </p>
-                    </div>
-                    <button id="restart-btn"></button>
                 </div>
             </div>
-        </div>
         </section>
     </main>
+
     <footer>
         <div>
             <h4>CAS</h4>
@@ -455,15 +415,13 @@
         </div>
         <div>
             <h4>Navegação</h4>
-
-            <a href="index.html" class="nav-link nav-footer active text-white" data-page="1">Home</a>
+            <a href="index.html" class="nav-link nav-footer text-white" data-page="1">Home</a>
             <a href="aprofundamento.html#aprof" class="nav-link nav-footer text-white" data-page="2">Aprofunde</a>
             <a href="rename.html#consc" class="nav-link nav-footer text-white" data-page="3">Conscientização</a>
             <a href="timeline.html#tm" class="nav-link nav-footer text-white" data-page="4">Timeline</a>
             <a href="formulário.html#desab" class="nav-link nav-footer text-white" data-page="5">Desabafe</a>
-            <a href="Jogo.html#gojo" class="nav-link nav-footer text-white" data-page="6">Jogo</a>
+            <a href="Jogo.html#gojo" class="nav-link nav-footer active text-white" data-page="6">Jogo</a>
             <a href="contato.html#ctt" class="nav-link nav-footer text-white" data-page="7">Contato</a>
-            
         </div>
         <div>
             <h4>Projeto</h4>
@@ -487,94 +445,7 @@
     <div class="copyright">
         © 2025 - Projeto C.A.S. | Todos os direitos reservados.
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-
 <script>
-        (function () {
-            // Scroll to top button
-            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-            const scrollThreshold = 100; // aparecerá após 100px de scroll
-
-            if (scrollToTopBtn) {
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY > scrollThreshold) {
-                        scrollToTopBtn.style.opacity = '1';
-                        scrollToTopBtn.style.visibility = 'visible';
-                    } else {
-                        scrollToTopBtn.style.opacity = '0';
-                        scrollToTopBtn.style.visibility = 'hidden';
-                    }
-                });
-
-                scrollToTopBtn.addEventListener('click', () => {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            }
-
-            // Hamburger menu
-            const hamburger = document.getElementById('hamburger');
-            const navMobile = document.getElementById('navMobile');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const logo = document.getElementById('logo');
-
-            if (hamburger && navMobile) {
-                hamburger.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    hamburger.classList.toggle('active');
-                    navMobile.classList.toggle('active');
-                });
-
-                navLinks.forEach(link => {
-                    link.addEventListener('click', () => {
-                        // fechar menu mobile ao clicar em qualquer link
-                        hamburger.classList.remove('active');
-                        navMobile.classList.remove('active');
-                    });
-                });
-
-                // fechar ao clicar fora
-                document.addEventListener('click', (e) => {
-                    if (!hamburger.contains(e.target) && !navMobile.contains(e.target)) {
-                        hamburger.classList.remove('active');
-                        navMobile.classList.remove('active');
-                    }
-                });
-            }
-
-            if (logo) {
-                logo.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    window.location.href = 'index.html';
-                });
-            }
-
-            // Destacar link ativo
-            const path = window.location.pathname;
-            const pageName = path.substring(path.lastIndexOf('/') + 1).toLowerCase();
-            const isRootOrIndex = pageName === '' || pageName === 'index.html' || pageName === 'wave-transition.html';
-            const currentDataPage = isRootOrIndex ? '1' : null;
-
-            // limpar estado inicial
-            navLinks.forEach(link => link.classList.remove('active'));
-
-            if (currentDataPage) {
-                const activeLinkDesktop = document.querySelector('nav a[data-page="' + currentDataPage + '"]');
-                const activeLinkMobile = document.querySelector('.nav-mobile a[data-page="' + currentDataPage + '"]');
-                if (activeLinkDesktop) activeLinkDesktop.classList.add('active');
-                if (activeLinkMobile) activeLinkMobile.classList.add('active');
-            } else {
-                // fallback: destacar por href que contenha o nome do arquivo
-                navLinks.forEach(link => {
-                    const href = (link.getAttribute('href') || '').toLowerCase();
-                    if (pageName && href.includes(pageName)) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        })();
-    </script>
-    <script>
         particlesJS("particles-js", {
             "particles": {
                 "number": { "value": 120 },
@@ -623,387 +494,272 @@
         });
     </script>
     <script>
-    const EM_MAX = 100;
-    const DE_MAX = 100; // Limite para o estado de "Sobrecarga"
+        // Configurações do jogo
+        const TOTAL_QUESTOES = 6;
+        const TEMPO_POR_QUESTAO = 15;
+        
+        // Estado do jogo
+        let questaoAtual = 0;
+        let tempoRestante = TEMPO_POR_QUESTAO;
+        let coragemScore = 0;
+        let gameInterval;
+        let gameRunning = false;
 
-    let energiaMental = EM_MAX;
-    let dividaEmocional = 0;
-    let tempoRestante = 45;
-    let coragemScore = 0; // Contador de escolhas positivas
-    let gameInterval;
-    let eventInterval;
-    let gameRunning = false;
+        // Elementos do DOM
+        const $startScreen = document.getElementById('start-screen');
+        const $gameplayScreen = document.getElementById('gameplay-screen');
+        const $resultScreen = document.getElementById('result-screen');
+        const $startBtn = document.getElementById('start-btn');
+        const $restartBtn = document.getElementById('restart-btn');
+        const $countdown = document.getElementById('countdown');
+        const $eventArea = document.getElementById('event-area');
+        const $eventText = document.getElementById('event-text');
+        const $opt1Btn = document.getElementById('opt1-btn');
+        const $opt2Btn = document.getElementById('opt2-btn');
+        const $progressBar = document.getElementById('progress-bar');
+        const $successMessage = document.getElementById('success-message');
 
-    // Elementos do DOM
-    const $body = document.body;
-    const $startScreen = document.getElementById('start-screen');
-    const $gameplayScreen = document.getElementById('gameplay-screen');
-    const $resultScreen = document.getElementById('result-screen');
-    const $startBtn = document.getElementById('start-btn');
-    const $restartBtn = document.getElementById('restart-btn');
-    const $countdown = document.getElementById('countdown');
-    const $emBar = document.getElementById('em-bar');
-    const $deBar = document.getElementById('de-bar');
-    const $eventArea = document.getElementById('event-area');
-    const $eventText = document.getElementById('event-text');
-    const $opt1Btn = document.getElementById('opt1-btn');
-    const $opt2Btn = document.getElementById('opt2-btn');
-    const $resultTitle = document.getElementById('result-title');
-    const $resultMessage = document.getElementById('result-message');
-    const $gameContainer = document.getElementById('game-container');
+        // Adiciona manipulação do menu mobile
+        const hamburger = document.querySelector('.hamburger');
+        const navMobile = document.querySelector('.nav-mobile');
 
-    // Elementos das Barras (Containers) - ESSENCIAL para mostrar/esconder
-    const $emBarContainer = $emBar.closest('.resource-bar-container');
-    const $deBarContainer = $deBar.closest('.resource-bar-container');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMobile.classList.toggle('active');
+        });
 
+        // Fecha o menu ao clicar em um link
+        document.querySelectorAll('.nav-mobile .nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMobile.classList.remove('active');
+            });
+        });
 
-    // --- LISTA DE EVENTOS DO CICLO (FASE 1) - ADICIONADO MAIS 3 EVENTOS ---
-    const events = [
-        {
-            text: "E-mail do chefe: 'Prazo adiantado para a noite. Urgente.'",
-            opt1Label: "Virar a noite e entregar.",
-            opt1Effect: { em: -15, de: +30, coragem: 0 },
-            opt2Label: "Mandar um limite: 'Entrego amanhã cedo.'",
-            opt2Effect: { em: +10, de: -10, coragem: 1 }
-        },
-        {
-            text: "Amigo (Zap): 'Preciso desabafar urgente, estou mal.'",
-            opt1Label: "Ajudar imediatamente, ignorando sua exaustão.",
-            opt1Effect: { em: -10, de: +20, coragem: 0 },
-            opt2Label: "Mandar: 'Te ligo amanhã, tô no limite'.",
-            opt2Effect: { em: +5, de: -5, coragem: 1 }
-        },
-        {
-            text: "Pensamento: 'Estou sempre cansado. Sou fraco.'",
-            opt1Label: "Reprimir: 'Preciso ser produtivo'.",
-            opt1Effect: { em: -20, de: +30, coragem: 0 },
-            opt2Label: "Validar: 'É normal sentir isso. Vou descansar.'",
-            opt2Effect: { em: +15, de: -15, coragem: 1 }
-        },
-        {
-            text: "Alarme: Hora de caminhar/exercitar. Você está esgotado.",
-            opt1Label: "Ficar na mesa: 'Não tenho tempo'.",
-            opt1Effect: { em: -5, de: +15, coragem: 0 },
-            opt2Label: "Levantar e dar uma volta curta.",
-            opt2Effect: { em: +10, de: -5, coragem: 1 }
-        },
-        {
-            text: "Interação: Você erra um detalhe importante e sente vergonha.",
-            opt1Label: "Esconder o erro e tentar consertar sozinho.",
-            opt1Effect: { em: -10, de: +15, coragem: 0 },
-            opt2Label: "Comunicar o erro para reduzir o estresse.",
-            opt2Effect: { em: +10, de: -10, coragem: 1 }
-        },
-        // --- NOVOS EVENTOS INSERIDOS ---
-        {
-            text: "Uma reunião de última hora é agendada para o seu horário de almoço.",
-            opt1Label: "Participar e almoçar na mesa, correndo.",
-            opt1Effect: { em: -10, de: +20, coragem: 0 },
-            opt2Label: "Pedir para gravar/summarizar: 'Tenho um compromisso de autocuidado agora.'",
-            opt2Effect: { em: +10, de: -10, coragem: 1 }
-        },
-        {
-            text: "Você tem um pensamento autocrítico forte: 'Nunca vou ser bom o suficiente.'",
-            opt1Label: "Acreditar no pensamento e dobrar a pressão.",
-            opt1Effect: { em: -20, de: +30, coragem: 0 },
-            opt2Label: "Observar o pensamento: 'É só estresse falando. Não é um fato.'",
-            opt2Effect: { em: +15, de: -15, coragem: 1 }
-        },
-        {
-            text: "Você sente dor de cabeça no meio do dia.",
-            opt1Label: "Ignorar e tomar um analgésico forte para continuar.",
-            opt1Effect: { em: -5, de: +15, coragem: 0 },
-            opt2Label: "Parar 10 minutos para respirar fundo e beber água.",
-            opt2Effect: { em: +10, de: -5, coragem: 1 }
-        },
-        // --- FIM DOS NOVOS EVENTOS ---
-        {
-            text: "Sinal Final: Sua mente grita: 'Preciso parar. Preciso de ajuda.'",
-            opt1Label: "Vou aguentar mais um dia.",
-            opt1Effect: { em: -35, de: +50, coragem: 0 },
-            opt2Label: "Eu mereço ajuda. Vou falar com alguém.",
-            opt2Effect: { em: +40, de: -50, coragem: 1 }
-        }
-    ];
-    let eventsPool = [];
+        // Lista de eventos do jogo
+        const events = [
+            {
+                text: "São 2 da manhã e você ainda está envolvido(a) em um projeto.",
+                options: [
+                    { label: "Tomar mais um café e continuar", score: 0 },
+                    { label: "Definir mais 30 minutos e parar", score: 1 },
+                    { label: "Salvar o progresso e descansar", score: 2 },
+                    { label: "Estabelecer um horário fixo para dormir", score: 3 }
+                ]
+            },
+            {
+                text: "Durante uma reunião online, você se sente exausto(a).",
+                options: [
+                    { label: "Desligar a câmera e continuar multitarefas", score: 0 },
+                    { label: "Anotar os pontos importantes para focar", score: 1 },
+                    { label: "Sugerir uma pausa de 5 minutos", score: 2 },
+                    { label: "Propor reuniões mais curtas e objetivas", score: 3 }
+                ]
+            },
+            {
+                text: "Seu feed está cheio de pessoas alcançando grandes objetivos.",
+                options: [
+                    { label: "Scrollar mais para ver outros sucessos", score: 0 },
+                    { label: "Fazer uma lista dos seus objetivos", score: 1 },
+                    { label: "Limitar o tempo nas redes sociais", score: 2 },
+                    { label: "Focar no seu próprio ritmo e progresso", score: 3 }
+                ]
+            },
+            {
+                text: "Você percebe que não tem feito pausas para almoço adequadas.",
+                options: [
+                    { label: "Comer rápido na frente do computador", score: 0 },
+                    { label: "Separar 20 minutos para a refeição", score: 1 },
+                    { label: "Criar um horário fixo de almoço", score: 2 },
+                    { label: "Estabelecer pausas nutritivas completas", score: 3 }
+                ]
+            },
+            {
+                text: "Um colega pede ajuda quando você já está sobrecarregado(a).",
+                options: [
+                    { label: "Aceitar e acrescentar à sua lista", score: 0 },
+                    { label: "Sugerir ajudar em outro momento", score: 1 },
+                    { label: "Explicar suas limitações atuais", score: 2 },
+                    { label: "Propor alternativas e recursos disponíveis", score: 3 }
+                ]
+            },
+            {
+                text: "Você nota tensão constante em seus ombros e pescoço.",
+                options: [
+                    { label: "Ignorar e continuar trabalhando", score: 0 },
+                    { label: "Fazer alongamentos básicos", score: 1 },
+                    { label: "Ajustar sua postura e ambiente", score: 2 },
+                    { label: "Criar rotina de exercícios preventivos", score: 3 }
+                ]
+            },
+            {
+                text: "Seu tempo pessoal está sendo consumido por demandas externas.",
+                options: [
+                    { label: "Sacrificar sono para ter tempo livre", score: 0 },
+                    { label: "Tentar encaixar momentos de pausa", score: 1 },
+                    { label: "Definir horários para cada atividade", score: 2 },
+                    { label: "Reavaliar compromissos e prioridades", score: 3 }
+                ]
+            },
+            {
+                text: "Você percebe pensamentos negativos frequentes sobre si mesmo(a).",
+                options: [
+                    { label: "Ignorar e focar nas tarefas", score: 0 },
+                    { label: "Fazer algo que goste para distrair", score: 1 },
+                    { label: "Praticar exercícios de respiração", score: 2 },
+                    { label: "Buscar apoio profissional adequado", score: 3 }
+                ]
+            }
+        ];
 
-    // --- FUNÇÕES DE LÓGICA (FASE 1) ---
+        let eventsPool = [...events];
 
-    function updateBars() {
-        energiaMental = Math.max(0, Math.min(EM_MAX, energiaMental));
-        dividaEmocional = Math.max(0, Math.min(DE_MAX, dividaEmocional));
-
-        $emBar.style.width = `${energiaMental}%`;
-        $deBar.style.width = `${dividaEmocional}%`;
-
-        // A lógica de SOBRECARGA é mantida
-        if (dividaEmocional > 70) {
-            $gameContainer.classList.add('overload');
-            $body.classList.add('overload');
-        } else {
-            $gameContainer.classList.remove('overload');
-            $body.classList.remove('overload');
-        }
-
-        if (energiaMental <= 0) {
-            endGame();
-        }
-    }
-
-    function handleChoice(effect) {
-        if (!gameRunning) return;
-
-        let emChange = effect.em;
-        let deChange = effect.de;
-
-        // Penalidade de Ruído
-        if (dividaEmocional > 70 && emChange < 0) {
-            emChange *= 2;
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
         }
 
-        energiaMental += emChange;
-        dividaEmocional += deChange;
-        coragemScore += effect.coragem; // Contabiliza o score
+        function startGame() {
+            questaoAtual = 0;
+            coragemScore = 0;
+            tempoRestante = TEMPO_POR_QUESTAO;
+            gameRunning = true;
+            eventsPool = shuffleArray([...events]);
 
-        updateBars();
-        $eventArea.classList.add('hidden');
-
-        // Só carrega um novo evento se o tempo não tiver acabado
-        if (tempoRestante > 0) {
+            $startScreen.classList.add('hidden');
+            $resultScreen.classList.add('hidden');
+            $gameplayScreen.classList.remove('hidden');
+            $successMessage.classList.add('hidden');
+            
+            updateProgressBar();
             loadNewEvent();
-        }
-    }
-
-    // Função auxiliar para embaralhar botões
-    function shuffleButtons(btn1, btn2) {
-        const parent = btn1.parentNode;
-        if (Math.random() < 0.5) {
-            parent.insertBefore(btn2, btn1);
-        } else {
-            parent.insertBefore(btn1, btn2);
-        }
-    }
-
-    function loadNewEvent() {
-        if (eventsPool.length === 0) {
-            eventsPool = [...events];
+            startTimer();
         }
 
-        let eventIndex;
-        // Lógica para forçar o "Sinal Final"
-        if (tempoRestante <= 15 || dividaEmocional > 70) {
-            const finalEventIndex = eventsPool.findIndex(e => e.text.includes('Sinal Final'));
-            if (finalEventIndex !== -1) {
-                eventIndex = finalEventIndex;
-            } else {
-                eventIndex = Math.floor(Math.random() * eventsPool.length);
+        function updateProgressBar() {
+            const progress = (questaoAtual / TOTAL_QUESTOES) * 100;
+            $progressBar.style.width = `${progress}%`;
+        }
+
+        function startTimer() {
+            clearInterval(gameInterval);
+            gameInterval = setInterval(() => {
+                tempoRestante--;
+                $countdown.textContent = `Tempo: ${tempoRestante}s`;
+
+                if (tempoRestante <= 0) {
+                    handleTimeUp();
+                }
+            }, 1000);
+        }
+
+        function loadNewEvent() {
+            if (questaoAtual < TOTAL_QUESTOES) {
+                const event = eventsPool[questaoAtual];
+                $eventText.textContent = event.text;
+
+                const optionsContainer = document.querySelector('.options-grid');
+                const options = [...event.options];
+                // Embaralha as opções para não ficarem em ordem crescente de score
+                shuffleArray(options);
+                
+                const optionButtons = optionsContainer.querySelectorAll('.option-btn');
+                optionButtons.forEach((button, index) => {
+                    button.textContent = options[index].label;
+                    button.dataset.score = options[index].score;
+                    button.onclick = () => handleChoice(parseInt(options[index].score));
+                });
+
+                tempoRestante = TEMPO_POR_QUESTAO;
+                $countdown.textContent = `Tempo: ${tempoRestante}s`;
+                startTimer();
             }
-        } else {
-            // Sorteia um evento que não seja o final
-            const nonFinalEvents = eventsPool.filter(e => !e.text.includes('Sinal Final'));
-            if (nonFinalEvents.length > 0) {
-                eventIndex = eventsPool.findIndex(e => e === nonFinalEvents[Math.floor(Math.random() * nonFinalEvents.length)]);
-            } else {
-                eventIndex = 0;
-            }
         }
 
-        if (eventIndex === -1 && eventsPool.length > 0) {
-            eventIndex = Math.floor(Math.random() * eventsPool.length);
-        }
+        function handleChoice(score) {
+    if (!gameRunning) return;
 
-        const event = eventsPool.splice(eventIndex, 1)[0];
+    coragemScore += score; // Agora usando diretamente o score passado
+    questaoAtual++;
+    updateProgressBar();
 
-        $eventText.textContent = event.text;
-        $opt1Btn.textContent = event.opt1Label;
-        $opt2Btn.textContent = event.opt2Label;
-
-        // Garante que os botões tenham as classes corretas
-        $opt1Btn.classList.add('sacrifice-btn');
-        $opt1Btn.classList.remove('courage-btn');
-        $opt2Btn.classList.add('courage-btn');
-        $opt2Btn.classList.remove('sacrifice-btn');
-
-        $opt1Btn.onclick = () => handleChoice(event.opt1Effect);
-        $opt2Btn.onclick = () => handleChoice(event.opt2Effect);
-
-        // Aleatoriza a posição dos botões a cada evento
-        shuffleButtons($opt1Btn, $opt2Btn);
-
-        $eventArea.classList.remove('hidden');
-    }
-
-    function startGame() {
-        // Reset de estado
-        energiaMental = EM_MAX;
-        dividaEmocional = 0;
-        tempoRestante = 45;
-        coragemScore = 0;
-        gameRunning = true;
-        eventsPool = [...events];
-
-        // Garante que as barras estejam VISÍVEIS no início
-        $emBarContainer.classList.remove('hidden');
-        $deBarContainer.classList.remove('hidden');
-
-        // Reset de visual
-        $startScreen.classList.add('hidden');
-        $resultScreen.classList.add('hidden');
-        $gameplayScreen.classList.remove('hidden');
-        $body.classList.remove('overload');
-        $gameContainer.classList.remove('overload');
-        $eventArea.classList.add('hidden');
-
-        // Esconde o botão de restart ao iniciar
-        $restartBtn.style.display = 'none';
-
-        updateBars();
+    if (questaoAtual >= TOTAL_QUESTOES) {
+        finishGame();
+    } else {
         loadNewEvent();
+    }
+}
 
-        // Limpa timers antigos antes de iniciar novos (Importante para o restart)
-        clearInterval(gameInterval);
-        clearInterval(eventInterval);
-
-        // Início do Timer do Jogo
-        gameInterval = setInterval(() => {
-            tempoRestante--;
-            $countdown.textContent = `Tempo: ${tempoRestante}s`;
-
-            if (tempoRestante <= 0) {
-                clearInterval(gameInterval);
-                clearInterval(eventInterval);
-
-                // ESCONDE AS BARRAS E VAI PARA A FASE 2 QUANDO O TEMPO ACABA
-                $emBarContainer.classList.add('hidden');
-                $deBarContainer.classList.add('hidden');
-
-                showPhase2Screen();
+        function handleTimeUp() {
+            if (gameRunning) {
+                questaoAtual++;
+                updateProgressBar();
+                
+                if (questaoAtual >= TOTAL_QUESTOES) {
+                    finishGame();
+                } else {
+                    loadNewEvent();
+                }
             }
-        }, 1000);
-
-        // Início do Timer dos Eventos
-        eventInterval = setInterval(() => {
-            if ($eventArea.classList.contains('hidden') && gameRunning && tempoRestante > 0) {
-                loadNewEvent();
-            }
-        }, 6000);
-    }
-
-    function endGame() {
-        // Chamado quando EM chega a 0
-        gameRunning = false;
-        clearInterval(gameInterval);
-        clearInterval(eventInterval);
-
-        // Garante que as barras continuam escondidas após o colapso
-        $emBarContainer.classList.add('hidden');
-        $deBarContainer.classList.add('hidden');
-
-        // Resultado imediato de COLAPSO
-        showResultScreen("COLAPSO: VOCÊ QUEBROU.",
-            "Você viu o peso de ignorar os sinais. Essa simulação pode ser sua realidade. A autodestruição silenciosa não tem Game Over. A busca por ajuda é o seu reset.",
-            true); // Colapso: mostra o restart
-    }
-
-    // --- LÓGICA DA FASE 2: O SINAL NO OUTRO - ADICIONADO MAIS 1 EVENTO ---
-
-    const phase2Events = [
-        {
-            text: "Um amigo te evita e parece exausto há semanas. Você percebeu um SINAL. Qual é a coragem do apoio?",
-            opt1Label: "Não se intrometer. 'Ele vai falar se precisar.'",
-            opt1Action: { message: "Você deixou o medo vencer. O ciclo no outro continua. Lembre-se: Coragem também é estender a mão.", success: false },
-            opt2Label: "Perguntar com empatia: 'Tudo bem? Estou aqui.'",
-            opt2Action: { message: "A empatia é a chave! Você quebrou o ciclo do isolamento por ele. O primeiro passo é a escuta.", success: true }
-        },
-        {
-            text: "Seu colega de trabalho está visivelmente irritado e cometeu erros. Você suspeita do Ciclo. O que fazer?",
-            opt1Label: "Ignorar e focar apenas no seu trabalho.",
-            opt1Action: { message: "Você não agiu. O colega pode estar sobrecarregado. Sua coragem de se aproximar faz a diferença.", success: false },
-            opt2Label: "Sugira que ele tire uma pausa e ofereça apoio para conversar com o RH/chefe.",
-            opt2Action: { message: "Apoio prático e respeitoso. Você validou o sofrimento dele e indicou um caminho. Isso é coragem.", success: true }
-        },
-        // --- NOVO EVENTO DE FASE 2 INSERIDO ---
-        {
-            text: "Você vê um post de um conhecido que parece um 'grito de ajuda' velado. O que fazer?",
-            opt1Label: "Assumir que é 'drama' de rede social e seguir rolando o feed.",
-            opt1Action: { message: "Omissão por conveniência. O isolamento começa com a inação dos próximos. Coragem é a atitude de checagem, mesmo no digital.", success: false },
-            opt2Label: "Chamar no privado com gentileza: 'Vi seu post. Está tudo bem?'",
-            opt2Action: { message: "Você estendeu a mão na rede. A coragem de invadir o silêncio com gentileza é o primeiro socorro emocional.", success: true }
-        }
-    ];
-
-    function showPhase2Screen() {
-        $gameplayScreen.classList.add('hidden');
-        $eventArea.classList.remove('hidden'); // Reutiliza a área de evento para a Fase 2
-
-        const event = phase2Events[Math.floor(Math.random() * phase2Events.length)];
-
-        $countdown.textContent = "REFLEXÃO FINAL: O SINAL NO OUTRO";
-        $eventText.textContent = event.text;
-        $opt1Btn.textContent = event.opt1Label;
-        $opt2Btn.textContent = event.opt2Label;
-
-        // Configura os ouvintes para a Fase 2, que levam diretamente ao resultado final
-        $opt1Btn.onclick = () => showFinalResult(event.opt1Action);
-        $opt2Btn.onclick = () => showFinalResult(event.opt2Action);
-
-        // Garante que os botões tenham as classes corretas
-        $opt1Btn.classList.add('sacrifice-btn');
-        $opt1Btn.classList.remove('courage-btn');
-        $opt2Btn.classList.add('courage-btn');
-        $opt2Btn.classList.remove('sacrifice-btn');
-
-        // Aleatoriza a posição dos botões na Fase 2 também
-        shuffleButtons($opt1Btn, $opt2Btn);
-    }
-
-    function showFinalResult(action) {
-        let finalTitle = "";
-        let finalMessage = "";
-        let finalCoragemScore = coragemScore + (action.success ? 3 : 0); // Adiciona +3 por um final corajoso
-
-        $eventArea.classList.add('hidden');
-
-        // Lógica de Resultado Pós-Fase 2 (Reflexão Total)
-        if (finalCoragemScore >= 8) { // Alto score total
-            finalTitle = "VITÓRIA: CORAGEM PLENA E EMPATIA ATIVA.";
-            finalMessage = `Você demonstrou coragem por si mesmo (pontuação na Fase 1: ${coragemScore}) e agiu com empatia pelo próximo. Quebrar o ciclo requer auto-cuidado E estender a mão. Leve essa lição para sua rotina.`;
-        } else if (finalCoragemScore >= 5) { // Score médio
-            finalTitle = "DESPERTAR: VOCÊ RECONHECEU OS SINAIS.";
-            finalMessage = `Você começou a colocar limites, mas ainda hesitou em alguns momentos ou ao ajudar o próximo. A vulnerabilidade é uma força. Continue cultivando a coragem de pedir e oferecer ajuda.`;
-        } else { // Score baixo
-            finalTitle = "ALERTA: O RISCO DO SILÊNCIO CONTINUA.";
-            finalMessage = `Você evitou o colapso por pouco, mas as escolhas de sacrifício e isolamento prevaleceram. O medo da vergonha é real. Sua missão agora é encontrar a coragem de pedir ajuda e não hesitar em oferecer suporte.`;
         }
 
-        // Inclui a mensagem específica da Fase 2 (Ato de Coragem) no final
-        finalMessage += `<br><br><strong>Ato de Coragem:</strong> ${action.message}`;
+        function finishGame() {
+    gameRunning = false;
+    clearInterval(gameInterval);
 
-        showResultScreen(finalTitle, finalMessage, true); // Mantenha TRUE para mostrar o restart
+    // Calculando a pontuação máxima possível (3 pontos x número de questões)
+    const pontuacaoMaxima = TOTAL_QUESTOES * 3;
+    
+    // Calculando a taxa de sucesso baseada na pontuação máxima possível
+    const sucessoRate = (coragemScore / pontuacaoMaxima) * 100;
+    
+    // Calculando o número de escolhas positivas (considerando que cada questão vale até 3 pontos)
+    const escolhasPositivas = Math.round(coragemScore / 3);
+
+    if (sucessoRate >= 70) {
+        $successMessage.classList.remove('hidden');
+        showResultScreen(
+            "EXCELENTE JORNADA!",
+            `Você demonstrou sabedoria em ${escolhasPositivas} de ${TOTAL_QUESTOES} situações. 
+            Suas escolhas refletem um compromisso com seu bem-estar. Continue cultivando 
+            esse equilíbrio entre responsabilidades e autocuidado.`
+        );
+    } else if (sucessoRate >= 50) {
+        showResultScreen(
+            "BOA EVOLUÇÃO!",
+            `Você fez escolhas conscientes em ${escolhasPositivas} de ${TOTAL_QUESTOES} situações. 
+            Está no caminho certo, mas ainda pode fortalecer seus limites e priorizar mais 
+            seu bem-estar.`
+        );
+    } else {
+        showResultScreen(
+            "MOMENTO DE REFLEXÃO",
+            `Você precisa priorizar mais seu bem-estar em ${TOTAL_QUESTOES - escolhasPositivas} de ${TOTAL_QUESTOES} situações. 
+            Lembre-se: cuidar de si não é egoísmo, é uma necessidade. Que tal começar 
+            com pequenas mudanças hoje?`
+        );
     }
+}
 
+        function showResultScreen(title, message) {
+            $gameplayScreen.classList.add('hidden');
+            $resultScreen.classList.remove('hidden');
+            
+            document.getElementById('result-title').textContent = title;
+            document.getElementById('result-message').textContent = message;
+            $restartBtn.style.display = 'block';
+        }
 
-    function showResultScreen(title, message, showRestart) {
-        $gameplayScreen.classList.add('hidden');
-        $eventArea.classList.add('hidden');
-        $resultScreen.classList.remove('hidden');
-
-        $resultTitle.textContent = title;
-        $resultMessage.innerHTML = message; // Usando innerHTML para aceitar as tags <br> e <strong>
-
-        // Garante que o botão de reiniciar esteja visível (Lógica de restart)
-        $restartBtn.textContent = 'REINICIAR O SINAL';
-        document.getElementById('restart-btn').style.display = showRestart ? 'block' : 'none';
-    }
-
-    // --- INICIALIZAÇÃO ---
-    $startBtn.addEventListener('click', startGame);
-    $restartBtn.addEventListener('click', startGame);
-
-    updateBars();
+        // Event Listeners
+        $startBtn.addEventListener('click', startGame);
+        $restartBtn.addEventListener('click', startGame);
 </script>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.js"></script>
-
 </body>
-
 </html>
